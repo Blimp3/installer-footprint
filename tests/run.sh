@@ -42,5 +42,25 @@ expect_status "diff rejects a non-snapshot directory" 1 "not a snapshot" ./footp
 expect_status "report needs two snapshots" 1 "fewer than two" ./footprint.sh report "$S/00-before"
 expect_status "unknown command prints usage" 2 "Usage" ./footprint.sh frobnicate
 
+if python3 tools/redact.py --self-test >/dev/null; then ok "redact.py self-test"; else not_ok "redact.py self-test"; fi
+
+# verify_redaction.sh must catch planted personal data. Values are built at
+# runtime so this file itself stays clean.
+tmp=$(mktemp -d)
+git -C "$tmp" init -q
+mkdir "$tmp/tools"
+cp tools/verify_redaction.sh "$tmp/tools/"
+printf 'REDACT_USER=alex\nREDACT_HOST=%s\nREDACT_DENY=SecretCo\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
+echo "clean line" >"$tmp/a.txt"
+git -C "$tmp" add a.txt tools/verify_redaction.sh
+expect_status "verifier passes a clean repo" 0 "" "$tmp/tools/verify_redaction.sh"
+for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex here" "Alexs-""MacBook-Air.local" \
+  "en0 a4:83:""e7:00:11:22" "mail someone""@example.org" "serial C02XK1""ZJG5H" "to 11.22.""33.44:443" "uses SecretCo"; do
+  echo "$planted" >"$tmp/b.txt"
+  git -C "$tmp" add b.txt
+  expect_status "verifier catches: $planted" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+done
+rm -rf "$tmp"
+
 echo "$pass passed, $fail failed"
 ((fail == 0))
