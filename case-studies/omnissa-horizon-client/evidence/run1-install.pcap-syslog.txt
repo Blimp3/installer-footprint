@@ -1,10 +1,16 @@
-# source: tcpdump -nn -A -r run1/capture.pcap (dump lines) | mode=text lines=1688,1698,1801,1804-1805,1808,1866,2109,2119,2125,2149,2158,2168,2174,2180-2184,2775,2787,2850,2928,3042,3126,3132,3138,3144,3150,3156,3162,3168,3174,3177,3186,3189,3204,3222,3264,3272,3290,3302,3338,3344,3350,3356,3394,3400,3406,3424,3430,3460,3466,3484,3490,3532,3538,3544,3550,3556,3580,3586,3589,3817,3820,3827,3830,3833,3839,3842,3845,3848,3851,3854,3857,3863,3887,3893,3899,3905,4277,4287,4417,4423,4429,4477,4623,4707,4713,4719,4725,4731,4737,4743,4749,4761,4767,4779,4791,4887,4929,4983,4989,4999,5005,5033,5057,5063,5066,5069,5075,5099,5105,5111,5130,5523,5533,5659,5665,5671,5719,5763,5773,5779,5911,6104,6122-6123,6167,6238,6297,6307,6313,6319,6325,6357,6399,6409,6415,6421,6427,6433,6439,6445,6451,6457-6553,6559,6565,6571,6577,6595,6601,6607,6962,7016,7022,7028,7056,7267,7285-7286,7304,7448,7488,7494,7500,7506,7512,7530,7536,7542,7548,7554,7588,7598,7604,7610,7616,7628,7634,7640,7646,7652,7658,7664,7682,7988,8042,8048,8054,8060,8066,8072,8078,8088,8094,8100,8106,8112,8122,8128,8224,8240,8246,8249,8252,8336,8426,8432,9216,9362,9368 | redacted by tools/redact.py
+# source: tcpdump -nn -A -r run1/capture.pcap (dump lines) | mode=text lines=1688,1698,1801,1804-1805,1808,1818,1820,1822-1823,1834,1845,1866,2109,2119,2125,2149,2158,2168,2174,2180-2184,2775,2781,2787,2850,2860,2922,2928,3042,3126,3132,3138,3144,3150,3156,3162,3168,3174,3177,3186,3189,3204,3222,3264,3272,3290,3302,3338,3344,3350,3356,3394,3400,3406,3424,3430,3460,3466,3484,3490,3532,3538,3544,3550,3556,3580,3586,3589,3817,3820,3827,3830,3833,3839,3842,3845,3848,3851,3854,3857,3863,3887,3893,3899,3905,4277,4287,4417,4423,4429,4441,4471,4477,4623,4707,4713,4719,4725,4731,4737,4743,4749,4761,4767,4779,4791,4887,4929,4983,4989,4999,5005,5033,5057,5063,5066,5069,5075,5099,5105,5111,5130,5523,5533,5659,5665,5671,5683,5713,5719,5763,5773,5779,5911,6104,6122-6123,6167,6238,6297,6307,6313,6319,6325,6357,6399,6409,6415,6421,6427,6433,6439,6445,6451,6457-6553,6559,6565,6571,6577,6595,6601,6607,6718,6722,6962,7016,7022,7028,7056,7267,7285-7286,7304,7448,7488,7494,7500,7506,7512,7530,7536,7542,7548,7554,7588,7598,7604,7610,7616,7628,7634,7640,7646,7652,7658,7664,7682,7988,8042,8048,8054,8060,8066,8072,8078,8088,8094,8100,8106,8112,8122,8128,8224,8240,8246,8249,8252,8336,8426,8432,8444,9216,9362,9368 | redacted by tools/redact.py
   1688  <119>Jun 25 12:06:34 <host> installer[7459]: JS: Path check: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm exists: false
   1698  <119>Jun 25 12:06:34 <host> installer[7459]: JS: Deem.InstallerHelper enabled: true
   1801  12:06:35.173667 IP <lan-ip>.50757 > <ip>.80: Flags [P.], seq 1:249, ack 1, win 2058, options [nop,nop,TS val 3842020656 ecr 1238700878], length 248: HTTP: GET /devidg2.der HTTP/1.1
   1804  ...0I..NGET /devidg2.der HTTP/1.1
   1805  Host: certs.apple.com
   1808  User-Agent: com.apple.trustd/3.0
+  1818  12:06:35.186165 IP <ip>.80 > <lan-ip>.50757: Flags [.], seq 1:1441, ack 249, win 508, options [nop,nop,TS val 1238700903 ecr 3842020656], length 1440: HTTP: HTTP/1.1 200 OK
+  1820  I..g...0HTTP/1.1 200 OK
+  1822  Content-Type: application/pkix-cert
+  1823  Content-Length: 1090
+  1834  Last-Modified: Fri, 17 Oct 2025 19:01:39 GMT
+  1845  Apple Inc.1&0$..U....Apple Certification Authority1.0...U....Apple Root CA0...210922185510Z..310917000000Z0^1-0+..U...$Developer ID Certification Authority1.0	..U....G21.0...U.
   1866  <119>Jun 25 12:06:35 <host> installer[7459]: Product archive /Users/<user>/Downloads/<dir>/analysis/../<local-pkg> trustLevel=350
   2109  <118>Jun 25 12:06:35 <host> installer[7459]: Current Path: /usr/sbin/installer
   2119  <118>Jun 25 12:06:35 <host> installer[7459]: Current Path: /bin/bash
@@ -19,8 +25,11 @@
   2183  	  "PKLeopardPackage <id=com.ws1.Deem.InstallerHelper, version=25.09.00.701, url=file://localhost/Users/<user>/Downloads/<dir>/analysis/../<local-pkg>#Deem.InstallerHelper.pkg>"
   2184  	)
   2775  <118>Jun 25 12:06:42 <host> package_script_service[7462]: Set responsibility to pid: 1978, responsible_path: /Applications/<unrelated>
+  2781  <118>Jun 25 12:06:42 <host> package_script_service[7462]: Hosted team responsibility for script set to team:(S2ZMFGQM93)
   2787  <118>Jun 25 12:06:42 <host> package_script_service[7462]: PackageKit: Executing script "preinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn
   2850  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./preinstall: Running preinstall script of Telemetry Installer Helper.
+  2860  <118>Jun 25 12:06:42 <host> package_script_service[7462]: PackageKit: Hosted team responsible for script has been cleared.
+  2922  <118>Jun 25 12:06:42 <host> package_script_service[7462]: Hosted team responsibility for script set to team:(S2ZMFGQM93)
   2928  <118>Jun 25 12:06:42 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4
   3042  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ APP_NAME='Omnissa Horizon Client'
   3126  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper' /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
@@ -84,6 +93,8 @@
   4417  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/Contents/MacOS/horizon-urlFilter
   4423  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client.app/Contents/Library/horizon-urlFilterApp'
   4429  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client.app/Contents/Library/proxyApp-template-app'
+  4441  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Hosted team responsible for script has been cleared.
+  4471  <118>Jun 25 12:06:46 <host> package_script_service[7462]: Hosted team responsibility for script set to team:(S2ZMFGQM93)
   4477  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn
   4623  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ APP_NAME='Omnissa Horizon Client Next'
   4707  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper' /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
@@ -119,6 +130,8 @@
   5659  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/Contents/MacOS/horizon-urlFilter
   5665  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client Next.app/Contents/Library/horizon-urlFilterApp'
   5671  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client Next.app/Contents/Library/proxyApp-template-app'
+  5683  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Hosted team responsible for script has been cleared.
+  5713  <118>Jun 25 12:06:46 <host> package_script_service[7462]: Hosted team responsibility for script set to team:(S2ZMFGQM93)
   5719  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn
   5763  <118>Jun 25 12:06:47 <host> package_script_service[7462]: ./postinstall: Running Telemetry Installer Helper postinstall script.
   5773  <118>Jun 25 12:06:47 <host> package_script_service[7462]: ./postinstall: telemetry service installer path: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg.
@@ -248,6 +261,8 @@
   6595  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: 1.4s elapsed install time
   6601  <118>Jun 25 12:06:49 <host> installer[7541]: Error getting application status info for file:///Library/Application%20Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app: Error Domain=NSCocoaErrorDomain Code=260 "The file ...LegacyDeem.app... couldn...t be opened because there is no such file." UserInfo={NSURL=file:///Library/Application%20Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app, NSFilePath=/Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app, NSUnderlyingError=0x8051bfba0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
   6607  <118>Jun 25 12:06:49 <host> installer[7541]: Error getting application status info for file:///Library/Application%20Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app: Error Domain=NSCocoaErrorDomain Code=260 "The file ...LegacyDeem.app... couldn...t be opened because there is no such file." UserInfo={NSURL=file:///Library/Application%20Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app, NSFilePath=/Library/Application Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app, NSUnderlyingError=0x8051bf300 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+  6718  12:06:49.883016 IP <lan-ip>.50759 > <ip>.443: Flags [.], seq 1:1441, ack 1, win 2070, options [nop,nop,TS val 1382246988 ecr 2748652110], length 1440
+  6722  .................ocsp2.apple.com..........
   6962  <117>Jun 25 12:06:50 <host> installer[7541]:  -total-  2.27 seconds
   7016  <118>Jun 25 12:06:50 <host> package_script_service[7462]: ./postinstall: installer: The install was successful.
   7022  <118>Jun 25 12:06:50 <host> package_script_service[7462]: ./postinstall: Removing temp DEEMD installation files.
@@ -304,6 +319,7 @@
   8336  <117>Jun 25 12:06:54 <host> installd[6352]: Installed "Omnissa Horizon Client" ()
   8426  <114>Jun 25 12:06:54 <host> installd[6352]: PackageKit: ----- End install -----
   8432  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: 19.0s elapsed install time
+  8444  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: Hosted team responsible for install has been cleared.
   9216  <118>Jun 25 12:06:58 <host> installer[7459]: PackageKit: Registered bundle file:///Applications/Omnissa%20Horizon%20Client%20Next.app/Contents/Resources/Uninstall%20Omnissa%20Horizon%20Client.app/ for uid 0
   9362  <117>Jun 25 12:06:58 <host> installer[7459]:  install  23.44 seconds
   9368  <117>Jun 25 12:06:58 <host> installer[7459]:  -total-  23.45 seconds

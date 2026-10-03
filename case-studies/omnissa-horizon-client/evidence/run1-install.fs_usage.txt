@@ -1,4 +1,4 @@
-# source: run1/fs_usage.filtered.log | mode=text lines=1,19,25,44,50,524,536,573,47835,47847,73790,89989,89991-89995,90003-90005,90009,90017,90019,90036,90057,90065,90133,90320,90324,90344,91653,110433-110437,110443-110445,110447,110459-110460,115819,127292,137841,138503,138551,154047,154095,170371-170373,170375-170379,170381-170384,170923,170962-170963,171025-171028,171031-171035,171049,171699,171704,171912,176738,176852,184180,187324-187327,190060-190203,190207,190211,190260,190300,190315,190379,190382-190383,190425,190449,190569,190623-190626,190631,190651-190655,190682-190684,190760,190777-190778,190794,190824,191015,191020,191784,203980,204221,204247,211132,217249,217792,217906,217912,218119,218786,218938,218941,219111,219123,219126-219127,219142-219143,219152,219176,219592-219594,219626-219627,220305,221252,221259-221260,221272-221273,221283,221286,221419,222193,222228,222390,222432,224070,224094,224116,224570,224576,224582,224864,228832,228834,229762,229764,229770,229772,229981,229985,230288,232614,273341,273357,273433,277492,277813,278019,278021,278042-278043 | redacted by tools/redact.py
+# source: run1/fs_usage.filtered.log | mode=text lines=1,19,25,44,50,524,536,573,47835,47847,73790,79992-80008,89891-89907,89989,89991-89995,90003-90005,90009,90017,90019,90036,90057,90065,90133,90320,90324,90344,91653,110306-110322,110433-110437,110443-110445,110447,110459-110460,115819,121965-121981,127292,137841,138503,138551,154047,154095,170371-170373,170375-170379,170381-170384,170923,170962-170963,171025-171028,171031-171035,171049,171699,171704,171912,176738,176852,184180,187324-187327,190060-190203,190207,190211,190260,190300,190315,190379,190382-190383,190425,190449,190569,190623-190626,190631,190651-190655,190682-190684,190760,190777-190778,190794,190824,191015,191020,191784,203980,204221,204247,211132,217249,217792,217906,217912,218119,218786,218938,218941,219111,219123,219126-219127,219142-219143,219152,219176,219592-219594,219626-219627,220305,221252,221259-221260,221272-221273,221283,221286,221419,222193,222228,222390,222432,224070,224094,224116,224570,224576,224582,224864,228832,228834,229762,229764,229770,229772,229981,229985,230250,230253,230288,232614,249871-249873,263921-263922,264053-264055,273341,273357,273433,277492,277813,278019,278021,278042-278043 | redacted by tools/redact.py
      1  12:06:15.119109  fstatat64  [-2]//Library/PrivilegedHelperTools  0.000002  ls.87696
     19  12:06:34.602487  open  F=3  (_WC_T__________)  /Users/<user>/pkg-analysis-20260625-120612/installer.log  0.000213  bash.87918
     25  12:06:34.605379  exit  0.000008  installer.87918
@@ -10,6 +10,40 @@
  47835  12:06:39.527153  mkdir  /Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Applications//Omnissa Horizon Client Next.app  0.000078  installd.87964
  47847  12:06:39.527323  mkdir  erSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Applications//Omnissa Horizon Client Next.app/Contents/_CodeSignature  0.000035  installd.87964
  73790  12:06:41.630454  mkdir  /Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE/helper  0.000034  installd.87964
+ 79992  12:06:42.304497  getattrlist  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall  0.000027  XprotectService.87206
+ 79993  12:06:42.304545  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall  0.000005  XprotectService.88102
+ 79994  12:06:42.304565  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall  0.000003  XprotectService.88102
+ 79995  12:06:42.304589  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall  0.000043  XprotectService.88103
+ 79996  12:06:42.304599  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall  0.000028  XprotectService.88102
+ 79997  12:06:42.304807  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000029  XprotectService.88102
+ 79998  12:06:42.304875  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000005  XprotectService.88102
+ 79999  12:06:42.304896  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000019  XprotectService.88102
+ 80000  12:06:42.304951  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS/com.ws1.Deem.InstallerHelper  0.000005  XprotectService.88102
+ 80001  12:06:42.304986  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS/com.ws1.Deem.InstallerHelper  0.000005  XprotectService.88102
+ 80002  12:06:42.304989  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS  0.000003  XprotectService.88102
+ 80003  12:06:42.305000  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+ 80004  12:06:42.305004  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000002  XprotectService.88102
+ 80005  12:06:42.305023  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000019  XprotectService.88102
+ 80006  12:06:42.305032  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+ 80007  12:06:42.305036  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+ 80008  12:06:42.305052  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000015  XprotectService.88102
+ 89891  12:06:42.691923  getattrlist  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/postinstall  0.000028  XprotectService.88093
+ 89892  12:06:42.691975  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/postinstall  0.000005  XprotectService.88102
+ 89893  12:06:42.691992  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/postinstall  0.000003  XprotectService.88102
+ 89894  12:06:42.691997  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/postinstall  0.000044  XprotectService.88103
+ 89895  12:06:42.692026  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/postinstall  0.000029  XprotectService.88102
+ 89896  12:06:42.692096  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4  0.000029  XprotectService.88102
+ 89897  12:06:42.692124  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4  0.000005  XprotectService.88102
+ 89898  12:06:42.692143  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4  0.000017  XprotectService.88102
+ 89899  12:06:42.692176  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/MacOS/com.omnissa.horizon.client.mac  0.000005  XprotectService.88102
+ 89900  12:06:42.692184  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/MacOS/com.omnissa.horizon.client.mac  0.000003  XprotectService.88102
+ 89901  12:06:42.692187  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/MacOS  0.000002  XprotectService.88102
+ 89902  12:06:42.692192  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/com.omnissa.horizon.client.mac  0.000003  XprotectService.88102
+ 89903  12:06:42.692196  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/com.omnissa.horizon.client.mac  0.000002  XprotectService.88102
+ 89904  12:06:42.692212  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4  0.000016  XprotectService.88102
+ 89905  12:06:42.692220  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/com.omnissa.horizon.client.mac  0.000003  XprotectService.88102
+ 89906  12:06:42.692224  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4/com.omnissa.horizon.client.mac  0.000002  XprotectService.88102
+ 89907  12:06:42.692238  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4  0.000014  XprotectService.88102
  89989  12:06:42.719651  openat  F=5  (_WC_T__________)  [-2]//Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000105  cp.88156
  89991  12:06:42.720159  RdData[ANT1]  D=0x0129e869  B=0x8000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000276 W cp.88156
  89992  12:06:42.720179  RdData[ANT1]  D=0x01292645  B=0x1e000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000315 W cp.88156
@@ -30,6 +64,23 @@
  90324  12:06:42.801817  mkdir  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app  0.000063  ditto.88203
  90344  12:06:42.802439  mkdir  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app/Contents  0.000058  ditto.88203
  91653  12:06:42.952595  open  F=3  (R______________)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000038  smd.87529
+110306  12:06:46.565005  getattrlist  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/postinstall  0.000019  XprotectService.88093
+110307  12:06:46.565044  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/postinstall  0.000006  XprotectService.88103
+110308  12:06:46.565070  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/postinstall  0.000004  XprotectService.88103
+110309  12:06:46.565099  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/postinstall  0.000047  XprotectService.88102
+110310  12:06:46.565104  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/postinstall  0.000030  XprotectService.88103
+110311  12:06:46.565165  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn  0.000026  XprotectService.88103
+110312  12:06:46.565195  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn  0.000004  XprotectService.88103
+110313  12:06:46.565212  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn  0.000016  XprotectService.88103
+110314  12:06:46.565246  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/MacOS/com.omnissa.horizon.client.mac  0.000004  XprotectService.88103
+110315  12:06:46.565253  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/MacOS/com.omnissa.horizon.client.mac  0.000003  XprotectService.88103
+110316  12:06:46.565257  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/MacOS  0.000002  XprotectService.88103
+110317  12:06:46.565263  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/com.omnissa.horizon.client.mac  0.000003  XprotectService.88103
+110318  12:06:46.565266  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/com.omnissa.horizon.client.mac  0.000002  XprotectService.88103
+110319  12:06:46.565282  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn  0.000016  XprotectService.88103
+110320  12:06:46.565290  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/com.omnissa.horizon.client.mac  0.000003  XprotectService.88103
+110321  12:06:46.565293  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn/com.omnissa.horizon.client.mac  0.000002  XprotectService.88103
+110322  12:06:46.565307  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn  0.000013  XprotectService.88103
 110433  12:06:46.621036  openat  F=5  (_W__T__________)  [-2]//Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000068  cp.88395
 110434  12:06:46.621386  RdData[ANT1]  D=0x012f6b58  B=0x20000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000251 W cp.88395
 110435  12:06:46.621419  RdData[ANT1]  D=0x012e75ec  B=0x8000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000277 W cp.88395
@@ -42,6 +93,23 @@
 110459  12:06:46.661437  unlink  /Library/Logs/Omnissa Horizon Client/horizon-usb-init.log  0.000099  rm.88409
 110460  12:06:46.662293  open  F=3  (_WCA___________)  /Library/Logs/Omnissa Horizon Client/horizon-usb-init.log  0.000377  bash.88379
 115819  12:06:46.811198  open  F=3  (R______________)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000111  smd.87529
+121965  12:06:47.106656  getattrlist  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall  0.000024  XprotectService.88102
+121966  12:06:47.106686  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall  0.000004  XprotectService.88102
+121967  12:06:47.106703  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall  0.000003  XprotectService.88102
+121968  12:06:47.106745  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall  0.000052  XprotectService.88103
+121969  12:06:47.106746  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall  0.000038  XprotectService.88102
+121970  12:06:47.106795  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000027  XprotectService.88102
+121971  12:06:47.106826  stat64  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000004  XprotectService.88102
+121972  12:06:47.106845  open  F=4  (R__________X___)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000017  XprotectService.88102
+121973  12:06:47.106882  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS/com.ws1.Deem.InstallerHelper  0.000005  XprotectService.88102
+121974  12:06:47.106890  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+121975  12:06:47.106893  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/MacOS  0.000002  XprotectService.88102
+121976  12:06:47.106898  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+121977  12:06:47.106902  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000002  XprotectService.88102
+121978  12:06:47.106918  open  F=4  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000016  XprotectService.88102
+121979  12:06:47.106927  stat64  [  2]  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000003  XprotectService.88102
+121980  12:06:47.106931  open  [  2] (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/com.ws1.Deem.InstallerHelper  0.000002  XprotectService.88102
+121981  12:06:47.106944  open  F=3  (R______________)  private/tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn  0.000014  XprotectService.88102
 127292  12:06:47.528725  stat64  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg  0.000011  installer.88459
 137841  12:06:48.290543  open  F=6  (RW_____________)  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg  0.000028  installer.88462
 138503  12:06:48.371427  mkdir  Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE//Deem/osx-x64  0.000038  installer.88462
@@ -229,12 +297,12 @@
 190203  12:06:51.940613  WrData[AT1]  D=0x009117e1  B=0x4000  /dev/disk3s1  /private/var/log/com.apple.xpc.launchd/launchd.log  0.000023 W deemd.88525
 190207  12:06:51.944835  open  F=3  (_WC____________)  private/etc/workspaceone/ws1etlm/config/loggers.ini  0.000063  touch.88622
 190211  12:06:51.951039  open  F=3  (_WC____________)  private/etc/workspaceone/ws1etlm/deem/deem.ini  0.000053  touch.88626
-190260  12:06:51.955469  openat  F=5  (_WC_T__________)  [-2]//Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000057  cp.88630
+190260  12:06:51.955469  openat  F=5  (_WC_T__________)  [-2]//Library/Google/Chrome/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000057  cp.88630
 190300  12:06:51.955957  RdData[ANT1]  D=0x03469063  B=0x1000  /dev/disk3s1  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json  0.000160 W cp.88630
-190315  12:06:51.956064  WrData[ANT1]  D=0x03468a1f  B=0x1000  /dev/disk3s1  /Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000024 W cp.88630
-190379  12:06:51.959828  openat  F=5  (_WC_T__________)  [-2]//Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000052  cp.88636
+190315  12:06:51.956064  WrData[ANT1]  D=0x03468a1f  B=0x1000  /dev/disk3s1  /Library/Google/Chrome/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000024 W cp.88630
+190379  12:06:51.959828  openat  F=5  (_WC_T__________)  [-2]//Library/Microsoft/Edge/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000052  cp.88636
 190382  12:06:51.965358  RdData[ANT1]  D=0x03469063  B=0x1000  /dev/disk3s1  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json  0.005450 W cp.88636
-190383  12:06:51.965471  WrData[ANT1]  D=0x03468f2b  B=0x1000  /dev/disk3s1  /Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000021 W cp.88636
+190383  12:06:51.965471  WrData[ANT1]  D=0x03468f2b  B=0x1000  /dev/disk3s1  /Library/Microsoft/Edge/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000021 W cp.88636
 190425  12:06:51.968389  symlink  /usr/local/bin/ws1etlm  0.000078  ln.88639
 190449  12:06:51.970176  symlink  /usr/local/bin/ws1etlmu  0.000064  ln.88641
 190569  12:06:51.973750  symlink  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool  0.000078  ln.88645
@@ -312,8 +380,18 @@
 229772  12:06:54.143775  open  F=4  (_WC_T__________)  private/var/db/receipts/com.ws1.Deem.InstallerHelper.plist  0.000121  installd.87964
 229981  12:06:54.213872  open  F=8  (R__________X___)  /Users/<user>/Library/Keyboard Layouts  0.000067  ws1etlmu.88820
 229985  12:06:54.214200  open  F=8  (R__________X___)  /Users/<user>/Library/Input Methods  0.000030  ws1etlmu.88820
+230250  12:06:54.287289  stat64  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd  0.000012  XProtectBridgeService.87592
+230253  12:06:54.287299  stat64  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd  0.000004  XProtectBridgeService.87592
 230288  12:06:54.298983  open  [  1] (R_____N________)  /Users/<user>/Library/Autosave Information  0.028905  ws1etlmu.88820
 232614  12:06:54.362097  open  F=13  (R______________)  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/Info.plist  0.000032  ws1etlm.88743
+249871  12:06:54.473411  lstat64  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd  0.000014  XProtectBridgeService.87592
+249872  12:06:54.473785  getattrlist  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd  0.000021  XProtectBridgeService.87592
+249873  12:06:54.474421  getxattr  [ 93]  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd  0.000329  XProtectBridgeService.87592
+263921  12:06:56.526747  stat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu  0.000011  XProtectBridgeService.88912
+263922  12:06:56.526770  stat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu  0.000006  XProtectBridgeService.88912
+264053  12:06:56.539962  lstat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu  0.000016  XProtectBridgeService.88912
+264054  12:06:56.540037  getattrlist  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu  0.000021  XProtectBridgeService.88912
+264055  12:06:56.540138  getxattr  [ 93]  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu  0.000059  XProtectBridgeService.88912
 273341  12:06:58.797736  open  F=5  (R______l_______)  /Users/<user>/Downloads/<dir>/<local-pkg>  0.000044  installer.87932
 273357  12:06:58.815122  open  F=5  (R______l_______)  /Users/<user>/Downloads/<dir>/<local-pkg>  0.000042  installer.87932
 273433  12:06:58.836692  exit  0.000131  installer.87919
