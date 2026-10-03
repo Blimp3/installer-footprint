@@ -29,10 +29,11 @@ expect_status() {
 expect_output "diff before/after matches golden output" tests/expected/diff.txt ./footprint.sh diff "$S/00-before" "$S/01-after"
 expect_output "report matches golden output" tests/expected/report.md ./footprint.sh report "$S"
 
-if ./footprint.sh diff "$S/01-after" "$S/02-later" | grep -v '^== .* (+0 -0)$' | grep -q .; then
-  not_ok "PID and ephemeral port changes are not reported"
+out=$(./footprint.sh diff "$S/01-after" "$S/02-later") && rc=0 || rc=$?
+if [[ $rc == 0 && $(grep -c '^== .* (+0 -0)$' <<<"$out") == 8 && $(grep -c "" <<<"$out") == 8 ]]; then
+  ok "PID, label and ephemeral port changes are not reported"
 else
-  ok "PID and ephemeral port changes are not reported"
+  not_ok "PID, label and ephemeral port changes are not reported (status $rc)"
 fi
 
 if ./footprint.sh --help | grep -q 'sudo'; then ok "--help explains sudo"; else not_ok "--help explains sudo"; fi
@@ -44,18 +45,22 @@ expect_status "unknown command prints usage" 2 "Usage" ./footprint.sh frobnicate
 
 if python3 tools/redact.py --self-test >/dev/null; then ok "redact.py self-test"; else not_ok "redact.py self-test"; fi
 
-# verify_redaction.sh must catch planted personal data. Values are built at
-# runtime so this file itself stays clean.
+# verify_redaction.sh must catch planted personal data. The values are
+# synthetic and split so this file itself stays clean.
 tmp=$(mktemp -d)
 git -C "$tmp" init -q
 mkdir "$tmp/tools"
 cp tools/verify_redaction.sh "$tmp/tools/"
-printf 'REDACT_USER=alex\nREDACT_HOST=%s\nREDACT_DENY=SecretCo\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
-echo "clean line" >"$tmp/a.txt"
+printf 'REDACT_USER=alex\nREDACT_HOST=%s\nREDACT_DENY=\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
+echo "clean line, window 17:18:10-17:29:38, ::1 and ff02::fb" >"$tmp/a.txt"
 git -C "$tmp" add a.txt tools/verify_redaction.sh
-expect_status "verifier passes a clean repo" 0 "" "$tmp/tools/verify_redaction.sh"
+expect_status "verifier passes a clean repo (empty deny list)" 0 "" "$tmp/tools/verify_redaction.sh"
+printf 'REDACT_USER="alex"\nREDACT_HOST=%s\nREDACT_DENY=SecretCo, OtherCo\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
 for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex here" "Alexs-""MacBook-Air.local" \
-  "en0 a4:83:""e7:00:11:22" "mail someone""@example.org" "serial C02XK1""ZJG5H" "to 11.22.""33.44:443" "uses SecretCo"; do
+  "AlexsMacBook""Air" "host x-MacBook""-Pro" "en0 a4:83:""e7:00:11:22" "en1 a4-83-""e7-00-11-22" \
+  "mail someone""@example.org" "serial C02XK1""ZJG5H" "to 11.22.""33.44:443" "uses OtherCo" \
+  "[fd12:3456:""789a:1::5]:80" "via fe""80::1c2:3ff:fe4:5" "id 11111111-2222-""4333-8444-555555555555" \
+  "/var/folders/qq/""abcdefghijklmnopqrstuvwx/T"; do
   echo "$planted" >"$tmp/b.txt"
   git -C "$tmp" add b.txt
   expect_status "verifier catches: $planted" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
