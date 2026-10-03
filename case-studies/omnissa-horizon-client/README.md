@@ -40,3 +40,14 @@ None is recorded. The raw folders hold no static-analysis output for these packa
 - A logged notarization check of the Horizon Client package, the Endpoint Telemetry package or the `.dmg`. The log filter of the captures does not select lines that name only these files, so this absence does not show that no check took place (SET-86).
 
 The exact search commands are in [evidence/FACTS.md](evidence/FACTS.md), under "Not recorded". The signing checks that macOS logged during the captured installs are the facts with the category `[signature]`. They are not a static analysis.
+
+TODO(owner): On 4 October 2026 no Horizon `.pkg` or `.dmg` was under `~/Downloads` or `~/Desktop`, so no static checks were run. If a copy turns up, run these four commands on it and add the redacted output as facts with the prefix `ST`:
+
+```bash
+codesign -dv --verbose=4 <file>
+spctl --assess -vv --type install <file>
+pkgutil --check-signature <file>
+shasum -a 256 <file>
+```
+
+A copy found later is not proven to be the file that was installed, because the captures record no hash (SET-29).
