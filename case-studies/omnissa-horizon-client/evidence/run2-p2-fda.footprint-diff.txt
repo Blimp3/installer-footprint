@@ -1,0 +1,10 @@
+# source: footprint.sh diff run2/snap-01-after-install run2/snap-02-after-fda | mode=list | redacted by tools/redact.py
+== receipts.txt (+0 -0)
+== launchd.txt (+0 -0)
+== privhelpers.txt (+0 -0)
+== launchctl.txt (+0 -0)
+== hosts.txt (+0 -0)
+== fs.txt (+0 -0)
+== processes.txt (+0 -0)
+== connections.txt (+1 -1)
+[2 unrelated lines removed]

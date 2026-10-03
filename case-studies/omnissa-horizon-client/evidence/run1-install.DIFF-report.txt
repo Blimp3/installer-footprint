@@ -1,0 +1,115 @@
+# source: run1/DIFF-report.txt | mode=list | redacted by tools/redact.py
+     1  ===== NEW / CHANGED LaunchDaemons & Agents =====
+     2  2,4c2,4
+        [3 unrelated lines removed]
+     6  ---
+        [3 unrelated lines removed]
+    10  8a9,10
+    11  > -rw-r--r--  1 root  wheel  487 Nov  5  2025 com.ws1.deem.MacUIEvents.plist
+    12  > -rw-r--r--  1 root  wheel  395 Nov  5  2025 com.ws1.ws1etlmu.plist
+    13  11,13c13,15
+        [3 unrelated lines removed]
+    17  ---
+        [3 unrelated lines removed]
+    21  20a23,25
+    22  > -rw-r--r--@  1 root  wheel  576 Jun 25 12:06 com.omnissa.horizon.CDSHelper.plist
+    23  > -rw-r--r--  1 root  wheel  500 Nov  6  2025 com.ws1.deemd.plist
+    24  > -rw-r--r--  1 root  wheel  422 Nov  5  2025 com.ws1.ws1etlm.plist
+    25  
+    26  ===== NEW package receipts =====
+    27  com.omnissa.horizon.client.mac
+    28  com.ws1.Deem
+    29  com.ws1.Deem.InstallerHelper
+    30  com.ws1.EndpointTelemetryService
+    31  
+    32  ===== /etc/hosts changes =====
+    33  0a1
+    34  > 127.0.0.1 view-localhost
+    35  
+    36  ===== NEW privileged helpers =====
+    37  1,3c1,3
+        [3 unrelated lines removed]
+    41  ---
+        [3 unrelated lines removed]
+    45  7a8
+    46  > -r-xr--r--  1 root  wheel  174304 Jun 25 12:06 com.omnissa.horizon.CDSHelper
+    47  
+    48  ===== NEW network connections =====
+    49  13,17c13,19
+        [5 unrelated lines removed]
+    55  ---
+        [7 unrelated lines removed]
+    63  23a26,28
+        [3 unrelated lines removed]
+    67  41c46
+        [1 unrelated line removed]
+    69  ---
+        [1 unrelated line removed]
+    71  43,50c48,57
+        [8 unrelated lines removed]
+    80  ---
+        [10 unrelated lines removed]
+    91  53,54c60
+        [2 unrelated lines removed]
+    94  ---
+        [1 unrelated line removed]
+    96  58,63d63
+        [6 unrelated lines removed]
+   103  
+   104  ===== NEW processes =====
+   105  478,482d477
+        [5 unrelated lines removed]
+   111  484,488d478
+        [5 unrelated lines removed]
+   117  490d479
+        [1 unrelated line removed]
+   119  492,494d480
+        [3 unrelated lines removed]
+   123  499d484
+        [1 unrelated line removed]
+   125  507,512c492,506
+        [6 unrelated lines removed]
+   132  ---
+        [1 unrelated line removed]
+   134  >  7462  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Versions/A/XPCServices/package_script_service.xpc/Contents/MacOS/package_script_service
+        [3 unrelated lines removed]
+   138  >  7560  1 root  /usr/local/bin/deemd
+   139  >  7604  1 root  /usr/local/bin/ws1etlm
+        [1 unrelated line removed]
+   141  >  7630  1 <user>  /usr/local/bin/ws1etlmu
+        [6 unrelated lines removed]
+   148  
+   149  ===== NEW files under Application Support / etc =====
+   150  /etc/workspaceone
+   151  /etc/workspaceone/ws1etlm
+   152  /etc/workspaceone/ws1etlm/config
+   153  /etc/workspaceone/ws1etlm/config/config.ini
+   154  /etc/workspaceone/ws1etlm/config/install.plist
+   155  /etc/workspaceone/ws1etlm/config/loggers.ini
+   156  /etc/workspaceone/ws1etlm/deem
+   157  /etc/workspaceone/ws1etlm/deem/deem.ini
+   158  /Library/Application Support/Omnissa
+   159  /Library/Application Support/Omnissa/Omnissa Horizon Client
+   160  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app
+   161  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app/Contents
+   162  /Library/Application Support/WorkspaceONE
+   163  /Library/Application Support/WorkspaceONE/Deem
+   164  /Library/Application Support/WorkspaceONE/Deem/deem
+   165  /Library/Application Support/WorkspaceONE/Deem/deem-data
+   166  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite
+   167  /Library/Application Support/WorkspaceONE/Deem/deem/archive_logs.command
+   168  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app
+   169  /Library/Application Support/WorkspaceONE/Deem/deem/uninstall.sh
+   170  /Library/Application Support/WorkspaceONE/EndpointTelemetryService
+   171  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm
+   172  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app
+   173  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/collectLogs.sh
+   174  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json
+   175  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini
+   176  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/etlmapi.dylib
+   177  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
+   178  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmExtensionHelper
+   179  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool
+   180  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/TlmTool.app
+   181  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/uninstall.sh
+   182  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app

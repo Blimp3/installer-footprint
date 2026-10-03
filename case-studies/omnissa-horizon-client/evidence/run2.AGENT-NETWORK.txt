@@ -1,0 +1,175 @@
+# source: run2/AGENT-NETWORK.txt (DNS section) | mode=dns lines=1-7 | redacted by tools/redact.py
+        [7 unrelated lines removed]
+# source: run2/AGENT-NETWORK.txt (client sockets) | mode=net lines=8-136 | redacted by tools/redact.py
+        [1 unrelated line removed]
+     9  17:19:59 horizon-c 17696  <user>  263u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55615 (LISTEN)
+    10  17:20:09 horizon-c 17696  <user>  263u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55615 (LISTEN)
+    11  17:20:19 horizon-c 17696  <user>  263u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55615 (LISTEN)
+    12  17:20:29 horizon-c 17696  <user>  263u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55615 (LISTEN)
+    13  17:20:29 horizon-c 17696  <user>  268u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55623->23.40.244.164:443 (ESTABLISHED)
+    14  17:20:29 horizon-c 17696  <user>  271u  IPv4 0x7e14030584ea7cbe  0t0  TCP <lan-ip>:55624->23.40.244.164:443 (ESTABLISHED)
+    15  17:20:29 horizon-c 17696  <user>  317u  IPv4  0x311b900a3735ace  0t0  TCP <lan-ip>:55625->23.40.244.164:443 (ESTABLISHED)
+    16  17:20:29 horizon-c 17696  <user>  318u  IPv4 0xa38f440b0eec8fd2  0t0  TCP <lan-ip>:55626->23.40.244.164:443 (ESTABLISHED)
+    17  17:20:39 horizon-c 17696  <user>  263u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55615 (LISTEN)
+    18  17:20:39 horizon-c 17696  <user>  268u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55623->23.40.244.164:443 (ESTABLISHED)
+    19  17:20:39 horizon-c 17696  <user>  271u  IPv4 0x7e14030584ea7cbe  0t0  TCP <lan-ip>:55624->23.40.244.164:443 (ESTABLISHED)
+    20  17:20:39 horizon-c 17696  <user>  317u  IPv4  0x311b900a3735ace  0t0  TCP <lan-ip>:55625->23.40.244.164:443 (ESTABLISHED)
+    21  17:20:39 horizon-c 17696  <user>  318u  IPv4 0xa38f440b0eec8fd2  0t0  TCP <lan-ip>:55626->23.40.244.164:443 (ESTABLISHED)
+    22  17:20:59 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    23  17:20:59 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    24  17:21:09 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    25  17:21:09 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    26  17:21:20 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    27  17:21:20 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    28  17:21:30 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    29  17:21:30 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    30  17:21:40 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    31  17:21:40 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    32  17:21:50 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    33  17:21:50 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    34  17:22:00 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    35  17:22:00 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    36  17:22:10 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    37  17:22:10 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    38  17:22:20 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    39  17:22:20 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    40  17:22:30 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    41  17:22:30 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    42  17:22:40 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    43  17:22:40 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    44  17:22:50 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    45  17:22:50 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    46  17:23:00 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    47  17:23:00 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    48  17:23:10 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    49  17:23:10 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    50  17:23:20 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    51  17:23:20 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    52  17:23:30 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    53  17:23:30 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    54  17:23:40 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    55  17:23:40 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    56  17:23:50 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    57  17:23:50 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    58  17:24:00 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    59  17:24:00 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    60  17:24:10 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    61  17:24:10 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    62  17:24:20 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    63  17:24:20 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    64  17:24:30 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    65  17:24:30 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    66  17:24:40 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    67  17:24:40 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    68  17:24:51 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    69  17:24:51 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    70  17:25:01 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    71  17:25:01 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    72  17:25:11 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    73  17:25:11 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    74  17:25:21 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    75  17:25:21 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    76  17:25:31 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    77  17:25:31 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    78  17:25:41 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    79  17:25:41 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    80  17:25:51 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    81  17:25:51 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    82  17:26:01 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    83  17:26:01 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    84  17:26:11 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    85  17:26:11 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    86  17:26:21 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    87  17:26:21 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    88  17:26:31 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    89  17:26:31 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    90  17:26:41 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    91  17:26:41 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    92  17:26:51 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    93  17:26:51 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    94  17:27:01 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    95  17:27:01 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    96  17:27:11 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    97  17:27:11 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+    98  17:27:21 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+    99  17:27:21 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+   100  17:27:31 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+   101  17:27:31 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+   102  17:27:41 horizon-c 17877  <user>  11u  IPv4 0x12c3c5cd4f5ed45b  0t0  TCP 127.0.0.1:55635 (LISTEN)
+   103  17:27:41 horizon-c 17877  <user>  24u  IPv4 0x3b322ebd18aa624a  0t0  TCP <lan-ip>:55636->23.40.244.164:443 (ESTABLISHED)
+   104  17:28:02 horizon-c 18706  <user>  11u  IPv4 0xa31fd7800605f4b0  0t0  TCP 127.0.0.1:55906 (LISTEN)
+   105  17:28:02 horizon-c 18706  <user>  27u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55907->23.40.244.164:443 (ESTABLISHED)
+   106  17:28:12 horizon-c 18706  <user>  11u  IPv4 0xa31fd7800605f4b0  0t0  TCP 127.0.0.1:55906 (LISTEN)
+   107  17:28:12 horizon-c 18706  <user>  27u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55907->23.40.244.164:443 (ESTABLISHED)
+   108  17:28:22 horizon-c 18706  <user>  11u  IPv4 0xa31fd7800605f4b0  0t0  TCP 127.0.0.1:55906 (LISTEN)
+   109  17:28:22 horizon-c 18706  <user>  23u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55920->127.0.0.1:8080 (CLOSED)
+   110  17:28:22 horizon-c 18706  <user>  27u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55907->23.40.244.164:443 (ESTABLISHED)
+   111  17:28:32 horizon-c 18706  <user>  11u  IPv4 0xa31fd7800605f4b0  0t0  TCP 127.0.0.1:55906 (LISTEN)
+   112  17:28:32 horizon-c 18706  <user>  23u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55920->127.0.0.1:8080 (CLOSED)
+   113  17:28:32 horizon-c 18706  <user>  27u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55907->23.40.244.164:443 (ESTABLISHED)
+   114  17:28:42 horizon-c 18706  <user>  11u  IPv4 0xa31fd7800605f4b0  0t0  TCP 127.0.0.1:55906 (LISTEN)
+   115  17:28:42 horizon-c 18706  <user>  23u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55920->127.0.0.1:8080 (CLOSED)
+   116  17:28:42 horizon-c 18706  <user>  27u  IPv4 0xef71dc75a499c517  0t0  TCP <lan-ip>:55907->23.40.244.164:443 (ESTABLISHED)
+   117  17:30:02 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   118  17:30:02 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   119  17:30:02 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   120  17:30:12 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   121  17:30:12 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   122  17:30:12 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   123  17:30:23 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   124  17:30:23 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   125  17:30:23 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   126  17:30:33 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   127  17:30:33 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   128  17:30:33 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   129  17:30:43 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   130  17:30:43 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   131  17:30:43 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   132  17:30:53 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   133  17:30:53 horizon-c 18956  <user>  23u  IPv4 0x656ba11b70281ac4  0t0  TCP 127.0.0.1:55950->127.0.0.1:443 (CLOSED)
+   134  17:30:53 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+   135  17:31:03 horizon-c 18956  <user>  11u  IPv4 0xb93fda9cc83b2dab  0t0  TCP 127.0.0.1:55945 (LISTEN)
+   136  17:31:03 horizon-c 18956  <user>  25u  IPv4 0xf4321d1ef7a79b6e  0t0  TCP <lan-ip>:55946->23.40.244.164:443 (ESTABLISHED)
+# source: run2/AGENT-NETWORK.txt (installer log section) | mode=text lines=138-179 | redacted by tools/redact.py
+   138  == Telemetry-domain hits in packet capture (real egress, not local file URLs) ==
+   139    NSLocalizedDescription = "An error occurred while running scripts from the package \U201cWorkspaceONE.Deem.Service.universal.pkg\U201d.";
+   140    NSLocalizedDescription = "An error occurred while running scripts from the package \U201cWorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg\U201d.";
+   141  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/createdump for AOT translation
+   142  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/deemd for AOT translation
+   143  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrgc.dylib for AOT translation
+   144  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrjit.dylib for AOT translation
+   145  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libcoreclr.dylib for AOT translation
+   146  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libe_sqlite3.dylib for AOT translation
+   147  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostfxr.dylib for AOT translation
+   148  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostpolicy.dylib for AOT translation
+   149  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordaccore.dylib for AOT translation
+   150  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordbi.dylib for AOT translation
+   151  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Globalization.Native.dylib for AOT translation
+   152  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.IO.Compression.Native.dylib for AOT translation
+   153  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Native.dylib for AOT translation
+   154  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Net.Security.Native.dylib for AOT translation
+   155  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.Apple.dylib for AOT translation
+   156  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.OpenSsl.dylib for AOT translation
+   157  <115>Jun 25 17:19:26 <host> installer[17498]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/native_bin/osx-x64/libMacOSNative.dylib for AOT translation
+   158  <118>Jun 25 17:19:23 <host> package_script_service[17342]: ./postinstall: telemetry service installer path: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg.
+   159  <118>Jun 25 17:19:26 <host> installer[17498]: ./postinstall: /bin/mv /Library/Application Support/WorkspaceONE/Deem/osx-arm64 /Library/Application Support/WorkspaceONE/Deem/deem
+   160  <118>Jun 25 17:19:26 <host> installer[17498]: ./postinstall: find: /Library/Application Support/WorkspaceONE/Deem/osx-x64: No such file or directory
+   161  <118>Jun 25 17:19:26 <host> installer[17498]: ./postinstall: Product: /Library/Application Support/WorkspaceONE/Deem/deem
+   162  <118>Jun 25 17:19:26 <host> installer[17498]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app
+   163  <118>Jun 25 17:19:26 <host> installer[17498]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app
+   164  <118>Jun 25 17:19:28 <host> installer[17524]: ./postinstall: Product: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm
+   165  <118>Jun 25 17:19:28 <host> installer[17524]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app
+   166  <118>Jun 25 17:19:28 <host> installer[17524]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
+   167  <118>Jun 25 17:19:28 <host> installer[17524]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/TlmTool.app
+   168  <118>Jun 25 17:19:28 <host> installer[17524]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app
+   169  <118>Jun 25 17:19:29 <host> package_script_service[17342]: ./postinstall: File Doesn't Exist, Will Create: /private/etc/workspaceone/ws1etlm/config//install.plist
+   170  <118>Jun 25 17:27:14 <host> installd[17287]: PackageKit: Will do receipt-based obsoleting for package identifier com.ws1.Deem.InstallerHelper (prefix path=Library/Application Support/WorkspaceONE/helper/)
+   171  <118>Jun 25 17:27:19 <host> package_script_service[17342]: ./postinstall: telemetry service installer path: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg.
+   172  <119>Jun 25 17:19:05 <host> Installer[17271]: JS: Path check: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm exists: false
+   173  <119>Jun 25 17:19:24 <host> installer[17498]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg trustLevel=350
+   174  <119>Jun 25 17:19:27 <host> installer[17524]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg trustLevel=350
+   175  <119>Jun 25 17:27:13 <host> installer[18516]: JS: Path check: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm exists: true
+   176  <119>Jun 25 17:27:21 <host> installer[18554]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg trustLevel=350
+   177  <119>Jun 25 17:27:24 <host> installer[18586]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg trustLevel=350
+   178  WorkspaceONE.Deem.Service.universal.pkg
+   179  WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg

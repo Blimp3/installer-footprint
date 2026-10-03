@@ -1,0 +1,2 @@
+# source: dns-capture/dns-20260625-171714.log | mode=dns | redacted by tools/redact.py
+        [18 unrelated lines removed]

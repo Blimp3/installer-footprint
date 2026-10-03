@@ -1,0 +1,309 @@
+# source: tcpdump -nn -A -r run1/capture.pcap (dump lines) | mode=text lines=1688,1698,1801,1804-1805,1808,1866,2109,2119,2125,2149,2158,2168,2174,2180-2184,2775,2787,2850,2928,3042,3126,3132,3138,3144,3150,3156,3162,3168,3174,3177,3186,3189,3204,3222,3264,3272,3290,3302,3338,3344,3350,3356,3394,3400,3406,3424,3430,3460,3466,3484,3490,3532,3538,3544,3550,3556,3580,3586,3589,3817,3820,3827,3830,3833,3839,3842,3845,3848,3851,3854,3857,3863,3887,3893,3899,3905,4277,4287,4417,4423,4429,4477,4623,4707,4713,4719,4725,4731,4737,4743,4749,4761,4767,4779,4791,4887,4929,4983,4989,4999,5005,5033,5057,5063,5066,5069,5075,5099,5105,5111,5130,5523,5533,5659,5665,5671,5719,5763,5773,5779,5911,6104,6122-6123,6167,6238,6297,6307,6313,6319,6325,6357,6399,6409,6415,6421,6427,6433,6439,6445,6451,6457-6553,6559,6565,6571,6577,6595,6601,6607,6962,7016,7022,7028,7056,7267,7285-7286,7304,7448,7488,7494,7500,7506,7512,7530,7536,7542,7548,7554,7588,7598,7604,7610,7616,7628,7634,7640,7646,7652,7658,7664,7682,7988,8042,8048,8054,8060,8066,8072,8078,8088,8094,8100,8106,8112,8122,8128,8224,8240,8246,8249,8252,8336,8426,8432,9216,9362,9368 | redacted by tools/redact.py
+  1688  <119>Jun 25 12:06:34 <host> installer[7459]: JS: Path check: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm exists: false
+  1698  <119>Jun 25 12:06:34 <host> installer[7459]: JS: Deem.InstallerHelper enabled: true
+  1801  12:06:35.173667 IP <lan-ip>.50757 > <ip>.80: Flags [P.], seq 1:249, ack 1, win 2058, options [nop,nop,TS val 3842020656 ecr 1238700878], length 248: HTTP: GET /devidg2.der HTTP/1.1
+  1804  ...0I..NGET /devidg2.der HTTP/1.1
+  1805  Host: certs.apple.com
+  1808  User-Agent: com.apple.trustd/3.0
+  1866  <119>Jun 25 12:06:35 <host> installer[7459]: Product archive /Users/<user>/Downloads/<dir>/analysis/../<local-pkg> trustLevel=350
+  2109  <118>Jun 25 12:06:35 <host> installer[7459]: Current Path: /usr/sbin/installer
+  2119  <118>Jun 25 12:06:35 <host> installer[7459]: Current Path: /bin/bash
+  2125  <118>Jun 25 12:06:35 <host> installer[7459]: Current Path: /usr/bin/sudo
+  2149  <118>Jun 25 12:06:35 <host> installd[6352]: PackageKit: Set reponsibility for install to 1978
+  2158  <118>Jun 25 12:06:35 <host> installd[6352]: PackageKit: Hosted team responsibility for install set to team:(S2ZMFGQM93)
+  2168  <114>Jun 25 12:06:35 <host> installd[6352]: PackageKit: ----- Begin install -----
+  2174  <118>Jun 25 12:06:35 <host> installd[6352]: PackageKit: request=PKInstallRequest <3 packages, destination=/>
+  2180  <118>Jun 25 12:06:35 <host> installd[6352]: PackageKit: packages=(
+  2181  	  "PKLeopardPackage <id=com.omnissa.horizon.client.mac, version=8.17.0, url=file://localhost/Users/<user>/Downloads/<dir>/analysis/../<local-pkg>#Omnissa.Horizon.Client.pkg>",
+  2182  	  "PKLeopardPackage <id=com.omnissa.horizon.client.mac, version=1.0.0, url=file://localhost/Users/<user>/Downloads/<dir>/analysis/../<local-pkg>#Omnissa.Horizon.Client.Next.pkg>",
+  2183  	  "PKLeopardPackage <id=com.ws1.Deem.InstallerHelper, version=25.09.00.701, url=file://localhost/Users/<user>/Downloads/<dir>/analysis/../<local-pkg>#Deem.InstallerHelper.pkg>"
+  2184  	)
+  2775  <118>Jun 25 12:06:42 <host> package_script_service[7462]: Set responsibility to pid: 1978, responsible_path: /Applications/<unrelated>
+  2787  <118>Jun 25 12:06:42 <host> package_script_service[7462]: PackageKit: Executing script "preinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn
+  2850  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./preinstall: Running preinstall script of Telemetry Installer Helper.
+  2928  <118>Jun 25 12:06:42 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.Fh5ki4
+  3042  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ APP_NAME='Omnissa Horizon Client'
+  3126  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper' /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+  3132  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + chmod 544 /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+  3138  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper.plist' /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  3144  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + chmod 644 /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  3150  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + launchctl load /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  3156  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + startSystemConfigMigrate
+  3162  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + local flag=/Library/Preferences/.omnissa/.horizon_migration_done
+  3168  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -f /Library/Preferences/.omnissa/.horizon_migration_done ']'
+  3174  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + local src=/Library/Preferences/com.vmware.horizon.plist
+  3177  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + local src=/Library/Preferences/com.vmware.horizon.plist
+  3186  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -f /Library/Preferences/com.vmware.horizon.plist ']'
+  3189  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -f /Library/Preferences/com.vmware.horizon.plist ']'
+  3204  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -d '/Library/Application Support/VMware Horizon View' ']'
+  3222  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -d '/Library/Preferences/VMware Horizon View' ']'
+  3264  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + mkdir -p /Library/Preferences/.omnissa
+  3272  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + touch /Library/Preferences/.omnissa/.horizon_migration_done
+  3290  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + initUSBServices
+  3302  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + source '/Applications/Omnissa Horizon Client.app/Contents/Library/InitUsbServices.tool' '/Applications/Omnissa Horizon Client.app/Contents/Library'
+  3338  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ LOGDIR='/Library/Logs/Omnissa Horizon Client'
+  3344  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ mkdir -p '/Library/Logs/Omnissa Horizon Client'
+  3350  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ LOG='/Library/Logs/Omnissa Horizon Client/horizon-usb-init.log'
+  3356  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ rm -f '/Library/Logs/Omnissa Horizon Client/horizon-usb-init.log'
+  3394  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ echo '*** Creating directory /Library/Application Support/Omnissa...'
+  3400  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: *** Creating directory /Library/Application Support/Omnissa...
+  3406  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ mkdir -- '/Library/Application Support/Omnissa'
+  3424  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chown -- root:wheel '/Library/Application Support/Omnissa'
+  3430  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chmod -- 755 '/Library/Application Support/Omnissa'
+  3460  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: *** Creating directory /Library/Application Support/Omnissa/Omnissa Horizon Client...
+  3466  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ mkdir -- '/Library/Application Support/Omnissa/Omnissa Horizon Client'
+  3484  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chown -- root:wheel '/Library/Application Support/Omnissa/Omnissa Horizon Client'
+  3490  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chmod -- 755 '/Library/Application Support/Omnissa/Omnissa Horizon Client'
+  3532  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chown -R root:wheel '/Applications/Omnissa Horizon Client.app/Contents/Library/Open Horizon Client Services' '/Applications/Omnissa Horizon Client.app/Contents/Library/Horizon Client Services' '/Applications/Omnissa Horizon Client.app/Contents/Library/services.sh' '/Applications/Omnissa Horizon Client.app/Contents/Library/horizon-eucusbarbitrator'
+  3538  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chmod 4755 '/Applications/Omnissa Horizon Client.app/Contents/Library/Open Horizon Client Services'
+  3544  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ chmod 755 '/Applications/Omnissa Horizon Client.app/Contents/Library/Horizon Client Services' '/Applications/Omnissa Horizon Client.app/Contents/Library/services.sh' '/Applications/Omnissa Horizon Client.app/Contents/Library/horizon-eucusbarbitrator'
+  3550  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: ++ defaults -currentHost write /Library/Preferences/com.omnissa.horizon.client.mac promptedUSBServicesInstall -bool YES
+  3556  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + supportHTML5MMR
+  3580  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' -d '/Applications/Omnissa Horizon Client.app/Contents/Library/HTML5VideoPlayer.app' ']'
+  3586  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + '[' '!' -d '/Library/Application Support/Omnissa/Omnissa Horizon Client' ']'
+  3589  <118>Jun 25 12:06:42 <host> package_script_service[7462]: ./postinstall: + /usr/bin/ditto '/Applications/Omnissa Horizon Client.app/Contents/Library/HTML5VideoPlayer.app' '/Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app'
+  3817  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + grep -qE '^127\.0\.0\.1[[:space:]]+view-localhost([[:space:]]|$)' /etc/hosts
+  3820  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + grep -qE '^127\.0\.0\.1[[:space:]]+view-localhost([[:space:]]|$)' /etc/hosts
+  3827  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + cp /etc/hosts /etc/hosts.bak
+  3830  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + cp /etc/hosts /etc/hosts.bak
+  3833  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + sed -i '' '1i\
+  3839  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: 127.0.0.1 view-localhost
+  3842  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ' /etc/hosts
+  3845  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: 127.0.0.1 view-localhost
+  3848  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ' /etc/hosts
+  3851  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + rm -f /etc/hosts.bak
+  3854  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + rm -f /etc/hosts.bak
+  3857  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ uname -m
+  3863  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + arch=arm64
+  3887  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + installTemplateApp
+  3893  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + openssl enc -aes-256-cbc -d -in '/Applications/Omnissa Horizon Client.app/Contents/Library/templates.tar.gz' -pass pass:<withheld>
+  3899  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + tar -xv -C '/Applications/Omnissa Horizon Client.app/Contents/Library'
+  3905  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x proxyApp-template-app/
+  4277  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x proxyApp-template-app/Contents/MacOS/horizon-docker
+  4287  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/
+  4417  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/Contents/MacOS/horizon-urlFilter
+  4423  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client.app/Contents/Library/horizon-urlFilterApp'
+  4429  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client.app/Contents/Library/proxyApp-template-app'
+  4477  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.omnissa.horizon.client.mac.jg4wtn
+  4623  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ APP_NAME='Omnissa Horizon Client Next'
+  4707  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper' /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+  4713  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chmod 544 /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+  4719  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + cp -f -- '/Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper.plist' /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  4725  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chmod 644 /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  4731  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + launchctl load /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
+  4737  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: Load failed: 5: Input/output error
+  4743  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: Try running `launchctl bootstrap` as root for richer errors.
+  4749  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + startSystemConfigMigrate
+  4761  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + '[' -f /Library/Preferences/.omnissa/.horizon_migration_done ']'
+  4767  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + return 0
+  4779  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + initUSBServices
+  4791  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + source '/Applications/Omnissa Horizon Client Next.app/Contents/Library/InitUsbServices.tool' '/Applications/Omnissa Horizon Client Next.app/Contents/Library'
+  4887  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: *** Setting permissions on /Library/Application Support/Omnissa...
+  4929  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: *** Setting permissions on /Library/Application Support/Omnissa/Omnissa Horizon Client...
+  4983  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ chown -R root:wheel '/Applications/Omnissa Horizon Client Next.app/Contents/Library/Open Horizon Client Services' '/Applications/Omnissa Horizon Client Next.app/Contents/Library/Horizon Client Services' '/Applications/Omnissa Horizon Client Next.app/Contents/Library/services.sh' '/Applications/Omnissa Horizon Client Next.app/Contents/Library/horizon-eucusbarbitrator'
+  4989  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ chmod 4755 '/Applications/Omnissa Horizon Client Next.app/Contents/Library/Open Horizon Client Services'
+  4999  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ chmod 755 '/Applications/Omnissa Horizon Client Next.app/Contents/Library/Horizon Client Services' '/Applications/Omnissa Horizon Client Next.app/Contents/Library/services.sh' '/Applications/Omnissa Horizon Client Next.app/Contents/Library/horizon-eucusbarbitrator'
+  5005  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ defaults -currentHost write /Library/Preferences/com.omnissa.horizon.client.mac promptedUSBServicesInstall -bool YES
+  5033  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + supportHTML5MMR
+  5057  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + '[' -d '/Applications/Omnissa Horizon Client Next.app/Contents/Library/HTML5VideoPlayer.app' ']'
+  5063  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + grep -qE '^127\.0\.0\.1[[:space:]]+view-localhost([[:space:]]|$)' /etc/hosts
+  5066  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + grep -qE '^127\.0\.0\.1[[:space:]]+view-localhost([[:space:]]|$)' /etc/hosts
+  5069  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: ++ uname -m
+  5075  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + arch=arm64
+  5099  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + installTemplateApp
+  5105  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + openssl enc -aes-256-cbc -d -in '/Applications/Omnissa Horizon Client Next.app/Contents/Library/templates.tar.gz' -pass pass:<withheld>
+  5111  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + tar -xv -C '/Applications/Omnissa Horizon Client Next.app/Contents/Library'
+  5130  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x proxyApp-template-app/
+  5523  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x proxyApp-template-app/Contents/MacOS/horizon-docker
+  5533  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/
+  5659  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: x horizon-urlFilterApp/Contents/MacOS/horizon-urlFilter
+  5665  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client Next.app/Contents/Library/horizon-urlFilterApp'
+  5671  <118>Jun 25 12:06:46 <host> package_script_service[7462]: ./postinstall: + chown -R root:wheel '/Applications/Omnissa Horizon Client Next.app/Contents/Library/proxyApp-template-app'
+  5719  <118>Jun 25 12:06:46 <host> package_script_service[7462]: PackageKit: Executing script "postinstall" in /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn
+  5763  <118>Jun 25 12:06:47 <host> package_script_service[7462]: ./postinstall: Running Telemetry Installer Helper postinstall script.
+  5773  <118>Jun 25 12:06:47 <host> package_script_service[7462]: ./postinstall: telemetry service installer path: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg.
+  5779  <118>Jun 25 12:06:47 <host> package_script_service[7462]: ./postinstall: Running DEEMD installation script.
+  5911  <119>Jun 25 12:06:48 <host> installer[7541]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg trustLevel=350
+  6104  <116>Jun 25 12:06:48 <host> installer[7541]: PackageKit: Failed to set hosted team responsibility for install to team:(S2ZMFGQM93)
+  6122  <118>Jun 25 12:06:48 <host> installer[7541]: PackageKit: packages=(
+  6123  	  "PKLeopardPackage <id=com.ws1.Deem, version=25.09.00.701, url=file://localhost/Library/Application%20Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg#Deem.pkg>"
+  6167  <118>Jun 25 12:06:48 <host> package_script_service[7462]: ./postinstall: installer: Package name is Deem
+  6238  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Executing script "./preinstall" in /private/tmp/PKInstallSandbox.AZFSvD/Scripts/com.ws1.Deem.rO3XtL
+  6297  <118>Jun 25 12:06:49 <host> installer[7541]: ./preinstall: No receipt for 'com.ws1.EndpointTelemetryService' found at '/'.
+  6307  <118>Jun 25 12:06:49 <host> installer[7541]: ./preinstall: DEEMD pre installation process started.
+  6313  <118>Jun 25 12:06:49 <host> installer[7541]: ./preinstall: deemd version is:
+  6319  <118>Jun 25 12:06:49 <host> installer[7541]: ./preinstall: It's a fresh install or repair for DEEMD.
+  6325  <118>Jun 25 12:06:49 <host> installer[7541]: ./preinstall: Fresh Install. Will continue the installation.
+  6357  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Executing script "./postinstall" in /private/tmp/PKInstallSandbox.AZFSvD/Scripts/com.ws1.Deem.rO3XtL
+  6399  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: DEEMD post installation process started
+  6409  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: Product: /Library/Application Support/WorkspaceONE/Deem/deem
+  6415  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: CPU_TYPE arm64
+  6421  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: /bin/mv /Library/Application Support/WorkspaceONE/Deem/osx-arm64 /Library/Application Support/WorkspaceONE/Deem/deem
+  6427  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: find: /Library/Application Support/WorkspaceONE/Deem/osx-x64: No such file or directory
+  6433  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: Post installation process finished
+  6439  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: Starting daemon: deemd
+  6445  <118>Jun 25 12:06:49 <host> installer[7541]: ./postinstall: Change permissions in product home
+  6451  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Writing receipt for com.ws1.Deem to /
+  6457  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/createdump for AOT translation
+  6458  
+  6459  12:06:49.683228 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 186
+  6460  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/createdump for AOT translation
+  6461  
+  6462  12:06:49.683265 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 181
+  6463  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/deemd for AOT translation
+  6464  
+  6465  12:06:49.683273 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 181
+  6466  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/deemd for AOT translation
+  6467  
+  6468  12:06:49.683287 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 212
+  6469  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Globalization.Native.dylib for AOT translation
+  6470  
+  6471  12:06:49.683298 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 212
+  6472  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Globalization.Native.dylib for AOT translation
+  6473  
+  6474  12:06:49.683308 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 213
+  6475  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.IO.Compression.Native.dylib for AOT translation
+  6476  
+  6477  12:06:49.683318 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 213
+  6478  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.IO.Compression.Native.dylib for AOT translation
+  6479  
+  6480  12:06:49.683326 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 198
+  6481  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Native.dylib for AOT translation
+  6482  
+  6483  12:06:49.683341 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 198
+  6484  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Native.dylib for AOT translation
+  6485  
+  6486  12:06:49.683342 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 211
+  6487  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Net.Security.Native.dylib for AOT translation
+  6488  
+  6489  12:06:49.683349 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 211
+  6490  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Net.Security.Native.dylib for AOT translation
+  6491  
+  6492  12:06:49.683359 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 226
+  6493  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.Apple.dylib for AOT translation
+  6494  
+  6495  12:06:49.683369 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 226
+  6496  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.Apple.dylib for AOT translation
+  6497  
+  6498  12:06:49.683377 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 228
+  6499  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.OpenSsl.dylib for AOT translation
+  6500  
+  6501  12:06:49.683384 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 228
+  6502  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libSystem.Security.Cryptography.Native.OpenSsl.dylib for AOT translation
+  6503  
+  6504  12:06:49.683392 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 190
+  6505  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrgc.dylib for AOT translation
+  6506  
+  6507  12:06:49.683401 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 190
+  6508  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrgc.dylib for AOT translation
+  6509  
+  6510  12:06:49.683408 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 191
+  6511  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrjit.dylib for AOT translation
+  6512  
+  6513  12:06:49.683415 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 191
+  6514  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libclrjit.dylib for AOT translation
+  6515  
+  6516  12:06:49.683609 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 192
+  6517  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libcoreclr.dylib for AOT translation
+  6518  
+  6519  12:06:49.683619 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 192
+  6520  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libcoreclr.dylib for AOT translation
+  6521  
+  6522  12:06:49.683685 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 194
+  6523  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libe_sqlite3.dylib for AOT translation
+  6524  
+  6525  12:06:49.683693 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 194
+  6526  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libe_sqlite3.dylib for AOT translation
+  6527  
+  6528  12:06:49.683724 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 192
+  6529  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostfxr.dylib for AOT translation
+  6530  
+  6531  12:06:49.683730 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 192
+  6532  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostfxr.dylib for AOT translation
+  6533  
+  6534  12:06:49.683791 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 195
+  6535  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostpolicy.dylib for AOT translation
+  6536  
+  6537  12:06:49.683798 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 195
+  6538  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libhostpolicy.dylib for AOT translation
+  6539  
+  6540  12:06:49.683864 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 197
+  6541  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordaccore.dylib for AOT translation
+  6542  
+  6543  12:06:49.683870 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 197
+  6544  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordaccore.dylib for AOT translation
+  6545  
+  6546  12:06:49.683904 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 193
+  6547  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordbi.dylib for AOT translation
+  6548  
+  6549  12:06:49.683912 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 193
+  6550  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/libmscordbi.dylib for AOT translation
+  6551  
+  6552  12:06:49.683921 IP 127.0.0.1.52385 > 127.0.0.1.32376: UDP, length 215
+  6553  <115>Jun 25 12:06:49 <host> installer[7541]: Could not open /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app/Contents/MacOS/native_bin/osx-x64/libMacOSNative.dylib for AOT translation
+  6559  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Translated 17 binaries.
+  6565  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app
+  6571  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app
+  6577  <117>Jun 25 12:06:49 <host> installer[7541]: Installed "Deem" ()
+  6595  <118>Jun 25 12:06:49 <host> installer[7541]: PackageKit: 1.4s elapsed install time
+  6601  <118>Jun 25 12:06:49 <host> installer[7541]: Error getting application status info for file:///Library/Application%20Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app: Error Domain=NSCocoaErrorDomain Code=260 "The file ...LegacyDeem.app... couldn...t be opened because there is no such file." UserInfo={NSURL=file:///Library/Application%20Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app, NSFilePath=/Library/Application Support/WorkspaceONE/Deem/osx-x64/LegacyDeem.app, NSUnderlyingError=0x8051bfba0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+  6607  <118>Jun 25 12:06:49 <host> installer[7541]: Error getting application status info for file:///Library/Application%20Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app: Error Domain=NSCocoaErrorDomain Code=260 "The file ...LegacyDeem.app... couldn...t be opened because there is no such file." UserInfo={NSURL=file:///Library/Application%20Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app, NSFilePath=/Library/Application Support/WorkspaceONE/Deem/osx-arm64/LegacyDeem.app, NSUnderlyingError=0x8051bf300 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+  6962  <117>Jun 25 12:06:50 <host> installer[7541]:  -total-  2.27 seconds
+  7016  <118>Jun 25 12:06:50 <host> package_script_service[7462]: ./postinstall: installer: The install was successful.
+  7022  <118>Jun 25 12:06:50 <host> package_script_service[7462]: ./postinstall: Removing temp DEEMD installation files.
+  7028  <118>Jun 25 12:06:50 <host> package_script_service[7462]: ./postinstall: Running TLM installation script.
+  7056  <119>Jun 25 12:06:50 <host> installer[7563]: Product archive /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg trustLevel=350
+  7267  <116>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Failed to set hosted team responsibility for install to team:(S2ZMFGQM93)
+  7285  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: packages=(
+  7286  	  "PKLeopardPackage <id=com.ws1.EndpointTelemetryService, version=25.9.0.5699, url=file://localhost/Library/Application%20Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg#EndpointTelemetryService.pkg>"
+  7304  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Executing script "./preinstall" in /private/tmp/PKInstallSandbox.ErlB4c/Scripts/com.ws1.EndpointTelemetryService.Me8Stj
+  7448  <118>Jun 25 12:06:51 <host> package_script_service[7462]: ./postinstall: installer: Package name is EndpointTelemetryService Agent
+  7488  <118>Jun 25 12:06:51 <host> installer[7563]: ./preinstall: No receipt for 'com.ws1.EndpointTelemetryService' found at '/'.
+  7494  <118>Jun 25 12:06:51 <host> installer[7563]: ./preinstall: Pre installation process started
+  7500  <118>Jun 25 12:06:51 <host> installer[7563]: ./preinstall: No receipt for 'com.ws1.EndpointTelemetryService' found at '/'.
+  7506  <118>Jun 25 12:06:51 <host> installer[7563]: ./preinstall: It's a fresh install or repair for TLM.
+  7512  <118>Jun 25 12:06:51 <host> installer[7563]: ./preinstall: Fresh Install. Will try stop previous TLM Service if any and then continue the installation .
+  7530  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Parent bundle com.ws1.deem.MacUIEvents will be atomically shoved.
+  7536  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Parent bundle com.ws1.deem.ws1etlmu will be atomically shoved.
+  7542  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Parent bundle com.ws1.deem.tlmtool will be atomically shoved.
+  7548  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Parent bundle com.ws1.deem.ws1etlm will be atomically shoved.
+  7554  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Executing script "./postinstall" in /private/tmp/PKInstallSandbox.ErlB4c/Scripts/com.ws1.EndpointTelemetryService.Me8Stj
+  7588  <118>Jun 25 12:06:51 <host> installer[7563]: ./postinstall: No receipt for 'com.ws1.EndpointTelemetryService' found at '/'.
+  7598  <118>Jun 25 12:06:51 <host> installer[7563]: ./postinstall: Post installation process started
+  7604  <118>Jun 25 12:06:51 <host> installer[7563]: ./postinstall: Product: /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm
+  7610  <118>Jun 25 12:06:51 <host> installer[7563]: ./postinstall: Post installation process finished
+  7616  <118>Jun 25 12:06:51 <host> installer[7563]: ./postinstall: Change permissions in product home
+  7628  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: Writing receipt for com.ws1.EndpointTelemetryService to /
+  7634  <118>Jun 25 12:06:51 <host> installer[7563]: PackageKit: No Intel binaries to translate.
+  7640  <118>Jun 25 12:06:52 <host> installer[7563]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
+  7646  <118>Jun 25 12:06:52 <host> installer[7563]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app
+  7652  <118>Jun 25 12:06:52 <host> installer[7563]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/TlmTool.app
+  7658  <118>Jun 25 12:06:52 <host> installer[7563]: PackageKit: Touched bundle /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app
+  7664  <117>Jun 25 12:06:52 <host> installer[7563]: Installed "EndpointTelemetryService Agent" ()
+  7682  <118>Jun 25 12:06:52 <host> installer[7563]: PackageKit: 0.9s elapsed install time
+  7988  <117>Jun 25 12:06:53 <host> installer[7563]:  -total-  2.26 seconds
+  8042  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: installer: The install was successful.
+  8048  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Removing temp TLM installation files.
+  8054  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Removing Telemetry installation files.
+  8060  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Telemetry Installer Helper postinstall script finished.
+  8066  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: check_installation_items() - The installer name is: <local-pkg>
+  8072  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: <local-pkg> does not contain any expected product, defaulting to DEEM installer.
+  8078  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Create a new installation config file.
+  8088  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: File Doesn't Exist, Will Create: /private/etc/workspaceone/ws1etlm/config//install.plist
+  8094  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: New installation config file created.
+  8100  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: is_deem_for_uem_enabled() - The installer name is: <local-pkg>
+  8106  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Device has enabled Deem for UEM.
+  8112  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: evaluating /usr/bin/sw_vers -productVersion | /usr/bin/cut -d '.' -f 1
+  8122  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: detected macOS version: 26
+  8128  <118>Jun 25 12:06:53 <host> package_script_service[7462]: ./postinstall: Running /usr/bin/osascript -e "display notification \"Open System Preferences->Privacy & Security Settings and grant access.\" with title \"WorkspaceONE DEX\" subtitle \"Full Disk Access request\""
+  8224  <118>Jun 25 12:06:54 <host> package_script_service[7462]: PackageKit: Hosted team responsible for script has been cleared.
+  8240  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: Writing receipt for com.omnissa.horizon.client.mac to /
+  8246  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: Writing receipt for com.omnissa.horizon.client.mac to /
+  8249  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: Writing receipt for com.omnissa.horizon.client.mac to /
+  8252  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: Writing receipt for com.ws1.Deem.InstallerHelper to /
+  8336  <117>Jun 25 12:06:54 <host> installd[6352]: Installed "Omnissa Horizon Client" ()
+  8426  <114>Jun 25 12:06:54 <host> installd[6352]: PackageKit: ----- End install -----
+  8432  <118>Jun 25 12:06:54 <host> installd[6352]: PackageKit: 19.0s elapsed install time
+  9216  <118>Jun 25 12:06:58 <host> installer[7459]: PackageKit: Registered bundle file:///Applications/Omnissa%20Horizon%20Client%20Next.app/Contents/Resources/Uninstall%20Omnissa%20Horizon%20Client.app/ for uid 0
+  9362  <117>Jun 25 12:06:58 <host> installer[7459]:  install  23.44 seconds
+  9368  <117>Jun 25 12:06:58 <host> installer[7459]:  -total-  23.45 seconds

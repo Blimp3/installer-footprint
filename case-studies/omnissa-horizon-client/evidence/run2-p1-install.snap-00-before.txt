@@ -1,0 +1,38 @@
+# source: run2/snap-00-before/receipts.txt | mode=list | redacted by tools/redact.py
+        [30 unrelated lines removed]
+# source: run2/snap-00-before/launchd.txt | mode=list | redacted by tools/redact.py
+     1  /Library/LaunchAgents:
+        [6 unrelated lines removed]
+     8  -rw-r--r--  1 root  wheel  487 Nov  5  2025 com.ws1.deem.MacUIEvents.plist
+     9  -rw-r--r--  1 root  wheel  395 Nov  5  2025 com.ws1.ws1etlmu.plist
+    10  
+    11  /Library/LaunchDaemons:
+        [10 unrelated lines removed]
+# source: run2/snap-00-before/privhelpers.txt | mode=list | redacted by tools/redact.py
+        [8 unrelated lines removed]
+# source: run2/snap-00-before/launchctl.txt | mode=list | redacted by tools/redact.py
+        [37 unrelated lines removed]
+    38  -	-9	com.apple.installd
+        [23 unrelated lines removed]
+    62  -	-9	com.apple.system_installd
+        [373 unrelated lines removed]
+# source: run2/snap-00-before/hosts.txt | mode=text | redacted by tools/redact.py
+     1  ##
+     2  # Host Database
+     3  #
+     4  # localhost is used to configure the loopback interface
+     5  # when the system is booting.  Do not change this entry.
+     6  ##
+     7  127.0.0.1	localhost
+     8  255.255.255.255	broadcasthost
+     9  ::1  localhost
+# source: run2/snap-00-before/fs.txt | mode=list | redacted by tools/redact.py
+        [392 unrelated lines removed]
+# source: run2/snap-00-before/processes.txt | mode=proc | redacted by tools/redact.py
+        [222 unrelated lines removed]
+   223    PID  PPID USER  COMM
+        [233 unrelated lines removed]
+# source: run2/snap-00-before/connections.txt | mode=net | redacted by tools/redact.py
+        [20 unrelated lines removed]
+    21  COMMAND  PID  USER  FD  TYPE  DEVICE SIZE/OFF  NODE NAME
+        [57 unrelated lines removed]

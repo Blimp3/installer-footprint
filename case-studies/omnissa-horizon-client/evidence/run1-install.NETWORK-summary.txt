@@ -1,0 +1,10 @@
+# source: run1/NETWORK-summary.txt | mode=list | redacted by tools/redact.py
+     1  == DNS queries the agent made ==
+        [4 unrelated lines removed]
+     6  
+     7  == TLS SNI / vendor hostnames seen in the capture (best-effort) ==
+     8  com.omnissa.horizon
+     9  com.vmware.horizon
+    10  
+    11  == Unique remote IPs on :443 ==
+        [14 unrelated lines removed]

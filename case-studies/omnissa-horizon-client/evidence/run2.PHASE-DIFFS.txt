@@ -1,0 +1,98 @@
+# source: run2/PHASE-DIFFS.txt | mode=list | redacted by tools/redact.py
+     1  ########## PHASE 1 — what the INSTALL added ##########
+     2  -- LaunchDaemons --
+     3  3c3
+        [1 unrelated line removed]
+     5  ---
+        [1 unrelated line removed]
+     7  12,13c12,13
+        [2 unrelated lines removed]
+    10  ---
+        [2 unrelated lines removed]
+    13  19a20,22
+    14  > -rw-r--r--  1 root  wheel  576 Jun 25 17:27 com.omnissa.horizon.CDSHelper.plist
+    15  > -rw-r--r--  1 root  wheel  500 Nov  6  2025 com.ws1.deemd.plist
+    16  > -rw-r--r--  1 root  wheel  422 Nov  5  2025 com.ws1.ws1etlm.plist
+    17  -- package receipts --
+    18  com.omnissa.horizon.client.mac
+    19  com.omnissa.html5videoplayer
+    20  com.ws1.Deem
+    21  com.ws1.Deem.InstallerHelper
+    22  com.ws1.EndpointTelemetryService
+    23  -- /etc/hosts --
+    24  0a1
+    25  > 127.0.0.1 view-localhost
+    26  -- privileged helpers --
+    27  1,2c1,2
+        [2 unrelated lines removed]
+    30  ---
+        [2 unrelated lines removed]
+    33  7a8
+    34  > -r-xr--r--  1 root  wheel  174256 Jun 25 17:27 com.omnissa.horizon.CDSHelper
+    35  -- processes --
+    36  290d289
+        [1 unrelated line removed]
+    38  369,370d367
+        [2 unrelated lines removed]
+    41  389d385
+        [1 unrelated line removed]
+    43  391,392d386
+        [2 unrelated lines removed]
+    46  396,398d389
+        [3 unrelated lines removed]
+    50  401d391
+        [1 unrelated line removed]
+    52  422d411
+        [1 unrelated line removed]
+    54  427,430d415
+        [4 unrelated lines removed]
+    59  435d419
+        [1 unrelated line removed]
+    61  439d422
+        [1 unrelated line removed]
+    63  449d431
+        [1 unrelated line removed]
+    65  452,456c434,564
+        [5 unrelated lines removed]
+    71  ---
+        [23 unrelated lines removed]
+    95  > 17285  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/system_installd
+        [1 unrelated line removed]
+    97  > 17287  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/installd
+        [6 unrelated lines removed]
+   104  > 17342  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Versions/A/XPCServices/package_script_service.xpc/Contents/MacOS/package_script_service
+        [13 unrelated lines removed]
+   118  > 17520  1 root  /usr/local/bin/deemd
+        [5 unrelated lines removed]
+   124  > 17589  1 root  /usr/local/bin/ws1etlm
+        [64 unrelated lines removed]
+   189  > 18506  1 root  /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+        [13 unrelated lines removed]
+   203  
+   204  ########## PHASE 2 — what changed after GRANTING Full Disk Access ##########
+   205  -- LaunchDaemons --
+   206  -- package receipts --
+   207  -- /etc/hosts --
+   208  -- privileged helpers --
+   209  -- processes --
+   210  555,564c555,567
+        [10 unrelated lines removed]
+   221  ---
+        [13 unrelated lines removed]
+   235  
+   236  ########## PHASE 3 — activity during post-permission observation ##########
+   237  -- LaunchDaemons --
+   238  -- package receipts --
+   239  -- /etc/hosts --
+   240  -- privileged helpers --
+   241  -- processes --
+   242  553d552
+        [1 unrelated line removed]
+   244  555,567c554,578
+        [13 unrelated lines removed]
+   258  ---
+   259  > 18956  1 <user>  /Applications/Omnissa Horizon Client.app/Contents/MacOS/horizon-client
+   260  > 18959  1 <user>  /Library/Application Support/Omnissa/Omnissa Horizon Client/Services/Contents/Library/Horizon Client Services
+   261  > 18973  1 root  ./horizon-eucusbarbitrator
+        [22 unrelated lines removed]
+   284  

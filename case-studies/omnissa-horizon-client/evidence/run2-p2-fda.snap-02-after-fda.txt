@@ -1,0 +1,102 @@
+# source: run2/snap-02-after-fda/receipts.txt | mode=list | redacted by tools/redact.py
+        [27 unrelated lines removed]
+    28  com.omnissa.horizon.client.mac
+    29  com.omnissa.html5videoplayer
+    30  com.ws1.Deem
+    31  com.ws1.Deem.InstallerHelper
+    32  com.ws1.EndpointTelemetryService
+        [3 unrelated lines removed]
+# source: run2/snap-02-after-fda/launchd.txt | mode=list | redacted by tools/redact.py
+     1  /Library/LaunchAgents:
+        [6 unrelated lines removed]
+     8  -rw-r--r--  1 root  wheel  487 Nov  5  2025 com.ws1.deem.MacUIEvents.plist
+     9  -rw-r--r--  1 root  wheel  395 Nov  5  2025 com.ws1.ws1etlmu.plist
+    10  
+    11  /Library/LaunchDaemons:
+        [8 unrelated lines removed]
+    20  -rw-r--r--  1 root  wheel  576 Jun 25 17:27 com.omnissa.horizon.CDSHelper.plist
+    21  -rw-r--r--  1 root  wheel  500 Nov  6  2025 com.ws1.deemd.plist
+    22  -rw-r--r--  1 root  wheel  422 Nov  5  2025 com.ws1.ws1etlm.plist
+        [2 unrelated lines removed]
+# source: run2/snap-02-after-fda/privhelpers.txt | mode=list | redacted by tools/redact.py
+        [7 unrelated lines removed]
+     8  -r-xr--r--  1 root  wheel  174256 Jun 25 17:27 com.omnissa.horizon.CDSHelper
+        [1 unrelated line removed]
+# source: run2/snap-02-after-fda/launchctl.txt | mode=list | redacted by tools/redact.py
+        [308 unrelated lines removed]
+   309  17285	-9	com.apple.system_installd
+   310  17287	-9	com.apple.installd
+        [5 unrelated lines removed]
+   316  17520	0	com.ws1.deemd
+        [3 unrelated lines removed]
+   320  17589	0	com.ws1.ws1etlm
+        [15 unrelated lines removed]
+   336  18506	0	com.omnissa.horizon.CDSHelper
+        [102 unrelated lines removed]
+# source: run2/snap-02-after-fda/hosts.txt | mode=text | redacted by tools/redact.py
+     1  127.0.0.1 view-localhost
+     2  ##
+     3  # Host Database
+     4  #
+     5  # localhost is used to configure the loopback interface
+     6  # when the system is booting.  Do not change this entry.
+     7  ##
+     8  127.0.0.1	localhost
+     9  255.255.255.255	broadcasthost
+    10  ::1  localhost
+# source: run2/snap-02-after-fda/fs.txt | mode=list | redacted by tools/redact.py
+     1  /etc/workspaceone
+     2  /etc/workspaceone/ws1etlm
+     3  /etc/workspaceone/ws1etlm/config
+     4  /etc/workspaceone/ws1etlm/config/config.ini
+     5  /etc/workspaceone/ws1etlm/config/install.plist
+     6  /etc/workspaceone/ws1etlm/config/loggers.ini
+     7  /etc/workspaceone/ws1etlm/deem
+     8  /etc/workspaceone/ws1etlm/deem/deem.ini
+        [376 unrelated lines removed]
+   385  /Library/Application Support/Omnissa
+   386  /Library/Application Support/Omnissa/Omnissa Horizon Client
+   387  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app
+   388  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app/Contents
+        [16 unrelated lines removed]
+   405  /Library/Application Support/WorkspaceONE
+   406  /Library/Application Support/WorkspaceONE/Deem
+   407  /Library/Application Support/WorkspaceONE/Deem/deem
+   408  /Library/Application Support/WorkspaceONE/Deem/deem-data
+   409  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite
+   410  /Library/Application Support/WorkspaceONE/Deem/deem/archive_logs.command
+   411  /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app
+   412  /Library/Application Support/WorkspaceONE/Deem/deem/uninstall.sh
+   413  /Library/Application Support/WorkspaceONE/EndpointTelemetryService
+   414  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm
+   415  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app
+   416  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/collectLogs.sh
+   417  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json
+   418  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini
+   419  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/etlmapi.dylib
+   420  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
+   421  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmExtensionHelper
+   422  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool
+   423  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/TlmTool.app
+   424  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/uninstall.sh
+   425  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app
+# source: run2/snap-02-after-fda/processes.txt | mode=proc | redacted by tools/redact.py
+        [222 unrelated lines removed]
+   223    PID  PPID USER  COMM
+        [233 unrelated lines removed]
+   457  17285  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/system_installd
+        [1 unrelated line removed]
+   459  17287  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/installd
+        [6 unrelated lines removed]
+   466  17342  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Versions/A/XPCServices/package_script_service.xpc/Contents/MacOS/package_script_service
+        [13 unrelated lines removed]
+   480  17520  1 root  /usr/local/bin/deemd
+        [5 unrelated lines removed]
+   486  17589  1 root  /usr/local/bin/ws1etlm
+        [64 unrelated lines removed]
+   551  18506  1 root  /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper
+        [16 unrelated lines removed]
+# source: run2/snap-02-after-fda/connections.txt | mode=net | redacted by tools/redact.py
+        [18 unrelated lines removed]
+    19  COMMAND  PID  USER  FD  TYPE  DEVICE SIZE/OFF  NODE NAME
+        [72 unrelated lines removed]

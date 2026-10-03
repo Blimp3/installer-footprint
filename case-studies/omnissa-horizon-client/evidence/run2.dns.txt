@@ -1,0 +1,2 @@
+# source: run2/dns.log | mode=dns | redacted by tools/redact.py
+        [54 unrelated lines removed]

@@ -1,0 +1,325 @@
+# source: run1/fs_usage.filtered.log | mode=text lines=1,19,25,44,50,524,536,573,47835,47847,73790,89989,89991-89995,90003-90005,90009,90017,90019,90036,90057,90065,90133,90320,90324,90344,91653,110433-110437,110443-110445,110447,110459-110460,115819,127292,137841,138503,138551,154047,154095,170371-170373,170375-170379,170381-170384,170923,170962-170963,171025-171028,171031-171035,171049,171699,171704,171912,176738,176852,184180,187324-187327,190060-190203,190207,190211,190260,190300,190315,190379,190382-190383,190425,190449,190569,190623-190626,190631,190651-190655,190682-190684,190760,190777-190778,190794,190824,191015,191020,191784,203980,204221,204247,211132,217249,217792,217906,217912,218119,218786,218938,218941,219111,219123,219126-219127,219142-219143,219152,219176,219592-219594,219626-219627,220305,221252,221259-221260,221272-221273,221283,221286,221419,222193,222228,222390,222432,224070,224094,224116,224570,224576,224582,224864,228832,228834,229762,229764,229770,229772,229981,229985,230288,232614,273341,273357,273433,277492,277813,278019,278021,278042-278043 | redacted by tools/redact.py
+     1  12:06:15.119109  fstatat64  [-2]//Library/PrivilegedHelperTools  0.000002  ls.87696
+    19  12:06:34.602487  open  F=3  (_WC_T__________)  /Users/<user>/pkg-analysis-20260625-120612/installer.log  0.000213  bash.87918
+    25  12:06:34.605379  exit  0.000008  installer.87918
+    44  12:06:34.705808  fsgetpath  /System/Volumes/Preboot/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e  0.000003  installer.87919
+    50  12:06:34.706272  PAGE_IN_FILE  A=0x02eb558000  0.000287  installer.87919
+   524  12:06:34.752176  stat64  /Users/<user>/Downloads/<dir>/analysis/../<local-pkg>  0.000009  installer.87919
+   536  12:06:34.753155  open  F=3  (R______l_______)  /Users/<user>/Downloads/<dir>/analysis/../<local-pkg>  0.000031  installer.87919
+   573  12:06:34.755237  stat64  /Users/<user>/Downloads/<dir>/<local-pkg>  0.000007  installer.87919
+ 47835  12:06:39.527153  mkdir  /Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Applications//Omnissa Horizon Client Next.app  0.000078  installd.87964
+ 47847  12:06:39.527323  mkdir  erSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Applications//Omnissa Horizon Client Next.app/Contents/_CodeSignature  0.000035  installd.87964
+ 73790  12:06:41.630454  mkdir  /Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE/helper  0.000034  installd.87964
+ 89989  12:06:42.719651  openat  F=5  (_WC_T__________)  [-2]//Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000105  cp.88156
+ 89991  12:06:42.720159  RdData[ANT1]  D=0x0129e869  B=0x8000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000276 W cp.88156
+ 89992  12:06:42.720179  RdData[ANT1]  D=0x01292645  B=0x1e000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000315 W cp.88156
+ 89993  12:06:42.720180  RdData[ANT1]  D=0x03889b9c  B=0x2000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000300 W cp.88156
+ 89994  12:06:42.720345  RdData[ANT1]  D=0x0129e871  B=0x3000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000147 W cp.88156
+ 89995  12:06:42.720515  WrData[ANT1]  D=0x013ae093  B=0x2b000  /dev/disk3s1  /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000068 W cp.88156
+ 90003  12:06:42.725423  openat  F=5  (_WC_T__________)  [-2]//Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000184  cp.88160
+ 90004  12:06:42.725565  RdData[ANT1]  D=0x03468fde  B=0x1000  /dev/disk3s1  /Applications/Omnissa Horizon Client.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper.plist  0.000072 W cp.88160
+ 90005  12:06:42.725664  WrData[ANT1]  D=0x03468ec9  B=0x1000  /dev/disk3s1  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000022 W cp.88160
+ 90009  12:06:42.733659  guarded_open_np  F=16  (R__________X___)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000013  launchd.87838
+ 90017  12:06:42.740456  mkdir  /Library/Preferences/.omnissa  0.000077  mkdir.88169
+ 90019  12:06:42.743496  open  F=3  (_WC____________)  /Library/Preferences/.omnissa/.horizon_migration_done  0.000118  touch.88171
+ 90036  12:06:42.753438  mkdir  /Library/Logs/Omnissa Horizon Client  0.006434  mkdir.88174
+ 90057  12:06:42.760606  open  F=3  (_WCA___________)  /Library/Logs/Omnissa Horizon Client/horizon-usb-init.log  0.000064  bash.88130
+ 90065  12:06:42.762891  mkdir  /Library/Application Support/Omnissa  0.000058  mkdir.88182
+ 90133  12:06:42.771670  mkdir  /Library/Application Support/Omnissa/Omnissa Horizon Client  0.000058  mkdir.88188
+ 90320  12:06:42.801612  open  F=3  (R________S_____)  /Applications/Omnissa Horizon Client.app/Contents/Library/HTML5VideoPlayer.app  0.000034  ditto.88203
+ 90324  12:06:42.801817  mkdir  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app  0.000063  ditto.88203
+ 90344  12:06:42.802439  mkdir  /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app/Contents  0.000058  ditto.88203
+ 91653  12:06:42.952595  open  F=3  (R______________)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000038  smd.87529
+110433  12:06:46.621036  openat  F=5  (_W__T__________)  [-2]//Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000068  cp.88395
+110434  12:06:46.621386  RdData[ANT1]  D=0x012f6b58  B=0x20000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000251 W cp.88395
+110435  12:06:46.621419  RdData[ANT1]  D=0x012e75ec  B=0x8000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000277 W cp.88395
+110436  12:06:46.621575  RdData[ANT1]  D=0x012e75f4  B=0x3000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper  0.000141 W cp.88395
+110437  12:06:46.621745  WrData[ANT1]  D=0x014b0908  B=0x2b000  /dev/disk3s1  /Library/PrivilegedHelperTools/com.omnissa.horizon.CDSHelper  0.000062 W cp.88395
+110443  12:06:46.628999  openat  F=5  (_W__T__________)  [-2]//Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000054  cp.88401
+110444  12:06:46.629844  RdData[ANT1]  D=0x0346902a  B=0x1000  /dev/disk3s1  /Applications/Omnissa Horizon Client Next.app/Contents/Library/LaunchServices/com.omnissa.horizon.CDSHelper.plist  0.000701 W cp.88401
+110445  12:06:46.630502  WrData[ANT1]  D=0x034690d1  B=0x1000  /dev/disk3s1  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000029 W cp.88401
+110447  12:06:46.648926  guarded_open_np  F=16  (R__________X___)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000017  launchd.87927
+110459  12:06:46.661437  unlink  /Library/Logs/Omnissa Horizon Client/horizon-usb-init.log  0.000099  rm.88409
+110460  12:06:46.662293  open  F=3  (_WCA___________)  /Library/Logs/Omnissa Horizon Client/horizon-usb-init.log  0.000377  bash.88379
+115819  12:06:46.811198  open  F=3  (R______________)  /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist  0.000111  smd.87529
+127292  12:06:47.528725  stat64  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg  0.000011  installer.88459
+137841  12:06:48.290543  open  F=6  (RW_____________)  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg  0.000028  installer.88462
+138503  12:06:48.371427  mkdir  Library/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE//Deem/osx-x64  0.000038  installer.88462
+138551  12:06:48.372219  mkdir  erSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE//Deem/osx-x64/LegacyDeem.app  0.000037  installer.88462
+154047  12:06:48.824983  mkdir  brary/InstallerSandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE//Deem/osx-arm64  0.000049  installer.88462
+154095  12:06:48.826121  mkdir  Sandboxes/.PKInstallSandboxManager/<removed>.activeSandbox/Root/Library/Application Support/WorkspaceONE//Deem/osx-arm64/LegacyDeem.app  0.000043  installer.88462
+170371  12:06:49.632761  stat64  [  2]  /Library/Application Support/WorkspaceONE/Deem/deem  0.000004  mv.88510
+170372  12:06:49.632763  access  [  2] (___F)  /Library/Application Support/WorkspaceONE/Deem/deem  0.000001  mv.88510
+170373  12:06:49.632868  rename  /Library/Application Support/WorkspaceONE/Deem/osx-arm64  0.000105  mv.88510
+170375  12:06:49.636932  stat64  /Library/Application Support/WorkspaceONE/Deem/deem  0.000006  find.88512
+170376  12:06:49.636934  stat64  /Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000002  find.88512
+170377  12:06:49.636937  fstatat64  [-2]//Library/Application Support/WorkspaceONE/Deem/deem  0.000001  find.88512
+170378  12:06:49.636938  fstatat64  [-2]//Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000001  find.88512
+170379  12:06:49.636964  open  F=5  (R_____N____X___)  /Library/Application Support/WorkspaceONE/Deem/deem  0.000012  find.88512
+170381  12:06:49.644401  fstatat64  [-2]//Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000003  rm.88514
+170382  12:06:49.644462  open  F=4  (R_____N____X___)  /Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000033  rm.88514
+170383  12:06:49.644620  unlink  com.ws1.deemd.plist  0.000112  rm.88514
+170384  12:06:49.647009  unlink  deemd  0.000064  rm.88514
+170923  12:06:49.661350  unlinkat  [-2]//Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000060  rm.88514
+170962  12:06:49.661567  open  [  2] (R_____N____X___)  /Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000003  find.88512
+170963  12:06:49.661580  open  [  2] (R__________X___)  /Library/Application Support/WorkspaceONE/Deem/osx-x64  0.000002  find.88512
+171025  12:06:49.664433  lstat64  [  2]  /usr/local/bin/deemd  0.000002  ln.88517
+171026  12:06:49.664433  stat64  [  2]  /usr/local/bin/deemd  0.000001  ln.88517
+171027  12:06:49.664434  lstat64  [  2]  /usr/local/bin/deemd  0.000001  ln.88517
+171028  12:06:49.664512  symlink  /usr/local/bin/deemd  0.000079  ln.88517
+171031  12:06:49.666390  lstat64  /Library/Application Support/WorkspaceONE/Deem/deem/com.ws1.deemd.plist  0.000008  mv.88519
+171032  12:06:49.666393  stat64  /Library/Application Support/WorkspaceONE/Deem/deem/com.ws1.deemd.plist  0.000001  mv.88519
+171033  12:06:49.666394  stat64  [  2]  /Library/LaunchDaemons/com.ws1.deemd.plist  0.000001  mv.88519
+171034  12:06:49.666395  access  [  2] (___F)  /Library/LaunchDaemons/com.ws1.deemd.plist  0.000001  mv.88519
+171035  12:06:49.666663  rename  /Library/Application Support/WorkspaceONE/Deem/deem/com.ws1.deemd.plist  0.000268  mv.88519
+171049  12:06:49.674084  guarded_open_np  F=16  (R__________X___)  /Library/LaunchDaemons/com.ws1.deemd.plist  0.000015  launchd.87831
+171699  12:06:49.681174  open  F=5  (_WC_T__________)  private/var/db/receipts/com.ws1.Deem.bom  0.000086  installer.88462
+171704  12:06:49.681408  open  F=5  (_WC_T__________)  private/var/db/receipts/com.ws1.Deem.plist  0.000069  installer.88462
+171912  12:06:49.705926  exit  0.000005  deemd.88524
+176738  12:06:50.464172  unlink  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg  0.003686  rm.88543
+176852  12:06:50.475619  stat64  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg  0.000005  installer.88545
+184180  12:06:51.102844  open  F=6  (RW_____________)  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg  0.000023  installer.88560
+187324  12:06:51.551094  unlink  [  2]  private/tmp/clr-debug-pipe-7560-1782382009-in  0.000024  deemd.88525
+187325  12:06:51.551216  mkfifo  private/tmp/clr-debug-pipe-7560-1782382009-in  0.000122  deemd.88525
+187326  12:06:51.551226  unlink  [  2]  private/tmp/clr-debug-pipe-7560-1782382009-out  0.000010  deemd.88525
+187327  12:06:51.551315  mkfifo  private/tmp/clr-debug-pipe-7560-1782382009-out  0.000089  deemd.88525
+190060  12:06:51.907537  WrData[AT1]  D=0x03468def  B=0x1000  /dev/disk3s1  eyphrase/Journals/NSFileProtectionCompleteUntilFirstUserAuthentication/evt_v12_journalAttr_<removed>_10999599_649.toc  0.000039 W deemd.88525
+190061  12:06:51.907543  WrData[AT1]  D=0x03468dd8  B=0x1000  /dev/disk3s1  rase/Journals/NSFileProtectionCompleteUntilFirstUserAuthentication/evt_v12_journalAttr_<removed>_10999599_649.journal  0.000034 W deemd.88525
+190062  12:06:51.908400  WrData[AT1]  D=0x014fbae8  B=0xd000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/capture.pcap  0.000046 W deemd.88525
+190063  12:06:51.908431  WrData[AT1]  D=0x0134bd5f  B=0xb000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/capture.pcap  0.000048 W deemd.88525
+190064  12:06:51.908438  WrData[AT1]  D=0x00f9c66b  B=0xc000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/unified.log  0.000045 W deemd.88525
+190065  12:06:51.908561  WrData[AT1]  D=0x01531d3f  B=0x7e000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000153 W deemd.88525
+190066  12:06:51.908679  WrData[AT1]  D=0x01531dbf  B=0x82000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000239 W deemd.88525
+190067  12:06:51.908747  RdMeta[ST1]  D=0x00090a9c  B=0x1000  /dev/disk3  /dev/disk3  0.000155 W deemd.88525
+190068  12:06:51.908787  WrData[AT1]  D=0x01531e41  B=0x7c000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000326 W deemd.88525
+190069  12:06:51.908904  WrData[AT1]  D=0x01531ebf  B=0x84000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000422 W deemd.88525
+190070  12:06:51.909008  WrData[AT1]  D=0x01531f43  B=0x7a000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000506 W deemd.88525
+190071  12:06:51.909175  WrData[AT1]  D=0x01531fbf  B=0x86000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000655 W deemd.88525
+190072  12:06:51.909246  WrData[AT1]  D=0x01532045  B=0x78000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000706 W deemd.88525
+190073  12:06:51.909389  WrData[AT1]  D=0x015320bf  B=0x88000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000829 W deemd.88525
+190074  12:06:51.909519  WrData[AT1]  D=0x01532147  B=0x76000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000944 W deemd.88525
+190075  12:06:51.909521  WrData[AT1]  D=0x01533972  B=0x16000  /dev/disk3s1  /Users/<user>/pkg-analysis-20260625-120612/fs_usage.log  0.000739 W deemd.88525
+190076  12:06:51.909532  WrData[AT1]  D=0x03468bdc  B=0x1000  /dev/disk3s1  /private/var/db/systemstats/<removed>.coalitions.XXXXXX.stats  0.000641 W deemd.88525
+190077  12:06:51.909536  WrData[AT1]  D=0x00aa740e  B=0x4000  /dev/disk3s1  /Library/Application Support/<unrelated>  0.000574 W deemd.88525
+190078  12:06:51.909539  WrData[AT1]  D=0x0346902b  B=0x1000  /dev/disk3s1  /Library/Application Support/<unrelated>  0.000460 W deemd.88525
+190079  12:06:51.909541  WrData[AT1]  D=0x006bc616  B=0x2000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/Priority/index.spotlightV3/journalAttr.470  0.000550 W deemd.88525
+190080  12:06:51.909544  WrData[AT1]  D=0x001cca6e  B=0x6000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/Priority/index.spotlightV3/journalAttr.470  0.000549 W deemd.88525
+190081  12:06:51.909570  WrData[AT1]  D=0x00856f5e  B=0x20000  /dev/disk3s1  /System/Volumes/Data/private/var/db/diagnostics/Persist/00000000000011aa.tracev3  0.000529 W deemd.88525
+190082  12:06:51.909574  WrData[AT1]  D=0x03468ead  B=0x1000  /dev/disk3s1  /Library/Application Support/<unrelated>  0.000498 W deemd.88525
+190083  12:06:51.910818  WrData[AT1]  D=0x03468e1a  B=0x1000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/journalAttr.2433  0.000030 W deemd.88525
+190084  12:06:51.910821  WrData[AT1]  D=0x03468c69  B=0x1000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/journalAttr.2433  0.000029 W deemd.88525
+190085  12:06:51.910823  WrData[AT1]  D=0x03468ebd  B=0x1000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/journalAttr.2433  0.000028 W deemd.88525
+190086  12:06:51.910825  WrData[AT1]  D=0x03468e40  B=0x1000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/journalAttr.2433  0.000027 W deemd.88525
+190087  12:06:51.921168  fstat64  F=5  0.000002  installer.88563
+190088  12:06:51.921175  read  F=5  B=0x40  0.000005  installer.88563
+190089  12:06:51.922596  WrData[AT1]  D=0x00157810  B=0x1000  /dev/disk3s1  /Users/<user>/Library/DuetExpertCenter/_ATXLoggerStore.db-shm  0.000033 W deemd.88525
+190090  12:06:51.922599  WrData[AT1]  D=0x02a420d2  B=0x7000  /dev/disk3s1  /Users/<user>/Library/DuetExpertCenter/_ATXLoggerStore.db-shm  0.000026 W deemd.88525
+190091  12:06:51.922620  fstat64  F=5  0.000002  installer.88563
+190092  12:06:51.922624  read  F=5  B=0x22  0.000003  installer.88563
+190093  12:06:51.922652  fstat64  F=5  0.000001  installer.88563
+190094  12:06:51.922653  read  F=5  B=0x54  0.000002  installer.88563
+190095  12:06:51.922665  lstat64  [  2]  /usr/local/bin/ws1etlm  0.000005  bash.88598
+190096  12:06:51.922690  lstat64  [  2]  /usr/local/bin/ws1etlmu  0.000003  bash.88598
+190097  12:06:51.922722  stat64  [  2]  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool  0.000005  bash.88598
+190098  12:06:51.922744  stat64  [  2]  private/var/workspaceone/ws1etlm/logs  0.000005  bash.88598
+190099  12:06:51.926573  RdMeta[ST1]  D=0x000943e7  B=0x1000  /dev/disk3  /dev/disk3  0.003798 W deemd.88525
+190100  12:06:51.926732  RdMeta[ST1]  D=0x0008df7e  B=0x1000  /dev/disk3  /dev/disk3  0.000137 W deemd.88525
+190101  12:06:51.926790  WrData[AT1]  D=0x007ed873  B=0x1000  /dev/disk3s1  local/802726555832481  0.000041 W deemd.88525
+190102  12:06:51.926877  RdMeta[ST1]  D=0x0008f3af  B=0x1000  /dev/disk3  /dev/disk3  0.000117 W deemd.88525
+190103  12:06:51.926976  WrData[AT1]  D=0x009d0ef3  B=0x3000  /dev/disk3s1  local/802726555832481  0.000028 W deemd.88525
+190104  12:06:51.927001  WrData[AT1]  D=0x009d0ff2  B=0x4000  /dev/disk3s1  local/802726555832481  0.000033 W deemd.88525
+190105  12:06:51.927085  RdMeta[SP]  D=0x0009327c  B=0x1000  /dev/disk3  /dev/disk3  0.000104 W deemd.88525
+190106  12:06:51.927132  WrData[AT1]  D=0x00a544b1  B=0x4000  /dev/disk3s1  local/802726555832481  0.000027 W deemd.88525
+190107  12:06:51.928983  mkdir  private/var/workspaceone  0.000205  mkdir.88612
+190108  12:06:51.929018  WrData[AT1]  D=0x006d1bcf  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000046 W deemd.88525
+190109  12:06:51.929025  WrData[AT1]  D=0x0046d80b  B=0x3000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000044 W deemd.88525
+190110  12:06:51.929032  WrData[AT1]  D=0x036d835a  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000045 W deemd.88525
+190111  12:06:51.929034  WrData[AT1]  D=0x036d84cf  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000044 W deemd.88525
+190112  12:06:51.929051  mkdir  private/var/workspaceone/ws1etlm  0.000065  mkdir.88612
+190113  12:06:51.929064  WrData[AT1]  D=0x0371f22f  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000071 W deemd.88525
+190114  12:06:51.929067  WrData[AT1]  D=0x02c8c034  B=0x3000  /dev/disk3s1  /Users/<user>/Library/Caches/com.apple.proactive.eventtracker/aggr_state  0.000070 W deemd.88525
+190115  12:06:51.929098  mkdir  private/var/workspaceone/ws1etlm/logs  0.000048  mkdir.88612
+190116  12:06:51.929168  WrData[AT1]  D=0x00cee2b9  B=0x4000  /dev/disk3s1  /private/var/db/systemstats/<removed>.coalitions_private.XXXXXX.stats  0.000058 W deemd.88525
+190117  12:06:51.929334  stat64  [  2]  private/etc/workspaceone/ws1etlm/config  0.000004  bash.88598
+190118  12:06:51.929368  WrData[AT1]  D=0x008adc60  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Application Support/<unrelated>  0.000061 W deemd.88525
+190119  12:06:51.929374  WrData[AT1]  D=0x02e7c397  B=0x7000  /dev/disk3s1  /Users/<user>/Library/Application Support/<unrelated>  0.000061 W deemd.88525
+190120  12:06:51.929479  WrData[AT1]  D=0x001cca30  B=0x4000  /dev/disk3s1  /Users/<user>/Library/Application Support/<unrelated>  0.000042 W deemd.88525
+190121  12:06:51.929685  WrData[AT1]  D=0x001c0846  B=0x11000  /dev/disk3s1  /Users/<user>/Library/Application Support/<unrelated>  0.000051 W deemd.88525
+190122  12:06:51.929800  WrData[AT1]  D=0x0082d8df  B=0x73000  /dev/disk3s1  /Users/<user>/Library/Application Support/<unrelated>  0.000158 W deemd.88525
+190123  12:06:51.929878  WrData[AT1]  D=0x02e419f0  B=0x1000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/live.4.indexGroups  0.000115 W deemd.88525
+190124  12:06:51.929885  WrData[AT1]  D=0x0019487a  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/live.3.indexIds  0.000090 W deemd.88525
+190125  12:06:51.929891  WrData[AT1]  D=0x023e8387  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/live.4.indexBigDates  0.000087 W deemd.88525
+190126  12:06:51.929936  WrData[AT1]  D=0x03206d63  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/0.indexIds  0.000042 W deemd.88525
+190127  12:06:51.929963  WrData[AT1]  D=0x00143f9f  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/live.4.indexIds  0.000055 W deemd.88525
+190128  12:06:51.930912  WrData[ANT1]  D=0x014b094f  B=0x8000  /dev/disk3s1  ate/var/folders/<user-tmp>/C/com.apple.iconservicesagent/com.apple.iconservicesagent/com.apple.metal/32024/libraries.data  0.000028 W deemd.88525
+190129  12:06:51.930961  WrData[ANT1]  D=0x013ae097  B=0xc000  /dev/disk3s1  /folders/<user-tmp>/C/com.apple.iconservicesagent/com.apple.iconservicesagent/com.apple.metal/16777235_402/functions.data  0.000034 W deemd.88525
+190130  12:06:51.931502  mkdir  private/etc/workspaceone  0.000181  mkdir.88614
+190131  12:06:51.931553  mkdir  private/etc/workspaceone/ws1etlm  0.000050  mkdir.88614
+190132  12:06:51.931601  mkdir  private/etc/workspaceone/ws1etlm/config  0.000048  mkdir.88614
+190133  12:06:51.931812  stat64  [  2]  private/etc/workspaceone/ws1etlm/deem  0.000005  bash.88598
+190134  12:06:51.932171  RdMeta[ST1]  D=0x0001468f  B=0x1000  /dev/disk3  /dev/disk3  0.001170 W deemd.88525
+190135  12:06:51.933497  mkdir  [ 17]  private/etc/workspaceone  0.000002  mkdir.88616
+190136  12:06:51.933499  stat64  private/etc/workspaceone  0.000002  mkdir.88616
+190137  12:06:51.933501  mkdir  [ 17]  private/etc/workspaceone/ws1etlm  0.000002  mkdir.88616
+190138  12:06:51.933503  stat64  private/etc/workspaceone/ws1etlm  0.000003  mkdir.88616
+190139  12:06:51.933551  mkdir  private/etc/workspaceone/ws1etlm/deem  0.000048  mkdir.88616
+190140  12:06:51.936653  RdMeta[ST1]  D=0x00009e0d  B=0x1000  /dev/disk3  /dev/disk3  0.004457 W deemd.88525
+190141  12:06:51.936780  WrData[AT1]  D=0x02e41734  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/live.4.indexGroups  0.000027 W deemd.88525
+190142  12:06:51.936784  WrData[AT1]  D=0x02e417fa  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/live.4.indexGroups  0.000022 W deemd.88525
+190143  12:06:51.936802  WrData[AT1]  D=0x03888204  B=0x2000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/live.4.indexGroups  0.000029 W deemd.88525
+190144  12:06:51.936811  WrData[AT1]  D=0x03536234  B=0x1000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/analyticsCountData  0.000032 W deemd.88525
+190145  12:06:51.936833  WrData[AT1]  D=0x0055d7e3  B=0x4000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/live.4.indexIds  0.000044 W deemd.88525
+190146  12:06:51.936838  WrData[AT1]  D=0x006b896c  B=0x4000  /dev/disk3s1  /Users/<user>/Library/Metadata/CoreSpotlight/NSFileProtectionCompleteUntilFirstUserAuthentication/index.spotlightV3/live.4.indexBigDates  0.000036 W deemd.88525
+190147  12:06:51.938434  RdMeta[ST1]  D=0x00013679  B=0x1000  /dev/disk3  /dev/disk3  0.001593 W deemd.88525
+190148  12:06:51.938520  WrData[AT1]  D=0x0020ce22  B=0x1000  /dev/disk3s1  /Users/<user>/Library/DuetExpertCenter/_ATXDataStore.db-shm  0.000027 W deemd.88525
+190149  12:06:51.938524  WrData[AT1]  D=0x0031a24b  B=0x7000  /dev/disk3s1  /Users/<user>/Library/DuetExpertCenter/_ATXDataStore.db-shm  0.000025 W deemd.88525
+190150  12:06:51.938657  WrData[AT1]  D=0x018ac0cf  B=0x8000  /dev/disk3s1  /private/var/folders/<user-tmp>/C/com.apple.iconservices/store.index  0.000040 W deemd.88525
+190151  12:06:51.938672  WrData[AT1]  D=0x018ac0fb  B=0x4000  /dev/disk3s1  /private/var/folders/<user-tmp>/C/com.apple.iconservices/store.index  0.000045 W deemd.88525
+190152  12:06:51.938677  WrData[AT1]  D=0x018ac113  B=0x4000  /dev/disk3s1  /private/var/folders/<user-tmp>/C/com.apple.iconservices/store.index  0.000046 W deemd.88525
+190153  12:06:51.938699  WrData[AT1]  D=0x018ac11b  B=0x4000  /dev/disk3s1  /private/var/folders/<user-tmp>/C/com.apple.iconservices/store.index  0.000062 W deemd.88525
+190154  12:06:51.938705  WrData[AT1]  D=0x018ac13f  B=0x4000  /dev/disk3s1  /private/var/folders/<user-tmp>/C/com.apple.iconservices/store.index  0.000061 W deemd.88525
+190155  12:06:51.938802  WrData[AT1]  D=0x036d8459  B=0x1000  /dev/disk3s1  local/803854254619413  0.000024 W deemd.88525
+190156  12:06:51.938826  WrData[AT1]  D=0x00ff7a2e  B=0x3000  /dev/disk3s1  local/803854254619413  0.000040 W deemd.88525
+190157  12:06:51.938838  WrData[AT1]  D=0x0020d213  B=0x1000  /dev/disk3s1  /private/var/protected/sfanalytics/<removed>/trust_analytics.db-shm  0.000031 W deemd.88525
+190158  12:06:51.938853  WrData[AT1]  D=0x00647b23  B=0x7000  /dev/disk3s1  /private/var/protected/sfanalytics/<removed>/trust_analytics.db-shm  0.000042 W deemd.88525
+190159  12:06:51.938928  WrData[AT1]  D=0x0265357a  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000031 W deemd.88525
+190160  12:06:51.938965  stat64  [  2]  private/etc/workspaceone/ws1etlm/config/config.ini  0.000007  cp.88618
+190161  12:06:51.938970  lstat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini  0.000006  cp.88618
+190162  12:06:51.938974  fstatat64  [-2]//Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini  0.000002  cp.88618
+190163  12:06:51.938976  fstatat64  [  2]  [-2]/private/etc/workspaceone/ws1etlm/config/config.ini  0.000002  cp.88618
+190164  12:06:51.939002  open  F=4  (R______________)  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini  0.000026  cp.88618
+190165  12:06:51.939057  openat  F=5  (_WC_T__________)  [-2]/private/etc/workspaceone/ws1etlm/config/config.ini  0.000055  cp.88618
+190166  12:06:51.939175  RdMeta[ST1]  D=0x00095610  B=0x1000  /dev/disk3  /dev/disk3  0.000268 W deemd.88525
+190167  12:06:51.939252  RdData[ANT1]  D=0x0346905d  B=0x1000  /dev/disk3s1  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini  0.000111 W cp.88618
+190168  12:06:51.939316  WrData[AT1]  D=0x02653c5e  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000029 W deemd.88525
+190169  12:06:51.939387  WrData[AT1]  D=0x02653c82  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000028 W deemd.88525
+190170  12:06:51.939461  WrData[AT1]  D=0x02653c86  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000028 W deemd.88525
+190171  12:06:51.939529  WrData[AT1]  D=0x02653cae  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000026 W deemd.88525
+190172  12:06:51.939619  RdMeta[ST1]  D=0x0008dd3a  B=0x1000  /dev/disk3  /dev/disk3  0.000110 W deemd.88525
+190173  12:06:51.939748  WrData[AT1]  D=0x02653cca  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/reverseDirectoryStore  0.000035 W deemd.88525
+190174  12:06:51.939758  WrData[ANT1]  D=0x03468c13  B=0x1000  /dev/disk3s1  private/etc/workspaceone/ws1etlm/config/config.ini  0.000030 W cp.88618
+190175  12:06:51.939786  WrData[AT1]  D=0x00ee99cc  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-4.map.buckets  0.000036 W deemd.88525
+190176  12:06:51.939812  WrData[AT1]  D=0x023e00ef  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-4.map.offsets  0.000041 W deemd.88525
+190177  12:06:51.939822  WrData[AT1]  D=0x023e19bf  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-4.map.data  0.000041 W deemd.88525
+190178  12:06:51.939846  WrData[AT1]  D=0x00ee9a21  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-2.map.buckets  0.000044 W deemd.88525
+190179  12:06:51.939853  WrData[AT1]  D=0x032df55f  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-2.map.offsets  0.000044 W deemd.88525
+190180  12:06:51.939858  WrData[AT1]  D=0x023e677d  B=0x4000  /dev/disk3s1  /System/Volumes/Data/.Spotlight-V100/Store-V2/<removed>/dbStr-2.map.data  0.000043 W deemd.88525
+190181  12:06:51.940049  WrData[AT1]  D=0x0013cb11  B=0x1000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/ExecPolicy-shm  0.000030 W deemd.88525
+190182  12:06:51.940053  WrData[AT1]  D=0x00647b38  B=0x7000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/ExecPolicy-shm  0.000029 W deemd.88525
+190183  12:06:51.940064  WrData[AT1]  D=0x006d1365  B=0x1000  /dev/disk3s1  /System/Volumes/Data/private/var/db/SystemPolicyConfiguration/ExecPolicy-wal  0.000031 W deemd.88525
+190184  12:06:51.940082  WrData[AT1]  D=0x001355da  B=0x7000  /dev/disk3s1  /System/Volumes/Data/private/var/db/SystemPolicyConfiguration/ExecPolicy-wal  0.000047 W deemd.88525
+190185  12:06:51.940145  WrData[AT1]  D=0x015a9438  B=0x2c000  /dev/disk3s1  /System/Volumes/Data/private/var/db/SystemPolicyConfiguration/ExecPolicy-wal  0.000073 W deemd.88525
+190186  12:06:51.940182  WrData[AT1]  D=0x00130a0b  B=0x1000  /dev/disk3s1  /private/var/db/analyticsd/state.sqlite-shm  0.000024 W deemd.88525
+190187  12:06:51.940186  WrData[AT1]  D=0x00647b4d  B=0x7000  /dev/disk3s1  /private/var/db/analyticsd/state.sqlite-shm  0.000024 W deemd.88525
+190188  12:06:51.940206  WrData[AT1]  D=0x0013cb29  B=0x1000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-shm  0.000025 W deemd.88525
+190189  12:06:51.940210  WrData[AT1]  D=0x00647b54  B=0x7000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-shm  0.000024 W deemd.88525
+190190  12:06:51.940263  WrData[AT1]  D=0x02047788  B=0x2c000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-wal  0.000064 W deemd.88525
+190191  12:06:51.940297  WrData[AT1]  D=0x01501bcb  B=0x28000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-wal  0.000090 W deemd.88525
+190192  12:06:51.940333  RdMeta[ST1]  D=0x0008ec66  B=0x1000  /dev/disk3  /dev/disk3  0.000084 W deemd.88525
+190193  12:06:51.940352  WrData[AT1]  D=0x01501bf3  B=0x39000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-wal  0.000134 W deemd.88525
+190194  12:06:51.940398  WrData[AT1]  D=0x01533a72  B=0x17000  /dev/disk3s1  /private/var/db/SystemPolicyConfiguration/Tickets-wal  0.000042 W deemd.88525
+190195  12:06:51.940434  WrData[AT1]  D=0x0013cb31  B=0x1000  /dev/disk3s1  /private/var/protected/trustd/private/<removed>/ocspcache.sqlite3-shm  0.000021 W deemd.88525
+190196  12:06:51.940451  WrData[AT1]  D=0x0082d9d0  B=0x7000  /dev/disk3s1  /private/var/protected/trustd/private/<removed>/ocspcache.sqlite3-shm  0.000034 W deemd.88525
+190197  12:06:51.940459  WrData[AT1]  D=0x00dd35ca  B=0xc000  /dev/disk3s1  /private/var/protected/trustd/private/<removed>/ocspcache.sqlite3-wal  0.000035 W deemd.88525
+190198  12:06:51.940478  WrData[AT1]  D=0x0013cb49  B=0x1000  /dev/disk3s1  /private/var/protected/sfanalytics/<removed>/trust_analytics.db-shm  0.000038 W deemd.88525
+190199  12:06:51.940480  WrData[AT1]  D=0x007e021f  B=0x7000  /dev/disk3s1  /private/var/protected/sfanalytics/<removed>/trust_analytics.db-shm  0.000034 W deemd.88525
+190200  12:06:51.940539  WrData[AT1]  D=0x001992da  B=0x1000  /dev/disk3s1  /private/var/db/dslocal/nodes/Default/sqlindex-shm  0.000022 W deemd.88525
+190201  12:06:51.940542  WrData[AT1]  D=0x0082d9ed  B=0x3000  /dev/disk3s1  /private/var/db/dslocal/nodes/Default/sqlindex-shm  0.000021 W deemd.88525
+190202  12:06:51.940579  WrData[AT1]  D=0x02a8d468  B=0x4000  /dev/disk3s1  private/var/log/install.log  0.000024 W deemd.88525
+190203  12:06:51.940613  WrData[AT1]  D=0x009117e1  B=0x4000  /dev/disk3s1  /private/var/log/com.apple.xpc.launchd/launchd.log  0.000023 W deemd.88525
+190207  12:06:51.944835  open  F=3  (_WC____________)  private/etc/workspaceone/ws1etlm/config/loggers.ini  0.000063  touch.88622
+190211  12:06:51.951039  open  F=3  (_WC____________)  private/etc/workspaceone/ws1etlm/deem/deem.ini  0.000053  touch.88626
+190260  12:06:51.955469  openat  F=5  (_WC_T__________)  [-2]//Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000057  cp.88630
+190300  12:06:51.955957  RdData[ANT1]  D=0x03469063  B=0x1000  /dev/disk3s1  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json  0.000160 W cp.88630
+190315  12:06:51.956064  WrData[ANT1]  D=0x03468a1f  B=0x1000  /dev/disk3s1  /Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000024 W cp.88630
+190379  12:06:51.959828  openat  F=5  (_WC_T__________)  [-2]//Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000052  cp.88636
+190382  12:06:51.965358  RdData[ANT1]  D=0x03469063  B=0x1000  /dev/disk3s1  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json  0.005450 W cp.88636
+190383  12:06:51.965471  WrData[ANT1]  D=0x03468f2b  B=0x1000  /dev/disk3s1  /Library/<browser-vendor>/<browser>/NativeMessagingHosts/com.omnissa.etlm.browser.helper.json  0.000021 W cp.88636
+190425  12:06:51.968389  symlink  /usr/local/bin/ws1etlm  0.000078  ln.88639
+190449  12:06:51.970176  symlink  /usr/local/bin/ws1etlmu  0.000064  ln.88641
+190569  12:06:51.973750  symlink  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool  0.000078  ln.88645
+190623  12:06:51.977300  lstat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlm.plist  0.000004  mv.88647
+190624  12:06:51.977306  stat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlm.plist  0.000002  mv.88647
+190625  12:06:51.977307  stat64  [  2]  /Library/LaunchDaemons/com.ws1.ws1etlm.plist  0.000001  mv.88647
+190626  12:06:51.977308  access  [  2] (___F)  /Library/LaunchDaemons/com.ws1.ws1etlm.plist  0.000001  mv.88647
+190631  12:06:51.977419  rename  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlm.plist  0.000112  mv.88647
+190651  12:06:51.979707  lstat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlmu.plist  0.000003  mv.88649
+190652  12:06:51.979711  stat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlmu.plist  0.000002  mv.88649
+190653  12:06:51.979712  stat64  [  2]  /Library/LaunchAgents/com.ws1.ws1etlmu.plist  0.000001  mv.88649
+190654  12:06:51.979713  access  [  2] (___F)  /Library/LaunchAgents/com.ws1.ws1etlmu.plist  0.000001  mv.88649
+190655  12:06:51.979806  rename  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.ws1etlmu.plist  0.000093  mv.88649
+190682  12:06:51.981593  lstat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.deem.MacUIEvents.plist  0.000003  mv.88651
+190683  12:06:51.981596  stat64  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.deem.MacUIEvents.plist  0.000002  mv.88651
+190684  12:06:51.981689  rename  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.ws1.deem.MacUIEvents.plist  0.000088  mv.88651
+190760  12:06:51.984620  chmodat  <rw-r-x--->  [-2]/com.omnissa.etlm.browser.helper.json  0.000012  chmod.88653
+190777  12:06:51.986641  mkdir  private/var/workspaceone/ws1etlm/sessions  0.000058  mkdir.88655
+190778  12:06:51.986689  mkdir  private/var/workspaceone/ws1etlm/sessions/logs  0.000047  mkdir.88655
+190794  12:06:51.988443  chmodat  <rws-----T>  [-2]/private/var/workspaceone/ws1etlm/sessions/logs  0.000025  chmod.88657
+190824  12:06:51.993148  guarded_open_np  F=16  (R__________X___)  /Library/LaunchDaemons/com.ws1.ws1etlm.plist  0.000022  launchd.87838
+191015  12:06:51.999266  open  F=5  (_WC_T__________)  private/var/db/receipts/com.ws1.EndpointTelemetryService.bom  0.000092  installer.88560
+191020  12:06:51.999478  open  F=5  (_WC_T__________)  private/var/db/receipts/com.ws1.EndpointTelemetryService.plist  0.000071  installer.88560
+191784  12:06:52.146164  exit  0.000013  ws1etlm.88661
+203980  12:06:53.032557  open  F=3  (R______________)  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app/Contents/Info.plist  0.000050  ws1etlm.88665
+204221  12:06:53.043630  chmodat  <--x-wS--->  [-2]/private/var/workspaceone/ws1etlm/sessions/logs  0.000027  ws1etlm.88665
+204247  12:06:53.044461  open  F=6  (RWCA___________)  private/var/workspaceone/ws1etlm/logs/ws1etlm-info-2026-06-25-120653.txt  0.000156  ws1etlm.88665
+211132  12:06:53.199890  stat64  private/var/log/asl  0.000008  ws1etlm.88665
+217249  12:06:53.233565  open  F=16  (R______________)  private/var/log/asl/2026.06.20.G80.asl  0.000009  ws1etlm.88665
+217792  12:06:53.235750  mkdir  [  2]  /Library/Logs/WorkspaceONE/Deem  0.000011  deemd.88525
+217906  12:06:53.236040  mkdir  /Library/Logs/WorkspaceONE  0.000287  deemd.88525
+217912  12:06:53.236089  mkdir  /Library/Logs/WorkspaceONE/Deem  0.000048  deemd.88525
+218119  12:06:53.236757  open  F=147  (_WC________X___)  /Library/Logs/WorkspaceONE/Deem/deemd_20260625.log  0.000336  deemd.88525
+218786  12:06:53.279628  unlink  /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.EndpointTelemetryService-universal-25.9.0.5699.pkg  0.000781  rm.88764
+218938  12:06:53.295344  mkdir  private/var/tmp/hzn-ipclib-<removed>  0.000068  ws1etlm.88665
+218941  12:06:53.295353  unlink  [  2]  private/var/tmp/hzn-ipclib-<removed>/socket  0.000004  ws1etlm.88665
+219111  12:06:53.314579  unlinkat  [-2]//Library/Application Support/WorkspaceONE/helper  0.000072  rm.88770
+219123  12:06:53.329089  guarded_open_np  F=16  (R__________X___)  /Library/LaunchAgents/com.ws1.ws1etlmu.plist  0.000024  launchd.87831
+219126  12:06:53.329721  open  F=3  (_WC_T__________)  /private/etc/workspaceone/ws1etlm/config//install.plist  0.000072  PlistBuddy.88783
+219127  12:06:53.329805  WrData[AT1]  D=0x03469084  B=0x1000  /dev/disk3s1  /private/etc/workspaceone/ws1etlm/config//install.plist  0.000031 W PlistBuddy.88783
+219142  12:06:53.334906  open  F=3  (_WC_T__________)  /private/etc/workspaceone/ws1etlm/config//install.plist  0.000039  PlistBuddy.88789
+219143  12:06:53.334982  WrData[AT1]  D=0x03469116  B=0x1000  /dev/disk3s1  /private/etc/workspaceone/ws1etlm/config//install.plist  0.000027 W PlistBuddy.88789
+219152  12:06:53.346786  guarded_open_np  F=16  (R__________X___)  /Library/LaunchAgents/com.ws1.ws1etlmu.plist  0.000013  launchd.87838
+219176  12:06:53.359889  RdData[AT1]  D=0x0353666a  B=0x1000  /dev/disk3s1  /private/etc/master.passwd/..namedfork/rsrc  0.001652 W ws1etlm.88665
+219592  12:06:53.375228  mkdir  [  2]  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite  0.000005  deemd.88525
+219593  12:06:53.375293  mkdir  /Library/Application Support/WorkspaceONE/Deem/deem-data  0.000064  deemd.88525
+219594  12:06:53.375329  mkdir  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite  0.000036  deemd.88525
+219626  12:06:53.376518  getattrlist  /Users/<user>/Library/Application Support/<unrelated>  0.000008  ws1etlm.88665
+219627  12:06:53.376543  open  F=8  (R______________)  /Users/<user>/Library/Application Support/<unrelated>  0.000020  ws1etlm.88665
+220305  12:06:53.399734  exit  0.000006  ws1etlmu.88807
+221252  12:06:53.409168  stat64  private/etc/master.passwd  0.000004  ws1etlm.88665
+221259  12:06:53.409528  mkdir  private/var/workspaceone/ws1etlm/cache  0.000057  ws1etlm.88665
+221260  12:06:53.409567  mkdir  private/var/workspaceone/ws1etlm/cache/transaction  0.000039  ws1etlm.88665
+221272  12:06:53.410436  mkdir  private/var/workspaceone/ws1etlm/cache/mirrors  0.000045  ws1etlm.88665
+221273  12:06:53.410475  mkdir  private/var/workspaceone/ws1etlm/cache/mirrors/loopback  0.000039  ws1etlm.88665
+221283  12:06:53.410631  mkdir  private/var/tmp/hzn-ipclib-<removed>  0.000045  ws1etlm.88665
+221286  12:06:53.410637  unlink  [  2]  private/var/tmp/hzn-ipclib-<removed>/socket  0.000003  ws1etlm.88665
+221419  12:06:53.473337  open  F=185  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db  0.000061  deemd.88525
+222193  12:06:53.498145  open  F=186  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000080  deemd.88525
+222228  12:06:53.498773  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000064  deemd.88525
+222390  12:06:53.505370  open  F=186  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000061  deemd.88525
+222432  12:06:53.505752  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000073  deemd.88525
+224070  12:06:53.611693  open  F=196  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db  0.000060  deemd.88525
+224094  12:06:53.611887  open  F=197  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db-journal  0.000041  deemd.88525
+224116  12:06:53.612249  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db-journal  0.000051  deemd.88525
+224570  12:06:53.756357  open  F=4  (R______________)  /Users/<user>/.CFUserTextEncoding  0.000059  ws1etlmu.88820
+224576  12:06:53.756483  open  F=199  (RWC________X___)  private/var/workspaceone/ws1etlm/deem-tlm.conf  0.000068  deemd.88525
+224582  12:06:53.756573  open  F=4  (R______________)  /Users/<user>/.CFUserTextEncoding  0.000024  ws1etlmu.88820
+224864  12:06:53.772916  stat64  /Users/<user>  0.000018  ws1etlmu.88820
+228832  12:06:54.123766  open  F=4  (_WC_T__________)  private/var/db/receipts/com.omnissa.horizon.client.mac.bom  0.000105  installd.87964
+228834  12:06:54.124141  open  F=4  (_WC_T__________)  private/var/db/receipts/com.omnissa.horizon.client.mac.plist  0.000093  installd.87964
+229762  12:06:54.141768  open  F=4  (_WC_T__________)  private/var/db/receipts/com.omnissa.horizon.client.mac.bom  0.000059  installd.87964
+229764  12:06:54.142034  open  F=4  (_WC_T__________)  private/var/db/receipts/com.omnissa.horizon.client.mac.plist  0.000031  installd.87964
+229770  12:06:54.143551  open  F=4  (_WC_T__________)  private/var/db/receipts/com.ws1.Deem.InstallerHelper.bom  0.000080  installd.87964
+229772  12:06:54.143775  open  F=4  (_WC_T__________)  private/var/db/receipts/com.ws1.Deem.InstallerHelper.plist  0.000121  installd.87964
+229981  12:06:54.213872  open  F=8  (R__________X___)  /Users/<user>/Library/Keyboard Layouts  0.000067  ws1etlmu.88820
+229985  12:06:54.214200  open  F=8  (R__________X___)  /Users/<user>/Library/Input Methods  0.000030  ws1etlmu.88820
+230288  12:06:54.298983  open  [  1] (R_____N________)  /Users/<user>/Library/Autosave Information  0.028905  ws1etlmu.88820
+232614  12:06:54.362097  open  F=13  (R______________)  /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/Info.plist  0.000032  ws1etlm.88743
+273341  12:06:58.797736  open  F=5  (R______l_______)  /Users/<user>/Downloads/<dir>/<local-pkg>  0.000044  installer.87932
+273357  12:06:58.815122  open  F=5  (R______l_______)  /Users/<user>/Downloads/<dir>/<local-pkg>  0.000042  installer.87932
+273433  12:06:58.836692  exit  0.000131  installer.87919
+277492  12:07:53.493019  lstat64  [  2]  /Library/Application Support/AirWatch/Data/Socket/hubudssocket  0.000179  deemd.89985
+277813  12:08:08.229049  open  F=4  (R______________)  /Applications/Omnissa Horizon Client Next.app  0.000030  helpd.88172
+278019  12:08:53.923761  write  F=6  B=0x7c  0.000011  ws1etlm.88746
+278021  12:08:54.066226  open  [  2] (R______________)  /Library/Managed Preferences  0.000015  ws1etlmu.90411
+278042  12:08:58.564686  lstat64  [  2]  /Library/Application Support/AirWatch/Data/Socket/hubudssocket  0.000013  deemd.89982
+278043  12:08:58.564864  pwrite  F=147  B=0xfb  O=0xfb0000372a  0.000030  deemd.89982

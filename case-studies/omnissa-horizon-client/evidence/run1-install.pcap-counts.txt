@@ -1,0 +1,19 @@
+# source: aggregates over run1/capture.pcap (commands in build.sh) | mode=text | redacted by tools/redact.py
+## Packets, first and last time
+  9947
+12:06:13.101295
+12:08:58.931960
+## Loopback syslog flow 127.0.0.1:52385 -> 127.0.0.1:32376: packets, and ICMP port-unreachable replies
+  1432
+106
+## Dump lines with a vendor string, by packet flow
+ 650 127.0.0.1.52385 > 127.0.0.1.32376:
+## Distinct remote addresses on TCP 443 and on UDP 443 (addresses not listed)
+  14
+  6
+## DNS: UDP 53, TCP 53 and port 853 packets
+  20
+  0
+  0
+## Packets to or from 23.40.244.164
+  0

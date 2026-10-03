@@ -1,0 +1,180 @@
+# source: run1/unified.log | mode=text lines=1-3,5,1051,1063,1243,1245,1247,1297,2001-2002,2038,2061,2073,2159-2168,2826,2843,2861,2863,2972,3620,3697,3700,4102,4121-4139,4152,4158-4160,4289,4317-4326,4354,4378-4387,4416-4425,4475,4608,4714,4718,5260-5299,5451,5505-5506,5513-5514,5521-5522,5529-5530,5733,5743,5755,5792,5825,5915,5919,5977,6167-6178,6180,6199,6433,6640,7397,7440,8862,9254,9262-9264,9674,9676-9677,9880-9881,9883 | redacted by tools/redact.py
+     1  Filtering the log data using "process == "installer" OR senderImagePath CONTAINS[c] "workspaceone" OR senderImagePath CONTAINS[c] "omnissa" OR composedMessage CONTAINS[c] "deem" OR composedMessage CONTAINS[c] "ws1etlm""
+     2  Timestamp  Thread  Type  Activity  PID  TTL  
+     3  2026-06-25 12:06:34.750614+0200 0x1576f  Default  0x0  7459  7  installer: (StorageKit) [com.apple.storagekit:general] SKLogSetLogsToConsole/Std is deprecated. Please remove this call
+     5  2026-06-25 12:06:34.751275+0200 0x1576f  Debug  0x0  7459  0  installer: (CoreFoundation) [com.apple.CFBundle:loading] main bundle CFBundle 0x100f57e40 </usr/sbin> (executable, loaded) getting handle 0xfffffffffffffffb
+  1051  2026-06-25 12:06:42.306425+0200 0x15814  Info  0x0  0  0  kernel: (AppleSystemPolicy) evaluation result: 238, script, allowed, cache,  1782382002, 7, 7, 38c39f66d50d1d56, 0, /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/preinstall
+  1063  2026-06-25 12:06:42.678010+0200 0x1576f  Debug  0x0  7459  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: PKInstallPackageRunPostinstallScriptState, value: (null), table: PKInstall, localizationNames: (null), result: Running package scripts…
+  1243  2026-06-25 12:06:47.137538+0200 0x1597f  Info  0x0  0  0  kernel: (AppleSystemPolicy) evaluation result: 241, script, allowed, cache,  1782382006, 7, 7, 38c39f66d50d1d56, 0, /tmp/PKInstallSandbox.NFFbqE/Scripts/com.ws1.Deem.InstallerHelper.OeM5Dn/postinstall
+  1245  2026-06-25 12:06:47.523592+0200 0x1598b  Default  0x0  7541  7  installer: (StorageKit) [com.apple.storagekit:general] SKLogSetLogsToConsole/Std is deprecated. Please remove this call
+  1247  2026-06-25 12:06:47.525293+0200 0x1598b  Debug  0x0  7541  0  installer: (CoreFoundation) [com.apple.CFBundle:loading] main bundle CFBundle 0x10322fc80 </usr/sbin> (executable, loaded) getting handle 0xfffffffffffffffb
+  1297  2026-06-25 12:06:47.667578+0200 0x1598b  Debug  0x0  7541  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: FullVersionString, value: FullVersionString, table: SystemVersion, localizationNames: (null), result: Version %@ (Build %@)
+  2001  2026-06-25 12:06:48.167930+0200 0x15796  Debug  0x0  508  0  syspolicyd: (Security) [com.apple.securityd:notarization] Extracting ticket from package: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg
+  2002  2026-06-25 12:06:48.167960+0200 0x15796  Debug  0x0  508  0  syspolicyd: (Security) [com.apple.securityd:notarization] successfully found stapled ticket for: /Library/Application Support/WorkspaceONE/helper/WorkspaceONE.Deem.Service.universal.pkg
+  2038  2026-06-25 12:06:48.277807+0200 0x1599b  Error  0x0  7541  0  installer: (Metadata) [com.apple.metadata:Metadata] unable to get a dev_t for store 1795162192.
+  2061  2026-06-25 12:06:49.374624+0200 0x159a8  Info  0x0  0  0  kernel: (AppleSystemPolicy) evaluation result: 242, script, allowed, cache,  1782382009, 7, 7, 38c39f66d50d1d56, 0, /tmp/PKInstallSandbox.AZFSvD/Scripts/com.ws1.Deem.rO3XtL/preinstall
+  2073  2026-06-25 12:06:49.598281+0200 0x159b8  Info  0x0  0  0  kernel: (AppleSystemPolicy) evaluation result: 243, script, allowed, cache,  1782382009, 7, 7, 38c39f66d50d1d56, 0, /tmp/PKInstallSandbox.AZFSvD/Scripts/com.ws1.Deem.rO3XtL/postinstall
+  2159  2026-06-25 12:06:49.762558+0200 0x15894  Info  0x638fa  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] registerLaunchItem: result=no error, new item=uuid=<removed>, name=deemd, type=legacy daemon, disposition=[enabled, allowed, not notified], identifier=16.com.ws1.deemd, url=file:///Library/LaunchDaemons/com.ws1.deemd.plist
+  2160  2026-06-25 12:06:49.762781+0200 0x15894  Default  0x638fb  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] effectiveItemDisposition: appURL=(null), type=legacy daemon, url=file:///Library/LaunchDaemons/com.ws1.deemd.plist, config={
+  2161    BTMConfigArguments =  (
+  2162    "/usr/local/bin/deemd"
+  2163    );
+  2164    BTMConfigBundleIdentifiers =  (
+  2165    );
+  2166    BTMConfigExecutablePath = "/usr/local/bin/deemd";
+  2167    BTMConfigLabel = "com.ws1.deemd";
+  2168  }
+  2826  2026-06-25 12:06:50.452653+0200 0x1599a  Debug  0x0  7541  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: InstallSuccessMessage, value: , table: Distribution, localizationNames: (null), result: The software was successfully installed.
+  2843  2026-06-25 12:06:50.453194+0200 0x1598b  Debug  0x0  7541  0  installer: (libxpc.dylib) [com.apple.xpc.transaction:all] [0x80504cfc0] 'com.apple.CoreAnalytics.exit-transaction': Transaction released
+  2861  2026-06-25 12:06:50.474661+0200 0x159e1  Default  0x0  7563  7  installer: (StorageKit) [com.apple.storagekit:general] SKLogSetLogsToConsole/Std is deprecated. Please remove this call
+  2863  2026-06-25 12:06:50.475270+0200 0x159e1  Debug  0x0  7563  0  installer: (CoreFoundation) [com.apple.CFBundle:loading] main bundle CFBundle 0x100b33c80 </usr/sbin> (executable, loaded) getting handle 0xfffffffffffffffb
+  2972  2026-06-25 12:06:50.531006+0200 0x159e1  Debug  0x0  7563  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: FullVersionString, value: FullVersionString, table: SystemVersion, localizationNames: (null), result: Version %@ (Build %@)
+  3620  2026-06-25 12:06:50.831442+0200 0x159da  Debug  0x0  508  0  syspolicyd: (Security) [com.apple.securityd:unixio] open(/Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/native_bin/osx-arm64/libMacOSNative.dylib,0x0,0x1b6) = 20
+  3697  2026-06-25 12:06:50.897956+0200 0x15817  Info  0x0  508  0  syspolicyd: [com.apple.syspolicy.exec:default] scan finished, waking up any waiters: PST: (path: edc9dcba1a813c48), (team: S2ZMFGQM93), (id: deemd), (bundle_id: deemd)
+  3700  2026-06-25 12:06:50.898410+0200 0x15772  Info  0x64d00  402  0  tccd: [com.apple.TCC:access] AttributionChain: accessing={TCCDProcess: identifier=deemd, pid=7560, auid=0, euid=0, binary_path=/Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd}, requesting={TCCDProcess: identifier=com.apple.syspolicyd, pid=508, auid=0, euid=0, binary_path=/usr/libexec/syspolicyd},
+  4102  2026-06-25 12:06:51.099454+0200 0x159f2  Error  0x0  7563  0  installer: (Metadata) [com.apple.metadata:Metadata] unable to get a dev_t for store 1795162192.
+  4121  2026-06-25 12:06:51.561974+0200 0x15870  Default  0x64d00  421  0  nehelper: [com.apple.networkextension:] Removing UUIDs for (
+  4122    deemd
+  4123  )
+  4124  2026-06-25 12:06:51.562853+0200 0x15870  Default  0x64d00  421  0  nehelper: [com.apple.networkextension:] Handling an apps installed notification with bundle IDs (
+  4125    deemd
+  4126  )
+  4127  2026-06-25 12:06:51.565808+0200 0x158e8  Debug  0x64d00  421  0  nehelper: [com.apple.networkextension:Large] Apps for which we need a policy: (
+  4128    deemd
+  4129  )
+  4130  2026-06-25 12:06:51.569825+0200 0x158e8  Debug  0x64d00  421  0  nehelper: [com.apple.networkextension:] Created path rule for deemd: {
+  4131    matchSigningIdentifier = deemd
+  4132    cellularBehavior = 0
+  4133    denyCellularFallback = NO
+  4134    denyMulticast = YES
+  4135    multicastPreferenceSet = NO
+  4136    isIdentifierExternal = NO
+  4137    wifiBehavior = 0
+  4138    denyAll = NO
+  4139  }
+  4152  2026-06-25 12:06:51.590992+0200 0x158e8  Default  0x64d00  421  0  nehelper: [com.apple.networkextension:] com.apple.preferences.networkprivacy-<removed>: Populating the cache with 1 UUID(s) for deemd
+  4158  2026-06-25 12:06:51.648230+0200 0x15910  Debug  0x0  377  0  nesessionmanager: [com.apple.networkextension:] Deny Policy IDs added for deemd: (
+  4159    2363
+  4160  )
+  4289  2026-06-25 12:06:52.032516+0200 0x159cd  Debug  0x0  7560  0  deemd: (CoreFoundation) [com.apple.defaults:User Defaults] CFPrefsManagedSource<0x102d16fd0> (Domain: deemd, User: kCFPreferencesCurrentUser, ByHost: Yes, Container: (null), Contents Need Refresh: No) loaded: an empty base plist and no additional changes from the base plist
+  4317  2026-06-25 12:06:52.132306+0200 0x1598d  Info  0x65123  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] registerLaunchItem: result=no error, new item=uuid=<removed>, name=ws1etlm, type=legacy daemon, disposition=[enabled, allowed, not notified], identifier=16.com.ws1.ws1etlm, url=file:///Library/LaunchDaemons/com.ws1.ws1etlm.plist
+  4318  2026-06-25 12:06:52.132548+0200 0x1598d  Default  0x65124  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] effectiveItemDisposition: appURL=(null), type=legacy daemon, url=file:///Library/LaunchDaemons/com.ws1.ws1etlm.plist, config={
+  4319    BTMConfigArguments =  (
+  4320    "/usr/local/bin/ws1etlm"
+  4321    );
+  4322    BTMConfigBundleIdentifiers =  (
+  4323    );
+  4324    BTMConfigExecutablePath = "/usr/local/bin/ws1etlm";
+  4325    BTMConfigLabel = "com.ws1.ws1etlm";
+  4326  }
+  4354  2026-06-25 12:06:52.158514+0200 0x15816  Debug  0x0  508  0  syspolicyd: (Security) [com.apple.securityd:machorep] 22293 signing bytes in 3 blob(s) from /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/native_bin/osx-arm64/libMacOSNative.dylib(arm64)
+  4378  2026-06-25 12:06:52.204883+0200 0x1598d  Info  0x651d5  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] registerLaunchItem: result=no error, new item=uuid=<removed>, name=ws1etlmu, type=legacy agent, disposition=[enabled, allowed, not notified], identifier=8.com.ws1.ws1etlmu, url=file:///Library/LaunchAgents/com.ws1.ws1etlmu.plist
+  4379  2026-06-25 12:06:52.205392+0200 0x1598d  Default  0x651d6  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] effectiveItemDisposition: appURL=(null), type=legacy agent, url=file:///Library/LaunchAgents/com.ws1.ws1etlmu.plist, config={
+  4380    BTMConfigArguments =  (
+  4381    "/usr/local/bin/ws1etlmu"
+  4382    );
+  4383    BTMConfigBundleIdentifiers =  (
+  4384    );
+  4385    BTMConfigExecutablePath = "/usr/local/bin/ws1etlmu";
+  4386    BTMConfigLabel = "com.ws1.ws1etlmu";
+  4387  }
+  4416  2026-06-25 12:06:52.247108+0200 0x1598d  Info  0x651d9  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] registerLaunchItem: result=no error, new item=uuid=<removed>, name=MacUIEvents, type=legacy agent, disposition=[enabled, allowed, not notified], identifier=8.com.ws1.deem.MacUIEvents, url=file:///Library/LaunchAgents/com.ws1.deem.MacUIEvents.plist
+  4417  2026-06-25 12:06:52.247618+0200 0x1598d  Default  0x651da  6403  0  backgroundtaskmanagementd: [com.apple.backgroundtaskmanagement:main] effectiveItemDisposition: appURL=(null), type=legacy agent, url=file:///Library/LaunchAgents/com.ws1.deem.MacUIEvents.plist, config={
+  4418    BTMConfigArguments =  (
+  4419    "/usr/local/bin/MacUIEvents"
+  4420    );
+  4421    BTMConfigBundleIdentifiers =  (
+  4422    );
+  4423    BTMConfigExecutablePath = "/usr/local/bin/MacUIEvents";
+  4424    BTMConfigLabel = "com.ws1.deem.MacUIEvents";
+  4425  }
+  4475  2026-06-25 12:06:52.404665+0200 0x159f3  Error  0x0  7563  2  installer: (LaunchServices) [com.apple.launchservices:registration] Failed to get unit 3428 from store <private>
+  4608  2026-06-25 12:06:52.515719+0200 0x1588f  Debug  0x0  413  0  lsd: (Security) [com.apple.securityd:unixio] open(/Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app/Contents/MacOS/MacUIEvents,0x0,0x1b6) = 3
+  4714  2026-06-25 12:06:52.551580+0200 0x15815  Info  0x0  508  0  syspolicyd: [com.apple.syspolicy.exec:default] scan finished, waking up any waiters: PST: (path: 8229d2766288170b), (team: S2ZMFGQM93), (id: com.ws1.deem.ws1etlm), (bundle_id: com.ws1.deem.ws1etlm)
+  4718  2026-06-25 12:06:52.552126+0200 0x1594f  Info  0x6541a  402  0  tccd: [com.apple.TCC:access] AttributionChain: accessing={TCCDProcess: identifier=com.ws1.deem.ws1etlm, pid=7604, auid=0, euid=0, binary_path=/Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app/Contents/MacOS/ws1etlm}, requesting={TCCDProcess: identifier=com.apple.syspolicyd, pid=508, auid=0, euid=0, binary_path=/usr/libexec/syspolicyd},
+  5260  2026-06-25 12:06:52.821523+0200 0x15870  Debug  0x0  421  0  nehelper: [com.apple.networkextension:] Created path rule for com.ws1.deem.ws1etlmu: {
+  5261    matchSigningIdentifier = com.ws1.deem.ws1etlmu
+  5262    cellularBehavior = 0
+  5263    denyCellularFallback = NO
+  5264    denyMulticast = YES
+  5265    multicastPreferenceSet = NO
+  5266    isIdentifierExternal = NO
+  5267    wifiBehavior = 0
+  5268    denyAll = NO
+  5269  }
+  5270  2026-06-25 12:06:52.822753+0200 0x15870  Debug  0x0  421  0  nehelper: [com.apple.networkextension:] Created path rule for com.ws1.deem.MacUIEvents: {
+  5271    matchSigningIdentifier = com.ws1.deem.MacUIEvents
+  5272    cellularBehavior = 0
+  5273    denyCellularFallback = NO
+  5274    denyMulticast = YES
+  5275    multicastPreferenceSet = NO
+  5276    isIdentifierExternal = NO
+  5277    wifiBehavior = 0
+  5278    denyAll = NO
+  5279  }
+  5280  2026-06-25 12:06:52.823138+0200 0x15870  Debug  0x0  421  0  nehelper: [com.apple.networkextension:] Created path rule for com.ws1.deem.ws1etlm: {
+  5281    matchSigningIdentifier = com.ws1.deem.ws1etlm
+  5282    cellularBehavior = 0
+  5283    denyCellularFallback = NO
+  5284    denyMulticast = YES
+  5285    multicastPreferenceSet = NO
+  5286    isIdentifierExternal = NO
+  5287    wifiBehavior = 0
+  5288    denyAll = NO
+  5289  }
+  5290  2026-06-25 12:06:52.827823+0200 0x15870  Debug  0x0  421  0  nehelper: [com.apple.networkextension:] Created path rule for com.ws1.deem.tlmtool: {
+  5291    matchSigningIdentifier = com.ws1.deem.tlmtool
+  5292    cellularBehavior = 0
+  5293    denyCellularFallback = NO
+  5294    denyMulticast = YES
+  5295    multicastPreferenceSet = NO
+  5296    isIdentifierExternal = NO
+  5297    wifiBehavior = 0
+  5298    denyAll = NO
+  5299  }
+  5451  2026-06-25 12:06:53.049145+0200 0x15a59  Debug  0x0  7604  0  ws1etlm: (Security) [com.apple.securityd:dirval] entering /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
+  5505  2026-06-25 12:06:53.097297+0200 0x15901  Debug  0x0  377  0  nesessionmanager: [com.apple.networkextension:] Deny Policy IDs added for com.ws1.deem.ws1etlmu: (
+  5506  )
+  5513  2026-06-25 12:06:53.099523+0200 0x15901  Debug  0x0  377  0  nesessionmanager: [com.apple.networkextension:] Deny Policy IDs added for com.ws1.deem.MacUIEvents: (
+  5514  )
+  5521  2026-06-25 12:06:53.102303+0200 0x15901  Debug  0x0  377  0  nesessionmanager: [com.apple.networkextension:] Deny Policy IDs added for com.ws1.deem.ws1etlm: (
+  5522  )
+  5529  2026-06-25 12:06:53.103835+0200 0x15901  Debug  0x0  377  0  nesessionmanager: [com.apple.networkextension:] Deny Policy IDs added for com.ws1.deem.tlmtool: (
+  5530  )
+  5733  2026-06-25 12:06:53.270437+0200 0x159ee  Debug  0x0  7563  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: InstallSuccessMessage, value: , table: Distribution, localizationNames: (null), result: The software was successfully installed.
+  5743  2026-06-25 12:06:53.271107+0200 0x159e1  Debug  0x0  7563  0  installer: (libxpc.dylib) [com.apple.xpc.transaction:all] [0xb4f04e1c0] 'com.apple.CoreAnalytics.exit-transaction': Transaction released
+  5755  2026-06-25 12:06:53.304679+0200 0x15ab6  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Common.DeemDisablementMonitor":] Cannot find installation file "/etc/workspaceone/ws1etlm/config/install.plist"
+  5792  2026-06-25 12:06:53.372918+0200 0x159cd  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.DeemConfigProvider":] Installation disabled: True, Remote Deem enabled: False, ShouldHarverstData: False
+  5825  2026-06-25 12:06:53.410362+0200 0x157d7  Debug  0x0  340  0  configd: [com.apple.SystemConfiguration:SCDynamicStore] open  : 165315 : /usr/local/bin/ws1etlm:com.ws1.ws1etlm.inetgatewayresolver
+  5915  2026-06-25 12:06:53.581397+0200 0x159d7  Info  0x0  508  0  syspolicyd: [com.apple.syspolicy.exec:default] scan finished, waking up any waiters: PST: (path: 8962ba247edb870f), (team: S2ZMFGQM93), (id: com.ws1.deem.ws1etlmu), (bundle_id: com.ws1.deem.ws1etlmu)
+  5919  2026-06-25 12:06:53.581912+0200 0x1594f  Info  0x65943  402  0  tccd: [com.apple.TCC:access] AttributionChain: accessing={TCCDProcess: identifier=com.ws1.deem.ws1etlmu, pid=7630, auid=501, euid=501, binary_path=/Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents/MacOS/ws1etlmu}, requesting={TCCDProcess: identifier=com.apple.syspolicyd, pid=508, auid=0, euid=0, binary_path=/usr/libexec/syspolicyd},
+  5977  2026-06-25 12:06:53.681193+0200 0x1576f  Debug  0x0  7459  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: PKInstallPackageRunPostinstallScriptState, value: (null), table: PKInstall, localizationNames: (null), result: Running package scripts…
+  6167  2026-06-25 12:06:53.768302+0200 0x15b02  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.AppCrashEventsDataSource" ...
+  6168  2026-06-25 12:06:53.768302+0200 0x15b0e  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.AssetEventsDataSource" ...
+  6169  2026-06-25 12:06:53.768302+0200 0x15ab8  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.AppChangeEventsDataSource" ...
+  6170  2026-06-25 12:06:53.768457+0200 0x15b02  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.ResourceConsumerEventsDataSource" ...
+  6171  2026-06-25 12:06:53.768465+0200 0x15ab8  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.NetworkEventsDataSource" ...
+  6172  2026-06-25 12:06:53.768504+0200 0x15b02  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.AppUnresponsiveEventsDataSource" ...
+  6173  2026-06-25 12:06:53.768516+0200 0x15ab8  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.Common.Targets.Forwarder" ...
+  6174  2026-06-25 12:06:53.768818+0200 0x15b0f  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.SystemUpdateEventsDataSource" ...
+  6175  2026-06-25 12:06:53.768853+0200 0x15b01  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.UnexpectedShutdownEventsDataSource" ...
+  6176  2026-06-25 12:06:53.768868+0200 0x15b10  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.ServiceEventsDataSource" ...
+  6177  2026-06-25 12:06:53.768898+0200 0x159cd  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.ProcessEventsDataSource" ...
+  6178  2026-06-25 12:06:53.768883+0200 0x15ab6  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.SystemCrashEventsDataSource" ...
+  6180  2026-06-25 12:06:53.769085+0200 0x15b0a  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.Worker":] Starting module: "Deem.MacOS.DataSource.AppHangEventsDataSource" ...
+  6199  2026-06-25 12:06:53.774726+0200 0x15af4  Debug  0x0  7630  0  ws1etlmu: (CoreFoundation) [com.apple.defaults:User Defaults] CFPrefsManagedSource<0x1039c1a00> (Domain: ws1etlmu, User: kCFPreferencesAnyUser, ByHost: Yes, Container: (null), Contents Need Refresh: No) loaded: an empty base plist and no additional changes from the base plist
+  6433  2026-06-25 12:06:53.947641+0200 0x1523d  Debug  0x0  371  0  launchservicesd: [com.apple.launchservices:cas] copyApplicationSandboxInformation((), token=auditToken{ uid=0 euid=0 gid=0 egid=0 auditSessionID=100022 pid=7560}  result=1 inSandbox=0 executable="file:///Library/Application%20Support/WorkspaceONE/Deem/deem/LegacyDeem.app/Contents/MacOS/deemd" appInfo={ "BuildMachineOSBuild"="23A5328b", "CFBundleDevelopmentRegion"="en", "CFBundleExecutable"="deemd", "CFBundleIdentifier"="deemd", "CFBundleInfoDictionaryVersion"="6.0", "CFBundleName"="deemd", "CFBundlePackageType"="APPL", "CFBundleShortVersionString"="1.0", "CFBundleSupportedPlatforms"=( "MacOSX"), "CFBundleVersion"="1", "LSMinimumSystemVersion"="12.0" } entitlement={ "com.apple.security.cs.allow-dyld-environment-variables"=true, "com.apple.security.cs.allow-jit"=true, "com.apple.security.cs.allow-unsigned-executable-memory"=true, "com.apple.security.cs.disable-executable-page-protection"=true, "com.apple.security.cs.disable-library-validation"=true })
+  6640  2026-06-25 12:06:54.006939+0200 0x15b1e  Debug  0x0  371  0  launchservicesd: [com.apple.launchservices:cas] copyApplicationSandboxInformation((), token=auditToken{ uid=501 euid=501 gid=20 egid=20 auditSessionID=100023 pid=7630}  result=1 inSandbox=0 executable="file:///Library/Application%20Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience%20Management.app/Contents/MacOS/ws1etlmu" appInfo={ "BuildMachineOSBuild"="23C64", "CFBundleDevelopmentRegion"="en", "CFBundleExecutable"="ws1etlmu", "CFBundleIdentifier"="com.ws1.deem.ws1etlmu", "CFBundleInfoDictionaryVersion"="6.0", "CFBundleName"="ws1etlmu", "CFBundlePackageType"="APPL", "CFBundleShortVersionString"="1.0", "CFBundleSupportedPlatforms"=( "MacOSX"), "CFBundleVersion"="1", "DTCompiler"="com.apple.compilers.llvm.clang.1_0", "DTPlatformBuild"="", "DTPlatformName"="macosx", "DTPlatformVersion"="14.0", "DTSDKBuild"="23A334", "DTSDKName"="macosx14.0", "DTXcode"="1500", "DTXcodeBuild"="15A240d", "LSMinimumSystemVersion"="11.0", "LSUIElement"=true, "NSPrincipalClass"="NSApplication" } entitlement={ "com.apple.application-identifier"="S2ZMFGQM93.com.ws1.deem.ws1etlmu", "co<…>)
+  7397  2026-06-25 12:06:54.376485+0200 0x15aa7  Debug  0x0  7604  0  ws1etlm: (Security) [com.apple.securityd:rdirenum] leaving /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app/Contents
+  7440  2026-06-25 12:06:54.423232+0200 0x15af4  Debug  0x0  7630  0  ws1etlmu: (Security) [com.apple.securityd:rdirenum] entering /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app/Contents/_CodeSignature
+  8862  2026-06-25 12:06:58.091799+0200 0x15791  Error  0x0  7459  2  installer: (LaunchServices) [com.apple.launchservices:registration] Failed to get unit 3556 from store <private>
+  9254  2026-06-25 12:06:58.830708+0200 0x1578d  Debug  0x0  7459  0  installer: (CoreFoundation) [com.apple.CFBundle:strings] Bundle: <private>, key: InstallSuccessMessage, value: , table: Distribution, localizationNames: (null), result: The software was successfully installed.
+  9262  2026-06-25 12:06:58.830946+0200 0x1576f  Default  0x0  7459  0  installer: (CoreAnalytics) [com.apple.CoreAnalytics:client] Exiting exit handler.
+  9263  2026-06-25 12:06:58.831033+0200 0x1576f  Debug  0x0  7459  0  installer: (libxpc.dylib) [com.apple.xpc.transaction:all] [0xaad087f00] 'com.apple.CoreAnalytics.exit-transaction': Transaction released
+  9264  2026-06-25 12:06:58.830957+0200 0x15795  Default  0x0  7459  0  installer: (CoreAnalytics) [com.apple.CoreAnalytics:client] XPC connection invalidated (daemon unloaded/disabled)
+  9674  2026-06-25 12:07:53.489332+0200 0x15f7e  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.DeemConfigProvider":] Installation disabled: False, Remote Deem enabled: False, ShouldHarverstData: False
+  9676  2026-06-25 12:07:53.496146+0200 0x15f81  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.HubClient.HubTransport":] Trying to connect with hub server: "/Library/Application Support/AirWatch/Data/Socket/hubudssocket"
+  9677  2026-06-25 12:07:53.496414+0200 0x15f81  Error  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.HubClient.HubTransport":] The socket in path : '"/Library/Application Support/AirWatch/Data/Socket/hubudssocket"' does not exist. Will retry connecting to socket in 4000 milliseconds. remainingRetries: 4
+  9880  2026-06-25 12:08:58.565174+0200 0x15f7e  Info  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.HubClient.HubTransport":] Trying to connect with hub server: "/Library/Application Support/AirWatch/Data/Socket/hubudssocket"
+  9881  2026-06-25 12:08:58.565392+0200 0x15f7e  Error  0x0  7560  0  deemd: (libMacOSNative.dylib) ["Deem.MacOS.HubClient.HubTransport":] The socket in path : '"/Library/Application Support/AirWatch/Data/Socket/hubudssocket"' does not exist. Will retry connecting to socket in 4000 milliseconds. remainingRetries: 4
+  9883  2026-06-25 12:08:59.033125+0200 0x15801  Debug  0x699f2  408  0  runningboardd: (RunningBoard) [com.apple.runningboard:assertion] > osservice<com.ws1.ws1etlmu(501)> ['backgroundApp:7630'] [408-371-8875]

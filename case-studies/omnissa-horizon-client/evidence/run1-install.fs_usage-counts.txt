@@ -1,0 +1,73 @@
+# source: aggregates over run1/fs_usage.filtered.log (commands in build.sh) | mode=text | redacted by tools/redact.py
+## Size and time span
+  278043
+12:06:15.119109
+12:08:58.564864
+## Lines per process name: vendor and installer processes
+61279 installer
+45459 installd
+19772 ws1etlm
+16253 ws1etlmu
+9972 deemd
+16 package_script_service
+8 package_script_s
+## Write-type syscalls with a path by deemd, ws1etlm and ws1etlmu (all of them)
+12:06:51.032134  open  F=3  (RW_____________)  /dev/dtracehelper  0.000101  deemd.88525
+12:06:51.551094  unlink  [  2]  private/tmp/clr-debug-pipe-7560-1782382009-in  0.000024  deemd.88525
+12:06:51.551216  mkfifo  private/tmp/clr-debug-pipe-7560-1782382009-in  0.000122  deemd.88525
+12:06:51.551226  unlink  [  2]  private/tmp/clr-debug-pipe-7560-1782382009-out  0.000010  deemd.88525
+12:06:51.551315  mkfifo  private/tmp/clr-debug-pipe-7560-1782382009-out  0.000089  deemd.88525
+12:06:52.531161  open  F=129  (RW_____________)  /dev/dtracehelper  0.000122  deemd.88525
+12:06:53.023859  open  F=3  (RW_____________)  /dev/dtracehelper  0.000100  ws1etlm.88665
+12:06:53.043630  chmodat  <--x-wS--->  [-2]/private/var/workspaceone/ws1etlm/sessions/logs  0.000027  ws1etlm.88665
+12:06:53.044461  open  F=6  (RWCA___________)  private/var/workspaceone/ws1etlm/logs/ws1etlm-info-2026-06-25-120653.txt  0.000156  ws1etlm.88665
+12:06:53.055699  open  F=7  (RW_____________)  /dev/dtracehelper  0.000032  ws1etlm.88665
+12:06:53.235750  mkdir  [  2]  /Library/Logs/WorkspaceONE/Deem  0.000011  deemd.88525
+12:06:53.236040  mkdir  /Library/Logs/WorkspaceONE  0.000287  deemd.88525
+12:06:53.236089  mkdir  /Library/Logs/WorkspaceONE/Deem  0.000048  deemd.88525
+12:06:53.236757  open  F=147  (_WC________X___)  /Library/Logs/WorkspaceONE/Deem/deemd_20260625.log  0.000336  deemd.88525
+12:06:53.295344  mkdir  private/var/tmp/hzn-ipclib-<removed>  0.000068  ws1etlm.88665
+12:06:53.295353  unlink  [  2]  private/var/tmp/hzn-ipclib-<removed>/socket  0.000004  ws1etlm.88665
+12:06:53.375228  mkdir  [  2]  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite  0.000005  deemd.88525
+12:06:53.375293  mkdir  /Library/Application Support/WorkspaceONE/Deem/deem-data  0.000064  deemd.88525
+12:06:53.375329  mkdir  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite  0.000036  deemd.88525
+12:06:53.409528  mkdir  private/var/workspaceone/ws1etlm/cache  0.000057  ws1etlm.88665
+12:06:53.409567  mkdir  private/var/workspaceone/ws1etlm/cache/transaction  0.000039  ws1etlm.88665
+12:06:53.410436  mkdir  private/var/workspaceone/ws1etlm/cache/mirrors  0.000045  ws1etlm.88665
+12:06:53.410475  mkdir  private/var/workspaceone/ws1etlm/cache/mirrors/loopback  0.000039  ws1etlm.88665
+12:06:53.410631  mkdir  private/var/tmp/hzn-ipclib-<removed>  0.000045  ws1etlm.88665
+12:06:53.410637  unlink  [  2]  private/var/tmp/hzn-ipclib-<removed>/socket  0.000003  ws1etlm.88665
+12:06:53.473337  open  F=185  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db  0.000061  deemd.88525
+12:06:53.498145  open  F=186  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000080  deemd.88525
+12:06:53.498773  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000064  deemd.88525
+12:06:53.505370  open  F=186  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000061  deemd.88525
+12:06:53.505752  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/event_mapping.db-journal  0.000073  deemd.88525
+12:06:53.611693  open  F=196  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db  0.000060  deemd.88525
+12:06:53.611887  open  F=197  (RWC_____F__X___)  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db-journal  0.000041  deemd.88525
+12:06:53.612249  unlink  /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite/logs.db-journal  0.000051  deemd.88525
+12:06:53.740113  open  F=3  (RW_____________)  /dev/dtracehelper  0.000087  ws1etlmu.88820
+12:06:53.756483  open  F=199  (RWC________X___)  private/var/workspaceone/ws1etlm/deem-tlm.conf  0.000068  deemd.88525
+12:06:53.777905  open  F=6  (RWC____________)  private/var/folders/<user-tmp>/T//ws1etlmu_501.lock  0.000506  ws1etlmu.88820
+12:06:54.378465  open  F=8  (RW_____________)  /dev/dtracehelper  0.000083  ws1etlmu.88820
+## Lines that name /private/etc/master.passwd, by process and syscall
+ 959 ws1etlm stat64
+  38 ws1etlm open
+  6 installer stat64
+  2 installer open
+  1 ws1etlm RdData[AT1]
+## Vendor lines that name /private/var/log/asl, by process and syscall
+  68 ws1etlm RdData[AT1]
+  60 ws1etlm stat64
+  60 ws1etlm open
+## Vendor lines that name a path under /Users, by process and syscall
+  36 deemd WrData[AT1]
+  5 ws1etlmu open
+  1 ws1etlmu stat64
+  1 ws1etlm open
+  1 ws1etlm getattrlist
+## ws1etlm opens of */Contents/Info.plist: all, with a file descriptor, under /Applications
+105
+69
+13
+## Lines that name the AirWatch hub socket, by process and syscall
+  22 deemd lstat64

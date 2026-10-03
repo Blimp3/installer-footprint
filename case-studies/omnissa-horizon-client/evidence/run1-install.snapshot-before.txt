@@ -1,0 +1,38 @@
+# source: run1/snapshot-before/receipts.txt | mode=list | redacted by tools/redact.py
+        [31 unrelated lines removed]
+# source: run1/snapshot-before/launchd.txt | mode=list | redacted by tools/redact.py
+     1  /Library/LaunchAgents:
+        [7 unrelated lines removed]
+     9  
+    10  /Library/LaunchDaemons:
+        [12 unrelated lines removed]
+# source: run1/snapshot-before/privhelpers.txt | mode=list | redacted by tools/redact.py
+        [8 unrelated lines removed]
+# source: run1/snapshot-before/launchctl.txt | mode=list | redacted by tools/redact.py
+        [389 unrelated lines removed]
+   390  6351	-9	com.apple.system_installd
+   391  6352	-9	com.apple.installd
+        [44 unrelated lines removed]
+# source: run1/snapshot-before/hosts.txt | mode=text | redacted by tools/redact.py
+     1  ##
+     2  # Host Database
+     3  #
+     4  # localhost is used to configure the loopback interface
+     5  # when the system is booting.  Do not change this entry.
+     6  ##
+     7  127.0.0.1	localhost
+     8  255.255.255.255	broadcasthost
+     9  ::1  localhost
+# source: run1/snapshot-before/fs.txt | mode=list | redacted by tools/redact.py
+        [375 unrelated lines removed]
+# source: run1/snapshot-before/processes.txt | mode=proc | redacted by tools/redact.py
+        [271 unrelated lines removed]
+   272    PID  PPID USER  COMM
+        [83 unrelated lines removed]
+   356   6351  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/system_installd
+   357   6352  1 root  /System/Library/PrivateFrameworks/PackageKit.framework/Resources/installd
+        [155 unrelated lines removed]
+# source: run1/snapshot-before/connections.txt | mode=net | redacted by tools/redact.py
+        [17 unrelated lines removed]
+    18  COMMAND  PID  USER  FD  TYPE  DEVICE SIZE/OFF  NODE NAME
+        [45 unrelated lines removed]

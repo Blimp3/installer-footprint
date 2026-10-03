@@ -1,0 +1,23 @@
+# source: footprint.sh diff run2/snap-02-after-fda run2/snap-03-final | mode=list | redacted by tools/redact.py
+== receipts.txt (+0 -0)
+== launchd.txt (+0 -0)
+== privhelpers.txt (+0 -0)
+== launchctl.txt (+0 -0)
+== hosts.txt (+0 -0)
+== fs.txt (+3 -1)
+[1 unrelated line removed]
++ /Library/Application Support/Omnissa/Omnissa Horizon Client/Services
++ /Library/Application Support/Omnissa/Omnissa Horizon Client/Services/Contents
+[1 unrelated line removed]
+== processes.txt (+10 -1)
+[4 unrelated lines removed]
++ <user> /Applications/Omnissa Horizon Client.app/Contents/MacOS/horizon-client
++ <user> /Library/Application Support/Omnissa/Omnissa Horizon Client/Services/Contents/Library/Horizon Client Services
+[3 unrelated lines removed]
++ root ./horizon-eucusbarbitrator
+[1 unrelated line removed]
+== connections.txt (+20 -7)
+[7 unrelated lines removed]
++ horizon-c <user> TCP ->23.40.244.164:443 (ESTABLISHED)
++ horizon-c <user> TCP 127.0.0.1:55945 (LISTEN)
+[18 unrelated lines removed]

@@ -1,0 +1,63 @@
+# source: footprint.sh diff run1/snapshot-before run1/snapshot-after | mode=list | redacted by tools/redact.py
+== receipts.txt (+4 -0)
++ com.omnissa.horizon.client.mac
++ com.ws1.Deem
++ com.ws1.Deem.InstallerHelper
++ com.ws1.EndpointTelemetryService
+== launchd.txt (+5 -0)
++ /Library/LaunchAgents/com.ws1.deem.MacUIEvents.plist
++ /Library/LaunchAgents/com.ws1.ws1etlmu.plist
++ /Library/LaunchDaemons/com.omnissa.horizon.CDSHelper.plist
++ /Library/LaunchDaemons/com.ws1.deemd.plist
++ /Library/LaunchDaemons/com.ws1.ws1etlm.plist
+== privhelpers.txt (+1 -0)
++ com.omnissa.horizon.CDSHelper
+== launchctl.txt (+3 -0)
++ com.omnissa.horizon.CDSHelper
++ com.ws1.deemd
++ com.ws1.ws1etlm
+== hosts.txt (+1 -0)
++ 127.0.0.1 view-localhost
+== fs.txt (+33 -0)
++ /Library/Application Support/Omnissa
++ /Library/Application Support/Omnissa/Omnissa Horizon Client
++ /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app
++ /Library/Application Support/Omnissa/Omnissa Horizon Client/HTML5VideoPlayer.app/Contents
++ /Library/Application Support/WorkspaceONE
++ /Library/Application Support/WorkspaceONE/Deem
++ /Library/Application Support/WorkspaceONE/Deem/deem
++ /Library/Application Support/WorkspaceONE/Deem/deem-data
++ /Library/Application Support/WorkspaceONE/Deem/deem-data/sqlite
++ /Library/Application Support/WorkspaceONE/Deem/deem/LegacyDeem.app
++ /Library/Application Support/WorkspaceONE/Deem/deem/archive_logs.command
++ /Library/Application Support/WorkspaceONE/Deem/deem/uninstall.sh
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/AppSessionEvents.app
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/Experience Management.app
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/TlmTool.app
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/WorkspaceONE DEX.app
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/collectLogs.sh
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/com.omnissa.etlm.browser.helper.json
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/config.ini
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/etlmapi.dylib
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmExtensionHelper
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/tlmtool
++ /Library/Application Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/uninstall.sh
++ /etc/workspaceone
++ /etc/workspaceone/ws1etlm
++ /etc/workspaceone/ws1etlm/config
++ /etc/workspaceone/ws1etlm/config/config.ini
++ /etc/workspaceone/ws1etlm/config/install.plist
++ /etc/workspaceone/ws1etlm/config/loggers.ini
++ /etc/workspaceone/ws1etlm/deem
++ /etc/workspaceone/ws1etlm/deem/deem.ini
+== processes.txt (+9 -4)
+[5 unrelated lines removed]
++ <user> /usr/local/bin/ws1etlmu
++ root /System/Library/PrivateFrameworks/PackageKit.framework/Versions/A/XPCServices/package_script_service.xpc/Contents/MacOS/package_script_service
++ root /usr/local/bin/deemd
++ root /usr/local/bin/ws1etlm
+[4 unrelated lines removed]
+== connections.txt (+6 -3)
+[9 unrelated lines removed]
