@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: ShellCheck
+        run: shellcheck footprint.sh tools/*.sh tests/*.sh case-studies/*/evidence/*.sh
+
+      - name: Tests
+        run: tests/run.sh
+
+      - name: Redaction gate
+        run: tools/verify_redaction.sh
