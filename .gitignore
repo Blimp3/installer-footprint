@@ -1,0 +1,16 @@
+# Local secrets and review notes
+tools/.redact-local.env
+.local/
+
+# Raw analysis output never goes into the repo
+*.pcap
+*.pcapng
+*.log
+fs_usage*
+pkg-analysis-*/
+manual-analysis-*/
+dns-capture/
+snap-*/
+snapshot-*/
+
+.DS_Store

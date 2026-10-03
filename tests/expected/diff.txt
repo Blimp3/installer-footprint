@@ -1,0 +1,26 @@
+== receipts.txt (+2 -0)
++ com.example.telemetry
++ com.example.vdi.client
+== launchd.txt (+2 -0)
++ /Library/LaunchAgents/com.example.telemetry.agent.plist
++ /Library/LaunchDaemons/com.example.telemetryd.plist
+== privhelpers.txt (+1 -0)
++ com.example.vdi.Helper
+== launchctl.txt (+2 -0)
++ com.example.telemetryd
++ com.example.vdi.Helper
+== hosts.txt (+1 -0)
++ 127.0.0.1 example-localhost
+== fs.txt (+5 -0)
++ /Library/Application Support/Example
++ /Library/Application Support/Example/Telemetry
++ /Library/Application Support/Example/Telemetry/uninstall.sh
++ /private/etc/example
++ /private/etc/example/config.ini
+== processes.txt (+2 -1)
++ root /usr/local/bin/telemetryd
++ tester /Applications/Example VDI.app/Contents/MacOS/vdi-client
+- tester /bin/sleep
+== connections.txt (+2 -0)
++ vdi-clien tester TCP ->203.0.113.80:443 (ESTABLISHED)
++ vdi-clien tester TCP 127.0.0.1:55615 (LISTEN)

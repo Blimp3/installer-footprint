@@ -1,0 +1,2 @@
+com.apple.pkg.CLTools_Executables
+com.example.unrelated

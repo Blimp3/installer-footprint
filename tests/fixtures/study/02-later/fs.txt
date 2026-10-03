@@ -1,0 +1,7 @@
+/Library/Application Support
+/Library/Application Support/Example
+/Library/Application Support/Example/Telemetry
+/Library/Application Support/Example/Telemetry/uninstall.sh
+/Library/Application Support/Unrelated
+/private/etc/example
+/private/etc/example/config.ini

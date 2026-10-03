@@ -1,0 +1,4 @@
+total 344
+drwxr-xr-t   3 root  wheel      96 Jun 25 12:06 .
+drwxr-xr-x  60 root  wheel    1920 Jun 25 12:06 ..
+-r-xr--r--   1 root  wheel  174000 Jun 25 12:06 com.example.vdi.Helper

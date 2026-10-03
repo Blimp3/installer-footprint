@@ -1,0 +1,6 @@
+127.0.0.1 example-localhost
+##
+# Host Database
+##
+127.0.0.1	localhost
+::1             localhost

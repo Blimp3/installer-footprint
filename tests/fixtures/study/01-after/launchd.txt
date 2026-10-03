@@ -1,0 +1,13 @@
+/Library/LaunchAgents:
+total 16
+drwxr-xr-x   4 root  wheel   128 Jun 25 12:06 .
+drwxr-xr-x  60 root  wheel  1920 Jun 25 12:06 ..
+-rw-r--r--   1 root  wheel   395 Nov  5  2025 com.example.telemetry.agent.plist
+-rw-r--r--   1 root  wheel   400 Jan  1  2026 com.example.unrelated.agent.plist
+
+/Library/LaunchDaemons:
+total 8
+drwxr-xr-x   3 root  wheel    96 Jun 25 12:06 .
+drwxr-xr-x  60 root  wheel  1920 Jun 25 12:06 ..
+-rw-r--r--@  1 root  wheel   500 Nov  6  2025 com.example.telemetryd.plist
+

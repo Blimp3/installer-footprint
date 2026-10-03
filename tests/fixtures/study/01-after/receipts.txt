@@ -1,0 +1,4 @@
+com.apple.pkg.CLTools_Executables
+com.example.telemetry
+com.example.unrelated
+com.example.vdi.client
