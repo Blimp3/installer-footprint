@@ -24,8 +24,8 @@ non-Apple) in paths and bundle IDs with <unrelated>.
 
 Scrubbing (all modes): username -> <user>, hostname -> <host>, private and
 link-local IPs -> <lan-ip>, other public IPs -> <ip> unless given with
---keep-ip, per-user /var/folders/ segments -> <user-tmp>, MAC addresses, UUIDs, UDIDs, serial-like tokens and email
-addresses -> <removed>, REDACT_EXTRA strings -> <redacted> (or "text=>replacement").
+--keep-ip, per-user /var/folders/ segments -> <user-tmp>, MAC addresses, UUIDs,
+UDIDs, serial-like tokens, CFData byte dumps and email addresses -> <removed>, REDACT_EXTRA strings -> <redacted> (or "text=>replacement").
 
 The real username and hostname come from tools/.redact-local.env (git-ignored,
 see tools/.redact-local.env.example). --dropped FILE appends every dropped line
@@ -62,6 +62,7 @@ APP_PATH = re.compile(r"(/(?:Application Support|Applications|Containers|Group C
                       r"((?:[^/\s,;:{}\[\]'\"]|\s(?=[^\s/]))+(?:/(?:[^/\s,;:{}\[\]'\"]|\s(?=[^\s/]))*)*)")
 BUNDLE_ID = re.compile(r"\b(?:com|net|org|io|at|it|ch|de|co|app|dev|me|us|uk|eu|fr|nl|se|jp)\.[A-Za-z0-9-]+(?:\.[A-Za-z0-9_-]+)+")
 APPLE = re.compile(r"^(?:com\.apple\.|Apple\b)")
+CFDATA = re.compile(r"bytes = 0x[0-9A-Fa-f]+(?: [0-9A-Fa-f]+)*(?: \.\.\.(?: [0-9A-Fa-f]+)*)?")  # CFData dumps: opaque tokens
 CONTROL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
 CGNAT = ipaddress.ip_network((0x64400000, 10))  # carrier-grade NAT, RFC 6598
 
@@ -132,6 +133,7 @@ class Scrubber:
         line = EMAIL.sub("<removed>", line)
         line = self._words(line)
         line = VARFOLDERS.sub(lambda m: m.group(0)[: m.group(0).index("/folders/")] + "/folders/<user-tmp>/", line)
+        line = CFDATA.sub("bytes = <removed>", line)
         line = MAC.sub("<removed>", line)
         line = UUID.sub("<removed>", line)
         line = UDID.sub("<removed>", line)
@@ -282,6 +284,7 @@ def self_test():
     assert sc("/folders/qq/" + "q" * 28 + "/C/x") == "/folders/<user-tmp>/C/x"
     assert sc("team:(AB12" + "CD34EF)") == "team:(AB12" + "CD34EF)"
     assert sc("bell\x07 and tab\tok") == "bell and tab\tok"
+    assert sc("Token = {length = 32, bytes = 0x0a1b2c3d 4e5f6a7b ... 8c9d0e1f }") == "Token = {length = 32, bytes = <removed> }"
 
     m = Scrubber(user, host, mask_unrelated=True).scrub
     assert m("open /Users/" + user + "/Library/Application Support/Some App/x.db   0.1 ws1etlm.1") == "open /Users/<user>/Library/Application Support/<unrelated>   0.1 ws1etlm.1"
