@@ -37,8 +37,9 @@ Runs as a normal user. Three parts are incomplete without sudo:
 Run "sudo footprint.sh snapshot <label> <dir>" for the full picture. Take every
 snapshot of one study the same way (all with sudo, or all without).
 
-diff compares entries, not raw lines: PIDs, file descriptors and ephemeral local
-ports are ignored, so a restarted process is not reported as a change.
+diff compares entries, not raw lines. It ignores PIDs, file descriptors, ephemeral
+local ports and the per-launch numbers in GUI launchctl labels, so a restarted
+process or app is not reported as a change.
 
 Snapshots contain your username, hostname, LAN addresses and the list of software
 you run. Do not publish them unredacted.
@@ -49,11 +50,15 @@ die() { echo "footprint.sh: $*" >&2; exit 1; }
 
 # The invoking user's home, also under sudo.
 user_home() {
+  local h=$HOME
   if [[ $EUID == 0 && -n ${SUDO_USER:-} ]]; then
-    dscl . -read "/Users/$SUDO_USER" NFSHomeDirectory | awk '{ print $2 }'
-  else
-    echo "$HOME"
+    # dscl prints "NFSHomeDirectory: /path" or, for a path with spaces, the path on the next line
+    h=$(dscl . -read "/Users/$SUDO_USER" NFSHomeDirectory)
+    h=${h#NFSHomeDirectory:}
+    h=${h#"${h%%[![:space:]]*}"}
   fi
+  [[ -d $h ]] || die "cannot find the home folder of ${SUDO_USER:-$USER}"
+  echo "$h"
 }
 
 fs_list() { # fs_list <home>
@@ -65,7 +70,7 @@ fs_list() { # fs_list <home>
   for spec in "${specs[@]}"; do
     root=${spec%:*} depth=${spec##*:}
     [[ -e $root ]] || continue
-    find "$root" -maxdepth "$depth" 2>/dev/null || true
+    find -H "$root" -maxdepth "$depth" 2>/dev/null || true
   done | sort
 }
 
@@ -115,7 +120,10 @@ keys() {
           if (n != "." && n != "..") print (dir == "" ? n : dir "/" n)
         }' "$f"
       ;;
-    launchctl.txt) awk 'NF >= 3 && $3 != "Label" { print $3 }' "$f" ;;
+    launchctl.txt)
+      # GUI-domain labels end in per-launch numbers (application.<id>.<n>.<n>)
+      awk 'NF >= 3 && $3 != "Label" { l = $3; if (l ~ /^application\./) sub(/(\.[0-9]+)+$/, "", l); print l }' "$f"
+      ;;
     processes.txt)
       # drop PID and PPID, keep "user command"
       awk '$1 ~ /^[0-9]+$/ { sub(/^ *[0-9]+ +[0-9]+ +/, ""); sub(/ +/, " "); print }' "$f"
@@ -143,7 +151,13 @@ changes() {
   comm -23 <(printf '%s\n' "$a") <(printf '%s\n' "$b") | grep -v '^$' | sed 's/^/- /' || true
 }
 
-is_snapshot() { [[ -f $1/receipts.txt ]] || die "$1 is not a snapshot directory (no receipts.txt)"; }
+is_snapshot() {
+  local f
+  [[ -f $1/receipts.txt ]] || die "$1 is not a snapshot directory (no receipts.txt)"
+  for f in "${FILES[@]}"; do
+    if [[ -e $1/$f.txt && ! -r $1/$f.txt ]]; then die "$1/$f.txt is not readable (try sudo)"; fi
+  done
+}
 
 diff_snap() {
   local f out
@@ -164,6 +178,7 @@ report() {
     if [[ -f $s/receipts.txt ]]; then snaps+=("${s%/}"); fi
   done
   ((${#snaps[@]} >= 2)) || die "$dir holds fewer than two snapshots"
+  for s in "${snaps[@]}"; do is_snapshot "$s"; done
 
   echo "# Footprint report"
   echo

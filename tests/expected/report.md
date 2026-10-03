@@ -4,7 +4,7 @@ Snapshots: 00-before 01-after 02-later
 
 | Step | receipts | launchd | privhelpers | launchctl | hosts | fs | processes | connections |
 |---|---|---|---|---|---|---|---|---|
-| 00-before -> 01-after | +2 -0 | +2 -0 | +1 -0 | +2 -0 | +1 -0 | +5 -0 | +2 -1 | +2 -0 |
+| 00-before -> 01-after | +2 -0 | +2 -0 | +1 -0 | +3 -0 | +1 -0 | +5 -0 | +2 -1 | +2 -0 |
 | 01-after -> 02-later | . | . | . | . | . | . | . | . |
 
 "." means no change.
@@ -34,6 +34,7 @@ Snapshots: 00-before 01-after 02-later
 ### launchctl.txt
 
 ```diff
++ application.com.example.viewer
 + com.example.telemetryd
 + com.example.vdi.Helper
 ```

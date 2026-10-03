@@ -6,7 +6,8 @@
 + /Library/LaunchDaemons/com.example.telemetryd.plist
 == privhelpers.txt (+1 -0)
 + com.example.vdi.Helper
-== launchctl.txt (+2 -0)
+== launchctl.txt (+3 -0)
++ application.com.example.viewer
 + com.example.telemetryd
 + com.example.vdi.Helper
 == hosts.txt (+1 -0)
