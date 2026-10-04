@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # verify_redaction.sh - fail if the repository holds personal data.
 #   verify_redaction.sh            scan the files staged in the git index
-#   verify_redaction.sh --history  scan every commit as well
+#   verify_redaction.sh --history  scan the files and messages of every commit as well
 # Checks: the real username and hostname and the REDACT_DENY strings from
 # tools/.redact-local.env, hostname-style MacBook model names, /Users/<name>
 # paths, LAN, link-local and carrier-grade NAT IPv4, public IPv4 not in
@@ -36,6 +36,7 @@ envval() { # envval KEY: value from env_file without quotes, spaces or CR
   printf '%s' "${v%[\"\']}"
 }
 user='' host='' deny=''
+deny_list=()
 if [[ -f $env_file ]]; then
   user=$(envval REDACT_USER)
   host=$(envval REDACT_HOST)
@@ -119,6 +120,22 @@ report ipv6 "$(gg -o -E -e '[0-9A-Fa-f]{0,4}(:[0-9A-Fa-f]{0,4}){2,7}' | awk '{
   if (tolower(a) ~ /^2001:0?db8:/) next
   if (f ~ /^f[cd]/ || f ~ /^fe[89ab]/ || (length(f) == 4 && f ~ /^[23]/)) print
 }')"
+# --history also scans commit messages, which git grep does not see
+if [[ ${targets[0]} != --cached ]]; then
+  msgs=$(git log --all --format='@commit %h%n%B' | awk '/^@commit [0-9a-f]+$/ {h = $2; next} {print h ": " $0}')
+  mg() { grep "$@" <<<"$msgs" || true; }
+  if [[ -n $user ]]; then
+    report msg-username "$(mg -i -E -e "(^|[^A-Za-z0-9])${user}([^A-Za-z0-9]|$)")"
+    report msg-hostname "$(mg -i -F -e "$host" -e "${host//-/ }" -e "${host//-/}")"
+    for d in ${deny_list[@]+"${deny_list[@]}"}; do
+      d=${d#"${d%%[![:space:]]*}"}
+      if [[ -n $d ]]; then report "msg-deny:$d" "$(mg -i -F -e "$d")"; fi
+    done
+  fi
+  report msg-home-path "$(mg -E -e '/Users/[A-Za-z0-9_]')"
+  report msg-lan-ip "$(mg -E -e '(^|[^0-9])(192\.168|10\.[0-9]{1,3}|172\.(1[6-9]|2[0-9]|3[01]))\.[0-9]{1,3}\.[0-9]{1,3}')"
+  report msg-email "$(mg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
+fi
 report raw-file "$(git ls-files | grep -E '\.(pcap|pcapng|log)$|(^|/)\.redact-local\.env$' || true)"
 # raw captures are large; excerpts are not
 report large-file "$(git ls-files -z | xargs -0 wc -c | awk '$2 != "total" && $1 > 512000 {print $2 ": " $1 " bytes"}')"
