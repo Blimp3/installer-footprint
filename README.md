@@ -7,14 +7,14 @@
 
 **Why:** a macOS installer package can add more than the app. Its scripts can add background services, root helpers and further packages. Two snapshots and one diff show these changes: receipts, launchd jobs, helpers, files, processes and sockets.
 
-**Case study:** on a test Mac, the Omnissa Horizon Client 8.17.0 installer also installed three Workspace ONE packages (Deem, its installer helper and the Endpoint Telemetry Service), with two daemons running as root. Every claim in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact. Most facts link to redacted lines in this repository. The others give the command and count over raw data that is not published, or are marked as owner statements:
+**Case study:** on a test Mac, the Omnissa Horizon Client 8.17.0 installer also installed three Workspace ONE packages (Deem, its installer helper and the Endpoint Telemetry Service), with two Workspace ONE daemons running as root. Every finding in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact from the captures or a marked owner statement.
 
 | Added by the installer | Items |
 | --- | --- |
 | Packages | Horizon Client 8.17.0, Deem 25.09.00.701 and its installer helper, Endpoint Telemetry Service 25.9.0.5699 |
 | LaunchDaemons | `com.ws1.deemd` and `com.ws1.ws1etlm` (running as root), `com.omnissa.horizon.CDSHelper` (also a privileged helper) |
 | LaunchAgents | `com.ws1.ws1etlmu`, `com.ws1.deem.MacUIEvents` |
-| System files | a line in `/etc/hosts`. From the run 1 file trace only: a native-messaging manifest in the Chrome and Edge folders, three links in `/usr/local/bin` |
+| System files | a line in `/etc/hosts`. Seen only in the file trace of the first run: a native-messaging manifest in the Chrome and Edge folders, three links in `/usr/local/bin` |
 
 The captures show what was installed and started. They do not show whether the components collected or sent any data. The captures were made with earlier scripts, and `footprint.sh diff` was run over their snapshots afterwards.
 
@@ -83,7 +83,7 @@ Raw captures hold your username, hostname, LAN addresses and a list of all the s
 
 - `tools/redact.py` (Python 3, standard library only) produces every excerpt under `case-studies/*/evidence/`. It keeps only the lines its mode allows (vendor processes, vendor sockets, vendor DNS names, structural lines) and replaces each run of dropped lines with `[N unrelated lines removed]`. It replaces the username with `<user>`, the hostname with `<host>`, private IPs with `<lan-ip>` and other public IPs with `<ip>`. It removes MAC addresses, UUIDs, UDIDs, serial-like tokens and email addresses. With `--mask-unrelated` it replaces the names of other software in paths and bundle IDs with `<unrelated>`. It shortens runs of spaces, so column padding does not show the length of a masked name.
 - The real username and hostname live in `tools/.redact-local.env`, which git ignores. Copy `tools/.redact-local.env.example` to create it. `REDACT_DENY` in that file lists more strings that must never appear, such as the names of your other software.
-- `tools/verify_redaction.sh` scans the files in the git index and fails on any hit. It checks the values from `tools/.redact-local.env` and these patterns: hostname-style MacBook names, home paths, LAN, link-local and public IPv4 and IPv6 addresses, MAC addresses, UUIDs, UDIDs, per-user temporary folder IDs, serial-like tokens, email addresses, raw capture files and files over 500 KB. `--history` also scans the files and the messages of every commit. The raw-file and size checks look at the current tree only. CI runs without the deny list, so run `tools/verify_redaction.sh --history` before every push. CI runs it on every push without the local file, so CI skips the username, hostname and deny-list checks.
+- `tools/verify_redaction.sh` scans the files in the git index and fails on any hit. It checks the values from `tools/.redact-local.env` and these patterns: hostname-style MacBook names, home paths, LAN, link-local and public IPv4 and IPv6 addresses, MAC addresses, UUIDs, UDIDs, per-user temporary folder IDs, serial-like tokens, email addresses, raw capture files and files over 500 KB. `--history` also scans the files and the messages of every commit. The raw-file and size checks look at the current tree only. CI runs without the deny list, so run `tools/verify_redaction.sh --history` before every push.
 - `tests/run.sh` plants each of these kinds of data in a scratch repository, and a personal value in a commit message, and checks that the verifier catches it. All test values are synthetic. A value split across string literals cannot be found by any grep, so test code must never copy values from real captures.
 
 ## Responsible use
@@ -95,7 +95,7 @@ Raw captures hold your username, hostname, LAN addresses and a list of all the s
 ## Tests
 
 ```bash
-shellcheck footprint.sh tools/*.sh tests/*.sh
+shellcheck footprint.sh tools/*.sh tests/*.sh case-studies/*/evidence/*.sh
 tests/run.sh
 tools/verify_redaction.sh
 ```
