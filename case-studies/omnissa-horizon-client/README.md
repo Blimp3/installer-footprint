@@ -1,6 +1,6 @@
 # Case study: the Omnissa Horizon Client installer on macOS
 
-This case study covers two captured runs of the Omnissa Horizon Client installer on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md), and each fact cites the raw lines, mostly through the redacted excerpts in [evidence/](evidence/). Facts with an `OWN` ID come from the owner, not from the captures. "Vendor" means names that match the Omnissa, Horizon, VMware, Workspace ONE, ws1 or Deem terms. It does not identify an organization (R1-77). Times are CEST.
+This case study covers two captured runs of the Omnissa Horizon Client installer on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md), and each fact cites the raw lines, mostly through the redacted excerpts in [evidence/](evidence/). Facts with an `OWN` ID come from the owner, not from the captures. "Vendor" means names that match the Omnissa, Horizon, VMware, Workspace ONE, ws1 or Deem terms. The term does not identify an organization (R1-77). Times are CEST.
 
 ## Summary
 
@@ -150,7 +150,7 @@ The file listing gained 33 vendor paths in run 1, and these were its only change
 | Both runs: the DNS logs record no query for a vendor name and no line for `view-localhost` | R1-114, P1-102, P1-103, R1-42 |
 | Run 2: each of the 4 sampled `horizon-client` PIDs held TCP connections to `23.40.244.164:443`, its only non-loopback endpoint (samples 17:20:29-17:31:03, with an 80 s gap). This address is in no DNS log, and its name and operator are not recorded | P1-94 to P1-96, P1-98, P1-99, P2-17, P3-39 |
 | Run 2: `horizon-client` listened on a 127.0.0.1 TCP port | P1-93, P3-34 |
-| Run 2: deemd, ws1etlm and CDSHelper have no line in the `connections.txt` of snap-01, snap-02 or snap-03. `agent-connections.log` holds only `horizon-client` rows, with an unrecorded filter | P1-100, P2-16, P3-36, SET-84 |
+| Run 2: deemd, ws1etlm and CDSHelper have no line in the `connections.txt` of snap-01, snap-02 or snap-03, which list root sockets. `agent-connections.log` holds only `horizon-client` rows, with an unrecorded filter | P1-100, P2-16, P3-36, SET-46, SET-84 |
 
 ### Signing checks that macOS logged
 
@@ -171,7 +171,7 @@ The file listing gained 33 vendor paths in run 1, and these were its only change
 - Run 1: `installer.log` ends with 'The install was successful.' The log has no script error line (R1-05, R1-89). The Deem install logged 17 'Could not open ... for AOT translation' lines for its `osx-x64` bundle (R1-91).
 - Run 2, pass 2: installer PIDs 18554 and 18586 each looked up the error texts 'An error occurred while running scripts from the package' and 'The Installer encountered an error that caused the installation to fail.' (P1-68, P1-69). `AGENT-NETWORK.txt` has the first error for the Deem package and for the Endpoint Telemetry package, with no time and no PID (P1-71). The link of these two lines to pass 2 is uncertain (P1-72). Installer PID 18516 looked up the success message at 17:27:29 CEST, when CDSHelper logged that the package was installed (P1-67, P1-35).
 
-## Phase 2 and 3
+## Phases 2 and 3
 
 Phase 2 is the 10 seconds between `snap-01-after-install` (17:29:38 CEST) and `snap-02-after-fda` (17:29:48 CEST). The run 2 diff file calls it 'what changed after GRANTING Full Disk Access' (SET-14, SET-15, P2-01).
 
@@ -206,6 +206,8 @@ Phase 3 runs from 17:29:48 to 17:31:12 CEST (SET-14).
 - **Team ID not resolved.** The data does not name the organization behind `S2ZMFGQM93` (R1-77). No static check of the packages is recorded (see [Static analysis](#static-analysis-of-the-macos-packages)).
 - **Filtered logs.** Both logs were filtered with a predicate on process name, sender path and message text, and they hold 738 and 4991 'Messages dropped during live streaming' markers (SET-64, SET-65, SET-67). The predicates do not name installd, package_script_service or network subsystems (R1-102, R1-121, SET-65).
 - **Partial network view.** Run 2 kept no packet capture file, although `tcpdump` ran (SET-63, SET-43). `agent-connections.log` holds only `horizon-client` rows, and an 80 s gap in it contains phase 2 (SET-84, P2-17, P2-31). The DNS logs hold only port-53 queries, while mDNSResponder also held UDP sockets to a public DNS resolver on port 443 (SET-55, R1-118, SET-46, P1-104). The last `dnscap` line is at 17:29:00 CEST (SET-52, SET-53). Two headers in the original analysis output do not match their content: 'TLS SNI / vendor hostnames' in `run1/NETWORK-summary.txt` and 'Telemetry-domain hits in packet capture (real egress ...)' in `run2/AGENT-NETWORK.txt` (R1-123, P1-123).
+- **Name-based searches.** The absence checks for DNS names, packet strings, sockets and log lines search for vendor terms. Traffic to an endpoint with a neutral name is not found by them: `horizon-client` connected to `23.40.244.164`, which no capture names (P1-99, R1-115).
+- **Short windows.** Run 1 observed about 2 minutes after deemd and ws1etlm first logged, and run 2 phase 3 lasted 84 s. Daemon sockets were seen only at the snapshot times: once in run 1 and three times in run 2 (R1-13, SET-12, SET-14).
 - **`fs_usage`.** The filter that produced the trace is not recorded (SET-72). The numbers after the process names are not PIDs (R1-124). The attribution of deemd's disk-write lines is uncertain (R1-65, R1-66). Run 2 kept no `fs_usage` output, so the run 1 file-access findings have no run 2 check (SET-63).
 - **Snapshot scope.** The file listing covers only `/Library/Application Support` and, after the install, `/etc/workspaceone`, at most 4 path components below `/Library/Application Support` or `/etc` (SET-40, SET-70). It does not show `/Applications`, `/private/var`, `/usr/local/bin` or the browser folders (R1-53, R1-60). The `/usr/local/bin` links and the browser manifest come only from the run 1 `fs_usage` trace (R1-52, R1-61). The snapshots do not record the contents of the launchd plists (SET-34).
 - **Withheld values.** These values are withheld: the run 1 file name (OWN-06), the `openssl` passphrase (R1-87) and the location denial reason (R1-153). The location reason is withheld at the owner's request. The username, host name and local addresses show as placeholders. The remote address of the `horizon-client` connections, 23.40.244.164, is shown.

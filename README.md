@@ -7,7 +7,7 @@
 
 **Why:** a macOS installer package can add more than the app. Its scripts can add background services, root helpers and further packages. Two snapshots and one diff show these changes: receipts, launchd jobs, helpers, files, processes and sockets.
 
-**Case study:** on a test Mac, the Omnissa Horizon Client 8.17.0 installer also installed two Workspace ONE packages, Deem and the Endpoint Telemetry Service, with two daemons running as root. Every claim in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact, and every fact cites redacted log lines:
+**Case study:** on a test Mac, the Omnissa Horizon Client 8.17.0 installer also installed three Workspace ONE packages (Deem, its installer helper and the Endpoint Telemetry Service), with two daemons running as root. Every claim in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact. Most facts link to redacted lines in this repository. The others give the command and count over raw data that is not published, or are marked as owner statements:
 
 | Added by the installer | Items |
 | --- | --- |
@@ -27,12 +27,12 @@ In a clone of this repository, try `diff` and `report` on the synthetic snapshot
 ./footprint.sh report tests/fixtures/study
 ```
 
-Then study a real installer:
+Then study a real installer. Use `sudo` for the snapshots, so that they include the system launchd domain and root sockets:
 
 ```bash
-./footprint.sh snapshot 00-before ~/footprint-study
+sudo ./footprint.sh snapshot 00-before ~/footprint-study
 sudo installer -pkg ~/Downloads/Example.pkg -target /
-./footprint.sh snapshot 01-after-install ~/footprint-study
+sudo ./footprint.sh snapshot 01-after-install ~/footprint-study
 ./footprint.sh diff ~/footprint-study/00-before ~/footprint-study/01-after-install
 ./footprint.sh report ~/footprint-study > report.md
 ```
@@ -53,7 +53,7 @@ The tool needs only bash and the tools that come with macOS 13 or later. It read
 | `connections.txt` | `lsof -nP -i` | no: a user sees only their own sockets |
 | `meta.txt` | UTC time, macOS version and build, architecture, effective user id | yes |
 
-Run every snapshot of one study the same way: all with `sudo`, or all without. `diff` compares entries, not raw lines. It ignores PIDs, file descriptors, the local end of connected sockets, the local port of unconnected sockets and the per-launch numbers in GUI `launchctl` labels, so a restarted process or app does not show as a change. A listener on a new port does show. Each entry is listed once, so a second copy of a process does not show. Run `./footprint.sh --help` for details.
+Run every snapshot of one study the same way: all with `sudo`, or all without. `diff` compares entries, not raw lines. It ignores PIDs, file descriptors, the local end of connected sockets, the local port of unconnected sockets and the per-launch numbers in GUI `launchctl` labels, so a restarted process or app does not show as a change. A listener on a new port does show. Each entry is listed once, so a second copy of a process does not show. `diff` compares names, so a file replaced under the same name does not show. Run `./footprint.sh --help` for details.
 
 ## Run a three-phase study
 
@@ -64,11 +64,11 @@ Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Acc
    - `sudo tcpdump -i en0 -nn -w capture.pcap`
    - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log`
    - `sudo fs_usage -w -f filesys > fs_usage.log` (this file grows fast; stop it after phase 1)
-   - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i -a -c <name>; done' | tee sockets.log` (sockets of processes whose name starts with `<name>`, every 10 s)
-3. `mkdir study`, then `sudo ./footprint.sh snapshot 00-before study`
-4. `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
+   - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i -a -c <name>; done' | tee sockets.log` (add one `-c <name>` for each vendor process, every 10 s)
+3. `mkdir study`, then `sudo ./footprint.sh snapshot 00-before study`. To list more folders, set `FOOTPRINT_FS_ROOTS`, for example add `;/Library/Google:4;/Library/Microsoft:4` to the defaults from `--help` for browser native-messaging folders.
+4. Keep the vendor's file name, because some install scripts check it. Then `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
 5. `sudo ./footprint.sh snapshot 01-after-install study`
-6. Grant the permission in System Settings, then `sudo ./footprint.sh snapshot 02-after-permission study`.
+6. Grant the permission in System Settings and write down the clock time and the app. Then `sudo ./footprint.sh snapshot 02-after-permission study`.
 7. Use the app for a fixed time (for example 10 minutes), then `sudo ./footprint.sh snapshot 03-final study`.
 8. Export the unified log for the study window with `log show --info --debug`. Unlike `log stream`, it drops no messages, but it returns only what macOS stored, so a `log stream` during the study is a useful second source. Name the vendor and the package script processes in the predicate:
    `log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
@@ -83,7 +83,7 @@ Raw captures hold your username, hostname, LAN addresses and a list of all the s
 
 - `tools/redact.py` (Python 3, standard library only) produces every excerpt under `case-studies/*/evidence/`. It keeps only the lines its mode allows (vendor processes, vendor sockets, vendor DNS names, structural lines) and replaces each run of dropped lines with `[N unrelated lines removed]`. It replaces the username with `<user>`, the hostname with `<host>`, private IPs with `<lan-ip>` and other public IPs with `<ip>`. It removes MAC addresses, UUIDs, UDIDs, serial-like tokens and email addresses. With `--mask-unrelated` it replaces the names of other software in paths and bundle IDs with `<unrelated>`. It shortens runs of spaces, so column padding does not show the length of a masked name.
 - The real username and hostname live in `tools/.redact-local.env`, which git ignores. Copy `tools/.redact-local.env.example` to create it. `REDACT_DENY` in that file lists more strings that must never appear, such as the names of your other software.
-- `tools/verify_redaction.sh` scans the files in the git index and fails on any hit. It checks the values from `tools/.redact-local.env` and these patterns: hostname-style MacBook names, home paths, LAN, link-local and public IPv4 and IPv6 addresses, MAC addresses, UUIDs, UDIDs, per-user temporary folder IDs, serial-like tokens, email addresses, raw capture files and files over 500 KB. `--history` also scans the files and the messages of every commit. CI runs it on every push without the local file, so CI skips the username, hostname and deny-list checks.
+- `tools/verify_redaction.sh` scans the files in the git index and fails on any hit. It checks the values from `tools/.redact-local.env` and these patterns: hostname-style MacBook names, home paths, LAN, link-local and public IPv4 and IPv6 addresses, MAC addresses, UUIDs, UDIDs, per-user temporary folder IDs, serial-like tokens, email addresses, raw capture files and files over 500 KB. `--history` also scans the files and the messages of every commit. The raw-file and size checks look at the current tree only. CI runs without the deny list, so run `tools/verify_redaction.sh --history` before every push. CI runs it on every push without the local file, so CI skips the username, hostname and deny-list checks.
 - `tests/run.sh` plants each of these kinds of data in a scratch repository, and a personal value in a commit message, and checks that the verifier catches it. All test values are synthetic. A value split across string literals cannot be found by any grep, so test code must never copy values from real captures.
 
 ## Responsible use

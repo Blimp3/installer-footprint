@@ -42,6 +42,7 @@ end of connected sockets, the local port of unconnected sockets and the per-laun
 numbers in GUI launchctl labels, so a restarted process or app is not reported as
 a change. A listener that moves to a new port is reported. Each entry is listed
 once, so a second copy of the same process does not show.
+It compares names, so a file replaced under the same name does not show.
 
 Snapshots contain your username, hostname, LAN addresses and the list of software
 you run. Do not publish them unredacted.
