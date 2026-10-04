@@ -34,8 +34,11 @@ Runs as a normal user. Three parts are incomplete without sudo:
   - connections.txt: lsof lists only your own processes' sockets
   - launchctl.txt:   you see your GUI domain; root sees the system domain (LaunchDaemons)
   - fs.txt:          some directories under /private/etc are not readable
-Run "sudo footprint.sh snapshot <label> <dir>" for the full picture. Take every
-snapshot of one study the same way (all with sudo, or all without).
+Run "sudo footprint.sh snapshot <label> <dir>" for the most complete picture.
+macOS privacy protection (TCC) still hides some folders unless the terminal has
+Full Disk Access. sudo resets the environment, so pass FOOTPRINT_FS_ROOTS with
+"sudo env FOOTPRINT_FS_ROOTS=... footprint.sh snapshot ...". Take every snapshot of
+one study the same way (all with sudo, or all without).
 
 diff compares entries, not raw lines. It ignores PIDs, file descriptors, the local
 end of connected sockets, the local port of unconnected sockets and the per-launch

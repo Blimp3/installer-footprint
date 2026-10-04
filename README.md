@@ -16,7 +16,7 @@
 | LaunchAgents | `com.ws1.ws1etlmu`, `com.ws1.deem.MacUIEvents` |
 | System files | a line in `/etc/hosts`. Seen only in the file trace of the first run: a native-messaging manifest in the Chrome and Edge folders, three links in `/usr/local/bin` |
 
-The captures show what was installed and started. They do not show whether the components collected or sent any data. The captures were made with earlier scripts, and `footprint.sh diff` was run over their snapshots afterwards.
+The captures show what was installed and started. They do not show whether the components collected or sent any data. The captures were made with earlier scripts, and `footprint.sh diff` was run over their snapshots afterwards ([run 1 diff](case-studies/omnissa-horizon-client/evidence/run1-install.footprint-diff.txt)).
 
 ## Quick start
 
@@ -65,7 +65,7 @@ Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Acc
    - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log`
    - `sudo fs_usage -w -f filesys > fs_usage.log` (this file grows fast; stop it after phase 1)
    - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i -a -c <name>; done' | tee sockets.log` (add one `-c <name>` for each vendor process, every 10 s)
-3. `mkdir study`, then `sudo ./footprint.sh snapshot 00-before study`. To list more folders, set `FOOTPRINT_FS_ROOTS`, for example add `;/Library/Google:4;/Library/Microsoft:4` to the defaults from `--help` for browser native-messaging folders.
+3. `mkdir study`, then `sudo ./footprint.sh snapshot 00-before study`. To list more folders, pass `FOOTPRINT_FS_ROOTS` through `sudo env`, because `sudo` resets the environment: `sudo env FOOTPRINT_FS_ROOTS='<defaults from --help>;/Library/Google:4;/Library/Microsoft:4' ./footprint.sh snapshot 00-before study` adds the browser native-messaging folders. Give the terminal Full Disk Access, or macOS privacy protection (TCC) hides some folders even from root.
 4. Keep the vendor's file name, because some install scripts check it. Then `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
 5. `sudo ./footprint.sh snapshot 01-after-install study`
 6. Grant the permission in System Settings and write down the clock time and the app. Then `sudo ./footprint.sh snapshot 02-after-permission study`.
