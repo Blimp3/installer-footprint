@@ -31,10 +31,21 @@ expect_output "report matches golden output" tests/expected/report.md ./footprin
 
 out=$(./footprint.sh diff "$S/01-after" "$S/02-later") && rc=0 || rc=$?
 if [[ $rc == 0 && $(grep -c '^== .* (+0 -0)$' <<<"$out") == 8 && $(grep -c "" <<<"$out") == 8 ]]; then
-  ok "PID, label and ephemeral port changes are not reported"
+  ok "PID, fd, label and local port changes are not reported"
 else
-  not_ok "PID, label and ephemeral port changes are not reported (status $rc)"
+  not_ok "PID, fd, label and local port changes are not reported (status $rc)"
 fi
+
+moved=$(mktemp -d)
+cp -R "$S/02-later" "$moved/03-moved"
+sed -i.bak 's/127.0.0.1:55615 (LISTEN)/127.0.0.1:61234 (LISTEN)/' "$moved/03-moved/connections.txt"
+out=$(./footprint.sh diff "$S/02-later" "$moved/03-moved")
+if grep -q '^== connections.txt (+1 -1)$' <<<"$out"; then
+  ok "a listener on a new port is reported"
+else
+  not_ok "a listener on a new port is reported"
+fi
+rm -rf "$moved"
 
 if ./footprint.sh --help | grep -q 'sudo'; then ok "--help explains sudo"; else not_ok "--help explains sudo"; fi
 expect_status "snapshot refuses an existing directory" 1 "already exists" ./footprint.sh snapshot 00-before "$S"
@@ -44,6 +55,14 @@ expect_status "report needs two snapshots" 1 "fewer than two" ./footprint.sh rep
 expect_status "unknown command prints usage" 2 "Usage" ./footprint.sh frobnicate
 
 if python3 tools/redact.py --self-test >/dev/null; then ok "redact.py self-test"; else not_ok "redact.py self-test"; fi
+
+if python3 tools/check_citations.py >/dev/null; then ok "every FACTS citation resolves"; else not_ok "every FACTS citation resolves"; fi
+cit=$(mktemp -d)
+printf '# source: x.log | mode=text\n    10  first\n    12  second\n' >"$cit/x.txt"
+# shellcheck disable=SC2016 # literal backticks of a Markdown citation
+printf -- '- **T-1** Evidence: [`x.txt:12`](x.txt#L2).\n' >"$cit/FACTS.md"
+expect_status "citation check catches a wrong anchor" 1 "do not resolve" python3 tools/check_citations.py "$cit/FACTS.md"
+rm -rf "$cit"
 
 # verify_redaction.sh must catch planted personal data. The values are
 # synthetic and split so this file itself stays clean.
@@ -60,11 +79,26 @@ for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex he
   "AlexsMacBook""Air" "host x-MacBook""-Pro" "en0 a4:83:""e7:00:11:22" "en1 a4-83-""e7-00-11-22" \
   "mail someone""@example.org" "serial C02XK1""ZJG5H" "to 11.22.""33.44:443" "uses OtherCo" \
   "[fd12:3456:""789a:1::5]:80" "via fe""80::1c2:3ff:fe4:5" "id 11111111-2222-""4333-8444-555555555555" \
-  "/var/folders/qq/""abcdefghijklmnopqrstuvwx/T"; do
+  "/var/folders/qq/""abcdefghijklmnopqrstuvwx/T" "gw 10.""20.30.40" "nat 172.""20.1.2" "ll 169.""254.10.20" \
+  "cgn 100.""64.1.2" "v6 2a01""::4" "udid 00008103-""001A2C3E0E43001E"; do
   echo "$planted" >"$tmp/b.txt"
   git -C "$tmp" add b.txt
   expect_status "verifier catches: $planted" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
 done
+echo "clean" >"$tmp/b.txt"
+git -C "$tmp" add b.txt
+for f in capture.pcap fs_usage.log tools/.redact-local.env; do
+  [[ -e $tmp/$f ]] || : >"$tmp/$f"
+  git -C "$tmp" add -f "$f"
+  expect_status "verifier catches a tracked $f" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+  git -C "$tmp" rm -q --cached "$f"
+done
+head -c 600000 /dev/zero | tr '\0' 'x' >"$tmp/big.txt"
+git -C "$tmp" add big.txt
+expect_status "verifier catches a file over 500 KB" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+git -C "$tmp" rm -q --cached big.txt
+git -C "$tmp" -c user.name=Blimp3 -c "user.email=91412057+Blimp3""@users.noreply.github.com" commit -q -m "add notes" -m "seen at alex's desk"
+expect_status "verifier --history catches a commit message" 1 "hit(s)" "$tmp/tools/verify_redaction.sh" --history
 rm -rf "$tmp"
 
 echo "$pass passed, $fail failed"
