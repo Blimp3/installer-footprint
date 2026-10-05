@@ -17,18 +17,19 @@ Usage:
                                         name) and print a Markdown report
   footprint.sh --help | --version
 
-A snapshot is one directory with eight files plus meta.txt:
+A snapshot is one directory with eight files plus meta.txt and fs-errors.txt:
   receipts.txt     pkgutil --pkgs
   launchd.txt      ls -la /Library/LaunchAgents /Library/LaunchDaemons ~/Library/LaunchAgents
   privhelpers.txt  ls -la /Library/PrivilegedHelperTools
   launchctl.txt    launchctl list
   hosts.txt        /etc/hosts
-  fs.txt           find over FOOTPRINT_FS_ROOTS ("path:maxdepth;path:maxdepth"), default:
-                   /Library/Application Support:4  /private/etc:3  /usr/local/bin:1
-                   /Applications:1  ~/Library/Application Support:2
+  fs.txt           find over FOOTPRINT_FS_ROOTS, a list of /path:maxdepth entries
+                   separated by ";". The default, as one line:
+                   /Library/Application Support:4;/private/etc:3;/usr/local/bin:1;/Applications:1;$HOME/Library/Application Support:2
   processes.txt    ps -axo pid,ppid,user,comm
   connections.txt  lsof -nP -i
   meta.txt         UTC time, macOS version and build, architecture, effective user id
+  fs-errors.txt    folders that find could not read or that do not exist (diff ignores it)
 
 Runs as a normal user. Three parts are incomplete without sudo:
   - connections.txt: lsof lists only your own processes' sockets
@@ -38,7 +39,7 @@ Run "sudo footprint.sh snapshot <label> <dir>" for the most complete picture.
 macOS privacy protection (TCC) still hides some folders unless the terminal has
 Full Disk Access. sudo resets the environment, so pass FOOTPRINT_FS_ROOTS with
 "sudo env FOOTPRINT_FS_ROOTS=... footprint.sh snapshot ...". Take every snapshot of
-one study the same way (all with sudo, or all without).
+one study the same way: all with sudo and the same FOOTPRINT_FS_ROOTS, or all without.
 
 diff compares entries, not raw lines. It ignores PIDs, file descriptors, the local
 end of connected sockets, the local port of unconnected sockets and the per-launch
@@ -75,14 +76,25 @@ fs_list() { # fs_list <home>
   IFS=';' read -r -a specs <<<"${FOOTPRINT_FS_ROOTS:-$roots}"
   for spec in "${specs[@]}"; do
     root=${spec%:*} depth=${spec##*:}
-    [[ -e $root ]] || continue
-    find -H "$root" -maxdepth "$depth" 2>/dev/null || true
+    if [[ ! -e $root ]]; then echo "$root: not found" >&2; continue; fi
+    find -H "$root" -maxdepth "$depth" || true
   done | sort
+}
+
+# Stop on a FOOTPRINT_FS_ROOTS entry that is not /path:maxdepth, before anything is written.
+check_roots() {
+  local spec
+  local -a specs=()
+  IFS=';' read -r -a specs <<<"${FOOTPRINT_FS_ROOTS:-}"
+  for spec in ${specs[@]+"${specs[@]}"}; do
+    [[ $spec =~ ^/[^:]+:[0-9]+$ ]] || die "FOOTPRINT_FS_ROOTS entry '$spec' is not /path:maxdepth (separate entries with ;)"
+  done
 }
 
 snapshot() {
   local label=${1:-} dir=${2:-.} out d home
   [[ $label =~ ^[A-Za-z0-9._-]+$ ]] || die "snapshot needs a label of letters, digits, . _ or -"
+  check_roots
   out=$dir/$label
   [[ ! -e $out ]] || die "$out already exists; pick a new label (snapshots are never overwritten)"
   mkdir -p "$dir"
@@ -99,7 +111,10 @@ snapshot() {
   ls -la /Library/PrivilegedHelperTools >"$out/privhelpers.txt" 2>&1 || true
   launchctl list | sort -k3 >"$out/launchctl.txt"
   cat /etc/hosts >"$out/hosts.txt"
-  fs_list "$home" >"$out/fs.txt"
+  fs_list "$home" >"$out/fs.txt" 2>"$out/fs-errors.txt"
+  if [[ -s $out/fs-errors.txt ]]; then
+    echo "footprint.sh: $(wc -l <"$out/fs-errors.txt" | tr -d ' ') folder(s) not listed, see fs-errors.txt" >&2
+  fi
   ps -axo pid,ppid,user,comm | sort -n >"$out/processes.txt"
   { lsof -nP -i 2>/dev/null || true; } | sort >"$out/connections.txt"
   {

@@ -53,6 +53,11 @@ expect_status "snapshot rejects an unsafe label" 1 "label" ./footprint.sh snapsh
 expect_status "diff rejects a non-snapshot directory" 1 "not a snapshot" ./footprint.sh diff tests "$S/01-after"
 expect_status "report needs two snapshots" 1 "fewer than two" ./footprint.sh report "$S/00-before"
 expect_status "unknown command prints usage" 2 "Usage" ./footprint.sh frobnicate
+bad=$(mktemp -d)
+expect_status "snapshot rejects a malformed FOOTPRINT_FS_ROOTS entry" 1 "FOOTPRINT_FS_ROOTS" \
+  env FOOTPRINT_FS_ROOTS='/Library/Application Support:4 /private/etc:3' ./footprint.sh snapshot x "$bad"
+if [[ ! -e $bad/x ]]; then ok "a rejected snapshot writes nothing"; else not_ok "a rejected snapshot writes nothing"; fi
+rm -rf "$bad"
 
 if python3 tools/redact.py --self-test >/dev/null; then ok "redact.py self-test"; else not_ok "redact.py self-test"; fi
 

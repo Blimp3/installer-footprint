@@ -7,7 +7,7 @@
 
 **Why:** a macOS installer package can add more than the app. Its scripts can add background services, root helpers and further packages. Two snapshots and one diff show these changes: receipts, launchd jobs, helpers, files, processes and sockets.
 
-**Case study:** on a test Mac, the Omnissa Horizon Client 8.17.0 installer also installed three Workspace ONE packages (Deem, its installer helper and the Endpoint Telemetry Service), with two Workspace ONE daemons running as root. Every finding in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact from the captures or a marked owner statement.
+**Case study:** on a test Mac that was also in daily use, the Omnissa Horizon Client 8.17.0 installer also installed three Workspace ONE packages (Deem, its installer helper and the Endpoint Telemetry Service), with two Workspace ONE daemons running as root. Every finding in the [case study](case-studies/omnissa-horizon-client/README.md) cites a fact from the captures or a marked owner statement.
 
 | Added by the installer | Items |
 | --- | --- |
@@ -37,7 +37,7 @@ sudo ./footprint.sh snapshot 01-after-install ~/footprint-study
 ./footprint.sh report ~/footprint-study > report.md
 ```
 
-The tool needs only bash and the tools that come with macOS 13 or later. It reads the system and writes only into the directory you give it. It makes no network connections and never deletes or overwrites a file.
+The tool needs only bash and the tools that come with macOS. It was tested on macOS 27.0 with the system bash 3.2. It reads the system and writes only into the directory you give it. It makes no network connections and never deletes or overwrites a file.
 
 ## What a snapshot holds
 
@@ -52,8 +52,9 @@ The tool needs only bash and the tools that come with macOS 13 or later. It read
 | `processes.txt` | `ps -axo pid,ppid,user,comm` | yes |
 | `connections.txt` | `lsof -nP -i` | no: a user sees only their own sockets |
 | `meta.txt` | UTC time, macOS version and build, architecture, effective user id | yes |
+| `fs-errors.txt` | folders that `find` could not read or that do not exist. `diff` ignores it | - |
 
-Run every snapshot of one study the same way: all with `sudo`, or all without. `diff` compares entries, not raw lines. It ignores PIDs, file descriptors, the local end of connected sockets, the local port of unconnected sockets and the per-launch numbers in GUI `launchctl` labels, so a restarted process or app does not show as a change. A listener on a new port does show. Each entry is listed once, so a second copy of a process does not show. `diff` compares names, so a file replaced under the same name does not show. Run `./footprint.sh --help` for details.
+Run every snapshot of one study the same way: all with `sudo` and the same `FOOTPRINT_FS_ROOTS`, or all without. `diff` compares entries, not raw lines. It ignores PIDs, file descriptors, the local end of connected sockets, the local port of unconnected sockets and the per-launch numbers in GUI `launchctl` labels, so a restarted process or app does not show as a change. A listener on a new port does show. Each entry is listed once, so a second copy of a process does not show. `diff` compares names, so a file replaced under the same name does not show. Run `./footprint.sh --help` for details.
 
 ## Run a three-phase study
 
@@ -62,14 +63,16 @@ Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Acc
 1. Find your network interface: `route get default | grep interface` (for example `en0`).
 2. In four separate terminals, start the captures. Stop each one with Ctrl-C at the end.
    - `sudo tcpdump -i en0 -nn -w capture.pcap`
-   - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log`
+   - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log` (port 53 only: encrypted DNS on port 443 does not show here)
    - `sudo fs_usage -w -f filesys > fs_usage.log` (this file grows fast; stop it after phase 1)
    - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i -a -c <name>; done' | tee sockets.log` (add one `-c <name>` for each vendor process, every 10 s)
-3. `mkdir study`, then `sudo ./footprint.sh snapshot 00-before study`. To list more folders, pass `FOOTPRINT_FS_ROOTS` through `sudo env`, because `sudo` resets the environment: `sudo env FOOTPRINT_FS_ROOTS='<defaults from --help>;/Library/Google:4;/Library/Microsoft:4' ./footprint.sh snapshot 00-before study` adds the browser native-messaging folders. Give the terminal Full Disk Access, or macOS privacy protection (TCC) hides some folders even from root.
+3. In a fifth terminal, `mkdir study` and set the folder list once. This is the default list plus the browser native-messaging folders:
+   `roots="/Library/Application Support:4;/private/etc:3;/usr/local/bin:1;/Applications:1;$HOME/Library/Application Support:2;/Library/Google:4;/Library/Microsoft:4"`
+   Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 00-before study`. `sudo` resets the environment, so pass the list with `sudo env` for every snapshot. Give the terminal Full Disk Access, or macOS privacy protection (TCC) hides some folders even from root. `fs-errors.txt` in each snapshot lists what `find` could not read.
 4. Keep the vendor's file name, because some install scripts check it. Then `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
-5. `sudo ./footprint.sh snapshot 01-after-install study`
-6. Grant the permission in System Settings and write down the clock time and the app. Then `sudo ./footprint.sh snapshot 02-after-permission study`.
-7. Use the app for a fixed time (for example 10 minutes), then `sudo ./footprint.sh snapshot 03-final study`.
+5. `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 01-after-install study`
+6. Grant the permission in System Settings and write down the clock time and the app. Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 02-after-permission study`.
+7. Use the app for a fixed time (for example 10 minutes), then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 03-final study`.
 8. Export the unified log for the study window with `log show --info --debug`. Unlike `log stream`, it drops no messages, but it returns only what macOS stored, so a `log stream` during the study is a useful second source. Name the vendor and the package script processes in the predicate:
    `log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
 9. Copy the package scripts' output: `sudo cp /var/log/install.log study/`
