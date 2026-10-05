@@ -13,4 +13,8 @@ dns-capture/
 snap-*/
 snapshot-*/
 
+# Output of the README study steps
+study/
+report.md
+
 .DS_Store

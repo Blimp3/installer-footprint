@@ -57,6 +57,11 @@ bad=$(mktemp -d)
 expect_status "snapshot rejects a malformed FOOTPRINT_FS_ROOTS entry" 1 "FOOTPRINT_FS_ROOTS" \
   env FOOTPRINT_FS_ROOTS='/Library/Application Support:4 /private/etc:3' ./footprint.sh snapshot x "$bad"
 if [[ ! -e $bad/x ]]; then ok "a rejected snapshot writes nothing"; else not_ok "a rejected snapshot writes nothing"; fi
+if [[ $(uname -s) != Darwin ]]; then
+  expect_status "snapshot stops on a system other than macOS" 1 "needs macOS" ./footprint.sh snapshot x "$bad"
+else
+  echo "skip snapshot stops on a system other than macOS (this is macOS)"
+fi
 rm -rf "$bad"
 
 if python3 tools/redact.py --self-test >/dev/null; then ok "redact.py self-test"; else not_ok "redact.py self-test"; fi
@@ -68,6 +73,15 @@ printf '# source: x.log | mode=text\n    10  first\n    12  second\n' >"$cit/x.t
 printf -- '- **T-1** Evidence: [`x.txt:12`](x.txt#L2).\n' >"$cit/FACTS.md"
 expect_status "citation check catches a wrong anchor" 1 "do not resolve" python3 tools/check_citations.py "$cit/FACTS.md"
 rm -rf "$cit"
+
+if python3 tools/check_sentences.py >/dev/null; then ok "README sentences have 25 words or fewer"; else not_ok "README sentences have 25 words or fewer"; fi
+txt=$(mktemp -d)
+long="one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty"
+printf '| %s %s |\n\nShort sentence (SET-1, R1-2). Fact IDs do not count.\n' "$long" "$long" >"$txt/ok.md"
+expect_status "sentence check skips tables and fact IDs" 0 "" python3 tools/check_sentences.py "$txt/ok.md"
+printf -- '- %s, and then six more words follow.\n' "$long" >"$txt/long.md"
+expect_status "sentence check catches a sentence over 25 words" 1 "over 25 words" python3 tools/check_sentences.py "$txt/long.md"
+rm -rf "$txt"
 
 # verify_redaction.sh must catch planted personal data. The values are
 # synthetic and split so this file itself stays clean.

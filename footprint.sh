@@ -97,6 +97,7 @@ snapshot() {
   check_roots
   out=$dir/$label
   [[ ! -e $out ]] || die "$out already exists; pick a new label (snapshots are never overwritten)"
+  [[ $(uname -s) == Darwin ]] || die "snapshot needs macOS (this system is $(uname -s))"
   mkdir -p "$dir"
   mkdir "$out"
   echo "footprint.sh: writing $out" >&2
