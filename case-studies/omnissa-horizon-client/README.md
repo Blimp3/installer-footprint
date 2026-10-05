@@ -1,12 +1,12 @@
 # Case study: the Omnissa Horizon Client installer on macOS
 
-This case study covers two captured runs of the installer for Omnissa Horizon Client on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md). Each fact cites raw lines, mostly through the redacted excerpts in [evidence/](evidence/). Facts with an `OWN` ID are my notes, not data from the captures.
+This case study covers two captured runs of the installer for Omnissa Horizon Client on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md). Each fact cites raw lines, mostly through the redacted excerpts in [evidence/](evidence/). The ID prefixes name the source: SET for setup and sources, R1 for run 1, and BR for leftovers of run 1 in run 2. P1, P2 and P3 are the three phases of run 2, and OWN marks my notes, not data from the captures.
 
 "Vendor" means names that match the Omnissa, Horizon, VMware, Workspace ONE, ws1 or Deem terms. The term does not identify an organization (R1-77). Times are CEST. I have not contacted the vendor (OWN-01).
 
 ## Summary
 
-**The installer for Omnissa Horizon Client 8.17.0 installs a Workspace ONE stack by default, as the vendor documents (OWN-09).** The stack is Deem 25.09.00.701 with an installer helper, and the Endpoint Telemetry Service 25.9.0.5699 (SET-20, SET-21, R1-19, P1-19). This study records what the default adds: packages, LaunchDaemons, a root helper, entitlements and a line in `/etc/hosts`. The vendor documentation does not list these items (OWN-09).
+**The installer for Omnissa Horizon Client 8.17.0 installs a Workspace ONE stack by default, as the vendor documents (OWN-09).** The stack is Deem 25.09.00.701 with an installer helper, and the Endpoint Telemetry Service 25.9.0.5699 (SET-20, SET-21, R1-19, P1-19). This study records what the default adds, such as LaunchDaemons, LaunchAgents, a privileged helper, entitlements and a line in `/etc/hosts`. The vendor pages do not list these items (OWN-09).
 
 - Services: the installer adds three LaunchDaemons (`com.omnissa.horizon.CDSHelper`, `com.ws1.deemd`, `com.ws1.ws1etlm`) and two LaunchAgents (`com.ws1.deem.MacUIEvents`, `com.ws1.ws1etlmu`) (R1-24, R1-28, P1-22). deemd and ws1etlm run as root in both runs (R1-93, P1-74). In run 2, the privileged helper CDSHelper logs an install of `Omnissa Horizon Client.pkg` after a connection from `horizon-client` (P1-31, P1-34, P1-35).
 - Other changes: four Workspace ONE apps, the Deem `LegacyDeem.app`, configuration under `/etc/workspaceone` and the line `127.0.0.1 view-localhost` in `/etc/hosts`, in both runs (R1-46, R1-47, R1-40, P1-43, P1-39). In run 1, `cp` also copies a native-messaging manifest into the Chrome and Edge folders. The data does not establish any collection of browsing data (R1-61).
@@ -15,7 +15,9 @@ This case study covers two captured runs of the installer for Omnissa Horizon Cl
 
 ## Vendor documentation
 
-On 5 October 2026, I read two vendor pages (OWN-09). The [install guide of Horizon Client for Mac](https://docs.omnissa.com/HorizonClient-MacGuide-V2603/InstallHorizonClientonaMac) states that the installer includes the DEEM agent by default. It also states that **Customize** lets the user clear the EndpointTelemetryService checkbox. The [Experience Management for Horizon guide](https://docs.omnissa.com/Intelligence/ExpMgmtHorizon) states that the macOS client installs the agent by default from version 2406. Neither page lists the packages, LaunchDaemons, root helper, entitlements or `/etc/hosts` line that this study records. In run 1, I used the command-line `installer -pkg`, which installs the default choices (OWN-10, R1-103).
+On 5 October 2026, I read two vendor pages (OWN-09). The install guide [Install Omnissa Horizon Client on a Mac](https://docs.omnissa.com/HorizonClient-MacGuide-V2603/InstallHorizonClientonaMac) is version 2603, last updated on 30 July 2026. It says: "By default, the Horizon Client installer includes the DEEM agent." It also says: "From the Package Names list, clear the checkbox for `EndpointTelemetryService` to exclude the DEEM agent."
+
+The page [Experience Management for Horizon](https://docs.omnissa.com/Intelligence/ExpMgmtHorizon), dated 29 September 2026, states that Horizon Client for macOS installs this agent by default from version 2406. Neither page lists LaunchDaemons, LaunchAgents, a privileged helper, entitlements or an `/etc/hosts` entry. In run 1, I used the command-line `installer -pkg`, which installs the default choices (OWN-10, R1-103).
 
 ## Setup
 
@@ -72,7 +74,7 @@ flowchart LR
 | `com.ws1.deem.MacUIEvents` | LaunchAgent | `/usr/local/bin/MacUIEvents` | added, not in the after snapshot | plist from run 1, not in any process snapshot | R1-27, R1-28, R1-93, BR-05, P1-83 |
 
 - The snapshots do not record what the plists contain (SET-34).
-- In run 1, Background Task Management registers deemd and ws1etlm as legacy daemons and ws1etlmu and MacUIEvents as legacy agents, all `[enabled, allowed, not notified]` (R1-26, R1-30). In run 2, it finds the two LaunchAgents from run 1 again, as `[enabled, disallowed, notified]`. It logs an updated item for each, with `[enabled, disallowed, not notified]` (P1-27).
+- In run 1, Background Task Management registers deemd and ws1etlm as legacy daemons and ws1etlmu and MacUIEvents as legacy agents, all `[enabled, allowed, not notified]` (R1-26, R1-30). In run 2, Background Task Management finds the two LaunchAgents from run 1 again, as `[enabled, disallowed, notified]`. It then logs an updated item for each, with `[enabled, disallowed, not notified]` (P1-27).
 - In run 1, each of the two client postinstalls copies CDSHelper and its plist into place and runs `launchctl load`. In the second postinstall, the next line is 'Load failed: 5: Input/output error' (R1-34, R1-35).
 - In run 2, at 17:27:10 CEST, CDSHelper logs a connection from `horizon-client`. It logs that the 'cds script /bin/rm' runs, but not its target (P1-31, P1-32). Its install job then logs 'isDeemInstalled = YES' for the ws1etlm folder (P1-33). It logs 'Installing package' for `Omnissa Horizon Client.pkg` in a temporary folder named `viewAutoupdate.DoU50a`. At 17:27:29 CEST, it logs 'The package is installed successfully!' (P1-34, P1-35). The captures do not record the version of that package (P1-17).
 - The CDSHelper binary is 174304 bytes, dated 12:06, after run 1, and 174256 bytes, dated 17:27, after phase 1 of run 2 (P1-29).
@@ -193,7 +195,11 @@ Phase 3 runs from 17:29:48 to 17:31:12 CEST (SET-14).
   - No data ties 4 of the run 1 addresses on TCP port 443 to a process (R1-110, R1-111).
   - The logs do not select network-library lines (R1-113, SET-65).
 - Before any recorded grant of Full Disk Access, ws1etlm lacks this access (P1-111). A script line asks for this access in a notification (R1-119). locationd denies ws1etlmu as a location client (R1-153). I report a grant of Full Disk Access that the logs do not record (OWN-03, P2-20).
-- The vendor documents an opt-out. In Installer.app, **Customize** lets the user clear the EndpointTelemetryService checkbox (OWN-09). This study shows what the default adds when the user keeps it.
+- The vendor documents an opt-out. In Installer.app, **Customize** lets the user clear the EndpointTelemetryService checkbox (OWN-09). This study shows what the default adds when the user keeps it. The install guide also says: "Do not use the Horizon Client uninstaller, as it may not completely remove all the DEEM components." For macOS, the vendor gives this removal command (OWN-09):
+
+  ```bash
+  sudo sh /Library/Application\ Support/WorkspaceONE/EndpointTelemetryService/ws1etlm/uninstall.sh --force
+  ```
 
 ## Limits
 

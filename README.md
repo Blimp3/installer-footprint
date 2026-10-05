@@ -5,9 +5,9 @@
 
 `footprint.sh` takes a snapshot of a macOS system before and after an installer runs. It then prints what the installer adds.
 
-**Why:** a macOS installer package can add more than the app. Its scripts can add background services, root helpers and more packages. Two snapshots and one diff show these changes: receipts, launchd jobs, helpers, files, processes and sockets.
+**Why:** a macOS installer package can add more than the app. Its scripts can add background services, privileged helpers and more packages. Two snapshots and one diff show these changes: receipts, launchd jobs, helpers, files, processes and sockets.
 
-**Case study:** the [case study](case-studies/omnissa-horizon-client/README.md) observes the installer for Omnissa Horizon Client 8.17.0 on a test Mac that also runs unrelated software. The installer installs three Workspace ONE packages by default, as the vendor documents. They are Deem, its installer helper and the Endpoint Telemetry Service. The case study records what this default adds: packages, LaunchDaemons, a root helper, entitlements and a line in `/etc/hosts`. The vendor documentation does not list these items. Every finding cites a fact from the captures or one of my marked notes.
+**Case study:** the [case study](case-studies/omnissa-horizon-client/README.md) observes the installer for Omnissa Horizon Client 8.17.0 on a test Mac that also runs unrelated software. The installer installs three Workspace ONE packages by default, as the vendor documents. They are Deem, its installer helper and the Endpoint Telemetry Service. The case study records what this default adds, such as LaunchDaemons, LaunchAgents, a privileged helper, entitlements and a line in `/etc/hosts`. The vendor pages do not list these items. Every finding cites a fact from the captures or one of my marked notes.
 
 This is the start of the `footprint.sh diff` output for run 1 of the case study:
 
@@ -103,7 +103,7 @@ Five captures run in separate terminals. The `fs_usage` capture stops after phas
 1. Write down the file name of the installer and its SHA-256: `shasum -a 256 /path/to/Installer.pkg`
 2. Find your network interface: `route get default | grep interface`. The output names it, for example `en0`.
 3. In five separate terminals, start the five captures in the table above. Use your interface in place of `en0`.
-4. In System Settings, give a sixth terminal Full Disk Access.
+4. CAUTION: in System Settings, give a sixth terminal Full Disk Access. Commands in it can then read all your files.
 5. In the sixth terminal, make the study folder: `mkdir study`
 6. Set the folder list once: the default list plus the browser native-messaging folders.
    `roots="/Library/Application Support:4;/private/etc:3;/usr/local/bin:1;/Applications:1;$HOME/Library/Application Support:2;/Library/Google:4;/Library/Microsoft:4"`
@@ -111,15 +111,16 @@ Five captures run in separate terminals. The `fs_usage` capture stops after phas
 8. Install the package under the file name of the vendor: `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
 9. Take the second snapshot: `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 01-after-install study`
 10. Stop the `fs_usage` capture with Ctrl-C.
-11. Grant the permission in System Settings.
+11. CAUTION: grant the permission to the vendor app in System Settings. The app keeps it until you remove it.
 12. Write down the clock time and the app that gets the permission.
 13. Take the third snapshot: `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 02-after-permission study`
 14. Use the app for a fixed time, for example 10 minutes.
 15. Take the last snapshot: `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 03-final study`
 16. Stop the other captures with Ctrl-C.
-17. Export the unified log for the study window: `/usr/bin/log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
+17. Export the unified log for the study window: `/usr/bin/log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > show.log`
 18. Copy the output of the package scripts: `sudo cp /var/log/install.log study/`
 19. Make the report: `./footprint.sh report study > study/REPORT.md`
+20. In System Settings, turn off Full Disk Access for the sixth terminal.
 
 Each snapshot records the macOS version in `meta.txt`.
 
