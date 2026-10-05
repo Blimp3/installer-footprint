@@ -71,6 +71,8 @@ rm -rf "$cit"
 
 # verify_redaction.sh must catch planted personal data. The values are
 # synthetic and split so this file itself stays clean.
+# The verifier runs under "timeout 60" where that command exists (Linux CI).
+verify() { if command -v timeout >/dev/null; then timeout 60 "$@"; else "$@"; fi; }
 tmp=$(mktemp -d)
 git -C "$tmp" init -q
 mkdir "$tmp/tools"
@@ -78,7 +80,7 @@ cp tools/verify_redaction.sh "$tmp/tools/"
 printf 'REDACT_USER=alex\nREDACT_HOST=%s\nREDACT_DENY=\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
 echo "clean line, window 17:18:10-17:29:38, ::1 and ff02::fb" >"$tmp/a.txt"
 git -C "$tmp" add a.txt tools/verify_redaction.sh
-expect_status "verifier passes a clean repo (empty deny list)" 0 "" "$tmp/tools/verify_redaction.sh"
+expect_status "verifier passes a clean repo (empty deny list)" 0 "" verify "$tmp/tools/verify_redaction.sh"
 printf 'REDACT_USER="alex"\nREDACT_HOST=%s\nREDACT_DENY=SecretCo, OtherCo\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
 for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex here" "Alexs-""MacBook-Air.local" \
   "AlexsMacBook""Air" "host x-MacBook""-Pro" "en0 a4:83:""e7:00:11:22" "en1 a4-83-""e7-00-11-22" \
@@ -88,22 +90,22 @@ for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex he
   "cgn 100.""64.1.2" "v6 2a01""::4" "udid 00008103-""001A2C3E0E43001E"; do
   echo "$planted" >"$tmp/b.txt"
   git -C "$tmp" add b.txt
-  expect_status "verifier catches: $planted" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+  expect_status "verifier catches: $planted" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh"
 done
 echo "clean" >"$tmp/b.txt"
 git -C "$tmp" add b.txt
 for f in capture.pcap fs_usage.log tools/.redact-local.env; do
   [[ -e $tmp/$f ]] || : >"$tmp/$f"
   git -C "$tmp" add -f "$f"
-  expect_status "verifier catches a tracked $f" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+  expect_status "verifier catches a tracked $f" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh"
   git -C "$tmp" rm -q --cached "$f"
 done
 head -c 600000 /dev/zero | tr '\0' 'x' >"$tmp/big.txt"
 git -C "$tmp" add big.txt
-expect_status "verifier catches a file over 500 KB" 1 "hit(s)" "$tmp/tools/verify_redaction.sh"
+expect_status "verifier catches a file over 500 KB" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh"
 git -C "$tmp" rm -q --cached big.txt
 git -C "$tmp" -c user.name=Blimp3 -c "user.email=91412057+Blimp3""@users.noreply.github.com" commit -q -m "add notes" -m "seen at alex's desk"
-expect_status "verifier --history catches a commit message" 1 "hit(s)" "$tmp/tools/verify_redaction.sh" --history
+expect_status "verifier --history catches a commit message" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh" --history
 rm -rf "$tmp"
 
 echo "$pass passed, $fail failed"

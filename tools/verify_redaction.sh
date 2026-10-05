@@ -55,9 +55,24 @@ report() { # report <check> <git grep output>
   hits=$((hits + $(wc -l <<<"$2")))
   while IFS= read -r line; do echo "HIT [$1] $line"; done <<<"$2"
 }
-gg() { # git grep over the targets; status 1 = no match, more = error
+# Files over 500 KB fail the gate (raw captures are large; excerpts are not).
+# They are reported first and left out of every content check: one regex over
+# a long single line can run for minutes with the glibc regex engine.
+big='' excl=()
+while IFS= read -r -d '' f; do
+  [[ -f $f ]] || continue
+  size=$(wc -c <"$f" | tr -d ' ')
+  if ((size > 512000)); then
+    big+="$f: $size bytes"$'\n'
+    excl+=(":(exclude,literal)$f")
+  fi
+done < <(git ls-files -z)
+report large-file "${big%$'\n'}"
+
+spec=(.)
+gg() { # git grep over the targets and the paths in spec; status 1 = no match, more = error
   local rc=0
-  git grep -n -a "$@" "${targets[@]}" -- . || rc=$?
+  git grep -n -a "$@" "${targets[@]}" -- "${spec[@]}" ${excl[@]+"${excl[@]}"} || rc=$?
   if ((rc > 1)); then
     echo "verify_redaction.sh: git grep failed ($rc)" >&2
     exit 2
@@ -86,7 +101,14 @@ report mac-address "$(gg -E -e '(^|[^0-9A-Fa-f:-])([0-9A-Fa-f]{1,2}:){5}[0-9A-Fa
   -e '(^|[^0-9A-Fa-f:-])([0-9A-Fa-f]{1,2}-){5}[0-9A-Fa-f]{1,2}([^0-9A-Fa-f:-]|$)')"
 report uuid "$(gg -E -e '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}' -e '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{16}')"
 report var-folders "$(gg -E -e '/folders/[A-Za-z0-9_+-]{2}/[A-Za-z0-9_+-]{20,}')"
-report email "$(gg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
+# the email regex runs only on files that hold a literal "@" (history mode prints "rev:path")
+at_files=$(gg -l -F -e '@' | sed -E 's/^[0-9a-f]{40}://' | sort -u)
+if [[ -n $at_files ]]; then
+  spec=()
+  while IFS= read -r f; do spec+=(":(literal)$f"); done <<<"$at_files"
+  report email "$(gg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
+  spec=(.)
+fi
 # serial-like: 10-12 uppercase letters and digits, with at least one of each
 report serial "$(gg -o -w -E -e '[A-Z0-9]{10,12}' | awk -F: -v allow=" $ALLOW_TOKENS " '$NF ~ /[A-Z]/ && $NF ~ /[0-9]/ && !index(allow, " " $NF " ")')"
 # public IPv4 not in ALLOW_IPS (private, loopback, multicast, test and reserved ranges pass)
@@ -137,8 +159,6 @@ if [[ ${targets[0]} != --cached ]]; then
   report msg-email "$(mg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
 fi
 report raw-file "$(git ls-files | grep -E '\.(pcap|pcapng|log)$|(^|/)\.redact-local\.env$' || true)"
-# raw captures are large; excerpts are not
-report large-file "$(git ls-files -z | xargs -0 wc -c | awk '$2 != "total" && $1 > 512000 {print $2 ": " $1 " bytes"}')"
 
 scope="$(git ls-files | wc -l | tr -d ' ') tracked files"
 [[ ${targets[0]} == --cached ]] || scope="$scope, ${#targets[@]} commits"
