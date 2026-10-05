@@ -6,8 +6,8 @@
 # tools/.redact-local.env, hostname-style MacBook model names, /Users/<name>
 # paths, LAN, link-local and carrier-grade NAT IPv4, public IPv4 not in
 # ALLOW_IPS, private and public IPv6, MAC addresses, UUIDs and UDIDs, per-user
-# /var/folders IDs, serial-like tokens not in ALLOW_TOKENS, email addresses,
-# raw capture files and files over 500 KB.
+# /var/folders IDs, serial-like tokens not in ALLOW_TOKENS, email addresses not
+# in ALLOW_EMAILS, raw capture files and files over 500 KB.
 # Exit 0 = clean, 1 = hits (printed), 2 = setup error.
 # Values split across string literals (as in test code) cannot be found by
 # grep: test values must be synthetic, never copied from real captures.
@@ -18,6 +18,10 @@ cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 ALLOW_IPS="23.40.244.164"
 # Serial-like tokens that are public identifiers: the vendor's code-signing team ID.
 ALLOW_TOKENS="S2ZMFGQM93"
+# Email addresses that are not personal: the Claude Code co-author trailer and
+# GitHub noreply addresses. Plain ERE without {n}, so that every awk reads it.
+ALLOW_EMAILS='noreply@anthropic\.com|[A-Za-z0-9._%+-]+@users\.noreply\.github\.com'
+EMAIL='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z][A-Za-z]+'
 
 targets=(--cached)
 if [[ ${1:-} == --history ]]; then
@@ -70,6 +74,9 @@ done < <(git ls-files -z)
 report large-file "${big%$'\n'}"
 
 spec=(.)
+not_allowed_email() { # print the lines that still hold an email after the allowed ones are removed
+  ALLOW="$ALLOW_EMAILS" RE="$EMAIL" awk '{ s = $0; gsub(ENVIRON["ALLOW"], "", s); if (s ~ ENVIRON["RE"]) print }'
+}
 gg() { # git grep over the targets and the paths in spec; status 1 = no match, more = error
   local rc=0
   git grep -n -a "$@" "${targets[@]}" -- "${spec[@]}" ${excl[@]+"${excl[@]}"} || rc=$?
@@ -106,7 +113,7 @@ at_files=$(gg -l -F -e '@' | sed -E 's/^[0-9a-f]{40}://' | sort -u)
 if [[ -n $at_files ]]; then
   spec=()
   while IFS= read -r f; do spec+=(":(literal)$f"); done <<<"$at_files"
-  report email "$(gg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
+  report email "$(gg -E -e "$EMAIL" | not_allowed_email)"
   spec=(.)
 fi
 # serial-like: 10-12 uppercase letters and digits, with at least one of each
@@ -156,7 +163,7 @@ if [[ ${targets[0]} != --cached ]]; then
   fi
   report msg-home-path "$(mg -E -e '/Users/[A-Za-z0-9_]')"
   report msg-lan-ip "$(mg -E -e '(^|[^0-9])(192\.168|10\.[0-9]{1,3}|172\.(1[6-9]|2[0-9]|3[01]))\.[0-9]{1,3}\.[0-9]{1,3}')"
-  report msg-email "$(mg -E -e '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')"
+  report msg-email "$(mg -E -e "$EMAIL" | not_allowed_email)"
 fi
 report raw-file "$(git ls-files | grep -E '\.(pcap|pcapng|log)$|(^|/)\.redact-local\.env$' || true)"
 

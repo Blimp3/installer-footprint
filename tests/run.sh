@@ -74,6 +74,7 @@ rm -rf "$cit"
 # The verifier runs under "timeout 60" where that command exists (Linux CI).
 verify() { if command -v timeout >/dev/null; then timeout 60 "$@"; else "$@"; fi; }
 tmp=$(mktemp -d)
+id=(-c user.name=Blimp3 -c "user.email=91412057+Blimp3""@users.noreply.github.com")
 git -C "$tmp" init -q
 mkdir "$tmp/tools"
 cp tools/verify_redaction.sh "$tmp/tools/"
@@ -104,7 +105,11 @@ head -c 600000 /dev/zero | tr '\0' 'x' >"$tmp/big.txt"
 git -C "$tmp" add big.txt
 expect_status "verifier catches a file over 500 KB" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh"
 git -C "$tmp" rm -q --cached big.txt
-git -C "$tmp" -c user.name=Blimp3 -c "user.email=91412057+Blimp3""@users.noreply.github.com" commit -q -m "add notes" -m "seen at alex's desk"
+echo "by 91412057+Blimp3""@users.noreply.github.com" >"$tmp/b.txt"
+git -C "$tmp" add b.txt
+git -C "$tmp" "${id[@]}" commit -q -m "Add notes" -m "Co-Authored-By: Claude <noreply""@anthropic.com>"
+expect_status "verifier allows a Co-Authored-By trailer and a noreply address" 0 "" verify "$tmp/tools/verify_redaction.sh" --history
+git -C "$tmp" "${id[@]}" commit -q --allow-empty -m "Add more notes" -m "seen at alex's desk"
 expect_status "verifier --history catches a commit message" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh" --history
 rm -rf "$tmp"
 
