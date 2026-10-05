@@ -30,6 +30,7 @@ In a clone of this repository, try `diff` and `report` on the synthetic snapshot
 Then study a real installer. Use `sudo` for the snapshots, so that they include the system launchd domain and root sockets:
 
 ```bash
+mkdir ~/footprint-study
 sudo ./footprint.sh snapshot 00-before ~/footprint-study
 sudo installer -pkg ~/Downloads/Example.pkg -target /
 sudo ./footprint.sh snapshot 01-after-install ~/footprint-study
@@ -54,31 +55,35 @@ The tool needs only bash and the tools that come with macOS. It was tested on ma
 | `meta.txt` | UTC time, macOS version and build, architecture, effective user id | yes |
 | `fs-errors.txt` | folders that `find` could not read or that do not exist. `diff` ignores it | - |
 
+The snapshots do not list system extensions, configuration profiles, the Background Task Management database or kernel extensions.
+
 Run every snapshot of one study the same way: all with `sudo` and the same `FOOTPRINT_FS_ROOTS`, or all without. `diff` compares entries, not raw lines. It ignores PIDs, file descriptors, the local end of connected sockets, the local port of unconnected sockets and the per-launch numbers in GUI `launchctl` labels, so a restarted process or app does not show as a change. A listener on a new port does show. Each entry is listed once, so a second copy of a process does not show. `diff` compares names, so a file replaced under the same name does not show. Run `./footprint.sh --help` for details.
 
 ## Run a three-phase study
 
 Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Access). Phase 3 is normal use. Use a test Mac or a fresh user account if you can, and quit other apps to reduce noise.
 
-1. Find your network interface: `route get default | grep interface` (for example `en0`).
-2. In four separate terminals, start the captures. Stop each one with Ctrl-C at the end.
+1. Write down the installer's file name and its SHA-256: `shasum -a 256 /path/to/Installer.pkg`
+2. Find your network interface: `route get default | grep interface` (for example `en0`).
+3. In five separate terminals, start the captures. Stop each one with Ctrl-C at the end.
    - `sudo tcpdump -i en0 -nn -w capture.pcap`
    - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log` (port 53 only: encrypted DNS on port 443 does not show here)
    - `sudo fs_usage -w -f filesys > fs_usage.log` (this file grows fast; stop it after phase 1)
-   - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i -a -c <name>; done' | tee sockets.log` (add one `-c <name>` for each vendor process, every 10 s)
-3. In a fifth terminal, `mkdir study` and set the folder list once. This is the default list plus the browser native-messaging folders:
+   - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i; done' | tee sockets.log` (the sockets of all processes every 10 s, because the vendor's process names are not known before the install)
+   - `log stream --level debug --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > stream.log` (replace `vendor` with a vendor term)
+4. In a sixth terminal, `mkdir study` and set the folder list once. This is the default list plus the browser native-messaging folders:
    `roots="/Library/Application Support:4;/private/etc:3;/usr/local/bin:1;/Applications:1;$HOME/Library/Application Support:2;/Library/Google:4;/Library/Microsoft:4"`
    Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 00-before study`. `sudo` resets the environment, so pass the list with `sudo env` for every snapshot. Give the terminal Full Disk Access, or macOS privacy protection (TCC) hides some folders even from root. `fs-errors.txt` in each snapshot lists what `find` could not read.
-4. Keep the vendor's file name, because some install scripts check it. Then `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
-5. `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 01-after-install study`
-6. Grant the permission in System Settings and write down the clock time and the app. Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 02-after-permission study`.
-7. Use the app for a fixed time (for example 10 minutes), then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 03-final study`.
-8. Export the unified log for the study window with `log show --info --debug`. Unlike `log stream`, it drops no messages, but it returns only what macOS stored, so a `log stream` during the study is a useful second source. Name the vendor and the package script processes in the predicate:
+5. Keep the vendor's file name, because some install scripts check it. Then `sudo installer -pkg /path/to/Installer.pkg -target / -verbose | tee installer.log`
+6. `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 01-after-install study`
+7. Grant the permission in System Settings and write down the clock time and the app. Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 02-after-permission study`.
+8. Use the app for a fixed time (for example 10 minutes), then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 03-final study`.
+9. Export the unified log for the study window with `log show --info --debug`. Unlike `log stream`, it drops no messages, but it returns Debug lines only if macOS stored them, so keep both `stream.log` and `unified.log`. Use the same predicate, which names the vendor and the package script processes:
    `log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
-9. Copy the package scripts' output: `sudo cp /var/log/install.log study/`
-10. `./footprint.sh report study > study/REPORT.md`
+10. Copy the package scripts' output: `sudo cp /var/log/install.log study/`
+11. `./footprint.sh report study > study/REPORT.md`
 
-Each snapshot records the macOS version in `meta.txt`. Write down the installer file name and its SHA-256 (`shasum -a 256`) before you start.
+Each snapshot records the macOS version in `meta.txt`.
 
 ## How the redaction works
 
