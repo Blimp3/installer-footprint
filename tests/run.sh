@@ -82,7 +82,7 @@ printf 'REDACT_USER=alex\nREDACT_HOST=%s\nREDACT_DENY=\n' "Alexs-""MacBook-Air" 
 echo "clean line, window 17:18:10-17:29:38, ::1 and ff02::fb" >"$tmp/a.txt"
 git -C "$tmp" add a.txt tools/verify_redaction.sh
 expect_status "verifier passes a clean repo (empty deny list)" 0 "" verify "$tmp/tools/verify_redaction.sh"
-printf 'REDACT_USER="alex"\nREDACT_HOST=%s\nREDACT_DENY=SecretCo, OtherCo\n' "Alexs-""MacBook-Air" >"$tmp/tools/.redact-local.env"
+printf 'REDACT_USER="alex"\nREDACT_HOST=%s\nREDACT_DENY=SecretCo, OtherCo, %s\n' "Alexs-""MacBook-Air" "Anthr""opic" >"$tmp/tools/.redact-local.env"
 for planted in "TCP 192.""168.77.23:12345" "/Users/""alex/Library" "user alex here" "Alexs-""MacBook-Air.local" \
   "AlexsMacBook""Air" "host x-MacBook""-Pro" "en0 a4:83:""e7:00:11:22" "en1 a4-83-""e7-00-11-22" \
   "mail someone""@example.org" "serial C02XK1""ZJG5H" "to 11.22.""33.44:443" "uses OtherCo" \
@@ -107,8 +107,8 @@ expect_status "verifier catches a file over 500 KB" 1 "hit(s)" verify "$tmp/tool
 git -C "$tmp" rm -q --cached big.txt
 echo "by 91412057+Blimp3""@users.noreply.github.com" >"$tmp/b.txt"
 git -C "$tmp" add b.txt
-git -C "$tmp" "${id[@]}" commit -q -m "Add notes" -m "Co-Authored-By: Claude <noreply""@anthropic.com>"
-expect_status "verifier allows a Co-Authored-By trailer and a noreply address" 0 "" verify "$tmp/tools/verify_redaction.sh" --history
+git -C "$tmp" "${id[@]}" commit -q -m "Add notes" -m "Co-Authored-By: Claude <noreply@anthr""opic.com>"
+expect_status "verifier allows a Co-Authored-By trailer (its domain is on the deny list) and a noreply address" 0 "" verify "$tmp/tools/verify_redaction.sh" --history
 git -C "$tmp" "${id[@]}" commit -q --allow-empty -m "Add more notes" -m "seen at alex's desk"
 expect_status "verifier --history catches a commit message" 1 "hit(s)" verify "$tmp/tools/verify_redaction.sh" --history
 rm -rf "$tmp"

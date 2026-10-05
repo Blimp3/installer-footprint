@@ -20,7 +20,8 @@ ALLOW_IPS="23.40.244.164"
 ALLOW_TOKENS="S2ZMFGQM93"
 # Email addresses that are not personal: the Claude Code co-author trailer and
 # GitHub noreply addresses. Plain ERE without {n}, so that every awk reads it.
-ALLOW_EMAILS='noreply@anthropic\.com|[A-Za-z0-9._%+-]+@users\.noreply\.github\.com'
+# The vendor name is split so that a deny-list entry for it does not hit this file.
+ALLOW_EMAILS='noreply@anthr''opic\.com|[A-Za-z0-9._%+-]+@users\.noreply\.github\.com'
 EMAIL='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z][A-Za-z]+'
 
 targets=(--cached)
@@ -74,6 +75,9 @@ done < <(git ls-files -z)
 report large-file "${big%$'\n'}"
 
 spec=(.)
+outside_allowed() { # outside_allowed <term>: keep the lines that hold <term> (any case) outside the allowed emails
+  ALLOW="$ALLOW_EMAILS" T="$1" awk '{ s = $0; gsub(ENVIRON["ALLOW"], "", s); if (index(tolower(s), tolower(ENVIRON["T"]))) print }'
+}
 not_allowed_email() { # print the lines that still hold an email after the allowed ones are removed
   ALLOW="$ALLOW_EMAILS" RE="$EMAIL" awk '{ s = $0; gsub(ENVIRON["ALLOW"], "", s); if (s ~ ENVIRON["RE"]) print }'
 }
@@ -93,7 +97,7 @@ if [[ -n $user ]]; then
     IFS=',' read -r -a deny_list <<<"$deny"
     for d in "${deny_list[@]}"; do
       d=${d#"${d%%[![:space:]]*}"}
-      if [[ -n $d ]]; then report "deny:$d" "$(gg -i -F -e "$d")"; fi
+      if [[ -n $d ]]; then report "deny:$d" "$(gg -i -F -e "$d" | outside_allowed "$d")"; fi
     done
   fi
 fi
@@ -158,7 +162,7 @@ if [[ ${targets[0]} != --cached ]]; then
     report msg-hostname "$(mg -i -F -e "$host" -e "${host//-/ }" -e "${host//-/}")"
     for d in ${deny_list[@]+"${deny_list[@]}"}; do
       d=${d#"${d%%[![:space:]]*}"}
-      if [[ -n $d ]]; then report "msg-deny:$d" "$(mg -i -F -e "$d")"; fi
+      if [[ -n $d ]]; then report "msg-deny:$d" "$(mg -i -F -e "$d" | outside_allowed "$d")"; fi
     done
   fi
   report msg-home-path "$(mg -E -e '/Users/[A-Za-z0-9_]')"
