@@ -21,7 +21,8 @@ ALLOW_TOKENS="S2ZMFGQM93"
 # Email addresses that are not personal: the Claude Code co-author trailer and
 # GitHub noreply addresses. Plain ERE without {n}, so that every awk reads it.
 # The vendor name is split so that a deny-list entry for it does not hit this file.
-ALLOW_EMAILS='noreply@anthr''opic\.com|[A-Za-z0-9._%+-]+@users\.noreply\.github\.com'
+# The first address also matches its forms in code: split quotes, escaped dot.
+ALLOW_EMAILS='noreply"*@anthr''opic\\?\.com|[A-Za-z0-9._%+-]+@users\.noreply\.github\.com'
 EMAIL='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z][A-Za-z]+'
 
 targets=(--cached)
