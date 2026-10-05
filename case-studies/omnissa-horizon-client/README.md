@@ -239,7 +239,7 @@ OR composedMessage CONTAINS[c] "Full Disk" OR composedMessage CONTAINS[c] "endpo
 The process snapshots have only the columns PID, PPID, USER and COMM (SET-78), so they do not record the arguments of `tcpdump` and `fs_usage`. They show that `fs_usage`, `log` and two `tcpdump` processes ran as root in both runs (SET-42, SET-43). The `fs_usage` filter and the filter of the script that wrote `agent-connections.log` are not recorded either (SET-72, SET-84). The gaps in this study suggest five changes:
 
 1. Install the file under its original download name, and record its SHA-256 first (SET-37, SET-29). The postinstall checks the file name (R1-84).
-2. Export the log after the run with `log show --info --debug`, and keep a live stream as a second source. The dropped-message markers point to `log show` (SET-67), but `log show` returns only the messages that macOS stored.
+2. Export the log after the run with `/usr/bin/log show --info --debug`, and keep a live stream as a second source. The dropped-message markers point to `log show` (SET-67), but `log show` returns only the messages that macOS stored.
 3. Copy `/var/log/install.log` after each run. Run 1's script output came from syslog packets in the packet capture (R1-84). Neither `run1/unified.log` nor `run2/unified.log` has a `./postinstall` line (R1-121, P1-120).
 4. Keep a packet capture file in every run (SET-63).
 5. Sample the sockets of every vendor process. `agent-connections.log` has only `horizon-client` rows, and its filter is not recorded (SET-84).

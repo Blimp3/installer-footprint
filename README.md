@@ -70,7 +70,7 @@ Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Acc
    - `sudo tcpdump -i en0 -nn -l port 53 | tee dns.log` (port 53 only: encrypted DNS on port 443 does not show here)
    - `sudo fs_usage -w -f filesys > fs_usage.log` (this file grows fast; stop it after phase 1)
    - `sudo sh -c 'while sleep 10; do date +%T; lsof -nP -i; done' | tee sockets.log` (the sockets of all processes every 10 s, because the vendor's process names are not known before the install)
-   - `log stream --level debug --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > stream.log` (replace `vendor` with a vendor term)
+   - `/usr/bin/log stream --level debug --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > stream.log` (replace `vendor` with a vendor term)
 4. In a sixth terminal, `mkdir study` and set the folder list once. This is the default list plus the browser native-messaging folders:
    `roots="/Library/Application Support:4;/private/etc:3;/usr/local/bin:1;/Applications:1;$HOME/Library/Application Support:2;/Library/Google:4;/Library/Microsoft:4"`
    Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 00-before study`. `sudo` resets the environment, so pass the list with `sudo env` for every snapshot. Give the terminal Full Disk Access, or macOS privacy protection (TCC) hides some folders even from root. `fs-errors.txt` in each snapshot lists what `find` could not read.
@@ -78,8 +78,8 @@ Phase 1 is the install. Phase 2 is a permission grant (for example Full Disk Acc
 6. `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 01-after-install study`
 7. Grant the permission in System Settings and write down the clock time and the app. Then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 02-after-permission study`.
 8. Use the app for a fixed time (for example 10 minutes), then `sudo env FOOTPRINT_FS_ROOTS="$roots" ./footprint.sh snapshot 03-final study`.
-9. Export the unified log for the study window with `log show --info --debug`. Unlike `log stream`, it drops no messages, but it returns Debug lines only if macOS stored them, so keep both `stream.log` and `unified.log`. Use the same predicate, which names the vendor and the package script processes:
-   `log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
+9. Export the unified log for the study window with `/usr/bin/log show --info --debug`. The full path avoids the `log` builtin of zsh. Unlike `log stream`, it drops no messages, but it returns Debug lines only if macOS stored them, so keep both `stream.log` and `unified.log`. Use the same predicate, which names the vendor and the package script processes:
+   `/usr/bin/log show --info --debug --start "YYYY-MM-DD HH:MM:SS" --predicate 'process IN {"installer", "installd", "package_script_service"} OR senderImagePath CONTAINS[c] "vendor"' > unified.log`
 10. Copy the package scripts' output: `sudo cp /var/log/install.log study/`
 11. `./footprint.sh report study > study/REPORT.md`
 
