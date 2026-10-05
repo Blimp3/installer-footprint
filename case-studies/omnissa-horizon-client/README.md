@@ -1,6 +1,6 @@
 # Case study: the Omnissa Horizon Client installer on macOS
 
-This case study covers two captured runs of the Omnissa Horizon Client installer on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md), and each fact cites the raw lines, mostly through the redacted excerpts in [evidence/](evidence/). Facts with an `OWN` ID come from the owner, not from the captures. "Vendor" means names that match the Omnissa, Horizon, VMware, Workspace ONE, ws1 or Deem terms. The term does not identify an organization (R1-77). Times are CEST.
+This case study covers two captured runs of the Omnissa Horizon Client installer on 25 June 2026, on one test Mac (SET-01, SET-10, OWN-05). Each finding cites a fact ID in [evidence/FACTS.md](evidence/FACTS.md), and each fact cites the raw lines, mostly through the redacted excerpts in [evidence/](evidence/). Facts with an `OWN` ID come from the owner, not from the captures. "Vendor" means names that match the Omnissa, Horizon, VMware, Workspace ONE, ws1 or Deem terms. The term does not identify an organization (R1-77). Times are CEST. The vendor was not contacted (OWN-01).
 
 ## Summary
 
@@ -11,21 +11,9 @@ This case study covers two captured runs of the Omnissa Horizon Client installer
 - Permissions: the signing data gives ws1etlm the endpoint-security entitlement and ws1etlmu the network-client and location entitlements (R1-139). In the captured logs tccd denied ws1etlm Full Disk Access, and locationd logged 'denying' for ws1etlmu (P1-112, R1-153). No log line records a Full Disk Access grant. The owner reports one, for an app and at a time that are not confirmed (P2-20, OWN-03). Details are under [Permissions](#permissions).
 - Limits: one Mac on one day (SET-01, OWN-05). Run 1 used a package with a local name, and its install script logged 'defaulting to DEEM installer.'. No run 2 line shows which branch the script took (R1-84, P1-120). No hash, no static analysis and no organization name for the team ID `S2ZMFGQM93` are recorded (SET-29, R1-77). The captures show what was installed, registered and started, not whether the components collected or sent any data. All limits are under [Limits](#limits).
 
-## Why this study
-
-This is an independent case study, prompted by possible malware concerns. The vendor was not contacted (OWN-01).
-
-This case study covers only the macOS captures: two runs of the installer on 25 June 2026 (SET-01). Run 1 is the install. Run 2 has three phases: install, a step that the owner reports as a Full Disk Access grant, and an observation (OWN-03, OWN-07, SET-14).
-
-A separate study on 1 July 2026 analysed a Windows executable statically. Its report described that sample as appearing legitimate from static analysis. That sample is not one of the macOS packages, so the report does not establish their identity or safety (OWN-02).
-
-```mermaid
-flowchart LR
-    M["macOS installers<br/>Captures: 25 June 2026"] --> MF["Mac findings<br/>(this case study)"]
-    W["Windows executable<br/>Static analysis: 1 July 2026"] --> WF["Windows findings<br/>(not in this repository)"]
-```
-
 ## Setup
+
+Run 1 is the install. Run 2 has three phases: install, a step that the owner reports as a Full Disk Access grant, and an observation (OWN-03, OWN-07, SET-14).
 
 The run 1 capture records an arm64 processor and macOS major version 26 (SET-02, SET-06, SET-07). The owner reports a MacBook Air with macOS 26.5.2 (OWN-04, OWN-05).
 
@@ -231,20 +219,9 @@ None is recorded. The raw folders hold no static-analysis output for these packa
 
 The exact search commands are in [evidence/FACTS.md](evidence/FACTS.md), under "Not recorded", and the quarantine search is in the note of SET-88. The checks that macOS logged during the installs are under [Signing checks that macOS logged](#signing-checks-that-macos-logged). They are not a static analysis.
 
-TODO(owner): if a copy of the Horizon `.pkg` or `.dmg` turns up, run these four commands on it and add the redacted output as facts with the prefix `ST`:
-
-```bash
-codesign -dv --verbose=4 <file>
-spctl --assess -vv --type install <file>
-pkgutil --check-signature <file>
-shasum -a 256 <file>
-```
-
-A copy found later is not proven to be the file that was installed, because the captures record no hash (SET-29).
-
 ## Reproduce it
 
-**Check a fact.** Find its ID in [evidence/FACTS.md](evidence/FACTS.md) and follow the link. The facts that the case study does not cite are in [evidence/FACTS-supporting.md](evidence/FACTS-supporting.md). Each excerpt section starts with a `# source:` line that names its raw file and filter. Line excerpts keep the raw line numbers. For `(count)` citations the fact's note gives the command. `(raw only)` citations name raw lines that no excerpt shows. Both need the raw folders.
+**Check a fact.** Find its ID in [evidence/FACTS.md](evidence/FACTS.md) and follow the link. Each excerpt section starts with a `# source:` line that names its raw file and filter. Line excerpts keep the raw line numbers. For `(count)` citations the fact's note gives the command. `(raw only)` citations name raw lines that no excerpt shows. Both need the raw folders.
 
 **Rebuild the excerpts.** With the raw folders and `tools/.redact-local.env` in place, run:
 
